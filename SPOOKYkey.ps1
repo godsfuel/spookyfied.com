@@ -17,8 +17,7 @@ if (Test-Path $StealthFilePath) {
     Write-Host "[+] Terminal Node already initialized and spookified!" -ForegroundColor Green
     Write-Host "[+] Hardware-bound cryptographic key is active in cache." -ForegroundColor Green
     Write-Host ""
-    Write-Host "Press any key to exit..." -ForegroundColor Yellow
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Read-Host "Press Enter to exit"
     exit
 }
 
@@ -55,5 +54,4 @@ Write-Host "Your hardware-bound cryptographic key has been locked" -ForegroundCo
 Write-Host "into your local system cache. This terminal node is now" -ForegroundColor White
 Write-Host "ready to securely receive dedicated media streams." -ForegroundColor White
 Write-Host ""
-Write-Host "Press any key to close this window..." -ForegroundColor Yellow
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+Read-Host "Press Enter to close this window"
