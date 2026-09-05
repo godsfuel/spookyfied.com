@@ -254,7 +254,7 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
         // Detect User Operating System on load
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "Windows";
-        let scriptFilename = "sys_init.ps1";
+        let scriptFilename = "SPOOKYkey.ps1";
 
         if (/android/i.test(userAgent)) {
             detectedOS = "Android / Mobile";
@@ -301,5 +301,13 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
             a.remove();
         });
     </script>
+	<div class="instructions-box" style="margin-top: 15px; font-family: monospace; font-size: 14px; color: #ccc;">
+  <p><strong>Next Steps:</strong></p>
+  <ol>
+    <li>Click above to download <code>SPOOKY_KEY.ps1</code>.</li>
+    <li>Open your Downloads folder, right-click <code>spookykey.ps1</code>, and select <strong>Run with PowerShell</strong>.</li>
+    <li>Once complete, your hardware-bound key is securely generated locally.</li>
+  </ol>
+</div>
 </body>
 </html>
