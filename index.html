@@ -93,29 +93,21 @@
             border-radius: 4px;
             display: none;
             font-size: 14px;
-            white-space: pre-wrap;
         }
         .success {
             background-color: #1b4332;
             color: #d8f3dc;
             border: 1px solid #2d6a4f;
         }
-        .error {
-            background-color: #58181f;
-            color: #ffccd5;
-            border: 1px solid #800f2f;
-        }
     </style>
 </head>
 <body>
 
-    <!-- LOGO DISPLAY SECTION -->
     <div class="logo-container">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
     </div>
     <p class="subtitle">Advanced Anti-Spy Tunneling &bull; Securely Spookifying Every Byte in Transit</p>
 
-    <!-- STEP 1: AUTOMATED OS NODE INITIALIZATION & EULA -->
     <div class="card">
         <h3>Step 1: Terminal Node Initialization</h3>
         <p style="font-size: 14px; color: #a0a0c0; margin-bottom: 10px;">Detected Operating System: <strong id="detectedOsDisplay" style="color: #00ffcc;">Detecting...</strong></p>
@@ -250,7 +242,6 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
     <div id="status"></div>
 
     <script>
-        // Detect User Operating System on load
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "Windows";
         let scriptFilename = "SPOOKYkey.ps1";
@@ -271,7 +262,6 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
 
         document.getElementById('detectedOsDisplay').textContent = detectedOS;
 
-        // Handle Checkbox State for Button Unlocking
         const termsCheck = document.getElementById('termsCheck');
         const initBtn = document.getElementById('initNodeBtn');
 
@@ -285,23 +275,21 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
             }
         });
 
-        // Handle Node Initialization Script Download & Dynamic Instructions
         initBtn.addEventListener('click', () => {
             const statusDiv = document.getElementById('status');
             statusDiv.style.display = 'block';
             statusDiv.className = 'success';
             
-            // Clean single-spaced HTML status box
             statusDiv.innerHTML = `
-                <strong style="font-size: 15px;">[+] Preparing native node script for ${detectedOS}...</strong><br>
-                <span style="display: block; margin: 2px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
-                <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 6px 0;">
-                <strong style="color: #00ffcc; display: block; margin-bottom: 2px;">How to execute your hardware-bound key generator:</strong>
-                <ol style="margin: 0; padding-left: 20px; line-height: 1.3;">
-                    <li style="margin-bottom: 2px;">Open your <strong>Downloads</strong> folder.</li>
-                    <li style="margin-bottom: 2px;"><strong>Do not double-click</strong> (this opens Notepad). Instead, <strong>right-click</strong> <code>${scriptFilename}</code> and select <strong>"Run with PowerShell"</strong>.</li>
-                    <li style="margin-bottom: 2px;">If Windows displays a <em>"Windows protected your PC"</em> or <em>Unknown Publisher</em> security warning, click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>. (This is normal for local sandbox scripts without an enterprise certificate).</li>
-                    <li style="margin-bottom: 2px;">The script will run securely in the background and lock your hardware-bound key into your local system cache.</li>
+                <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing native node script for ${detectedOS}...</strong>
+                <span style="display: block; margin: 0 0 4px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
+                <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
+                <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute your hardware-bound key generator:</strong>
+                <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
+                    <li style="margin: 0 0 2px 0;">Open your <strong>Downloads</strong> folder.</li>
+                    <li style="margin: 0 0 2px 0;"><strong>Do not double-click</strong> (this opens Notepad). Instead, <strong>right-click</strong> <code>${scriptFilename}</code> and select <strong>"Run with PowerShell"</strong>.</li>
+                    <li style="margin: 0 0 2px 0;">If Windows displays a <em>"Windows protected your PC"</em> warning, click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
+                    <li style="margin: 0;">The script will run securely in the background and lock your hardware-bound key into your local system cache.</li>
                 </ol>
             `;
 

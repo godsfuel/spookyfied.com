@@ -14,7 +14,9 @@ if (Test-Path $StealthFilePath) {
 # 2. Extract hardware signatures (CPU ID and Motherboard Serial via WMI)
 $CpuId = (Get-WmiObject -Class Win32_Processor | Select-Object -ExpandProperty ProcessorId)
 $MbSerial = (Get-WmiObject -Class Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber)
-$RawHardware = "WIN:$CpuId:$MbSerial"
+
+# Fixed string concatenation to prevent PowerShell parser colon error
+$RawHardware = "WIN:" + $CpuId + ":" + $MbSerial
 
 # 3. Generate SHA-256 cryptographic hash combined with system salt
 $CombinedData = $RawHardware + $SystemSalt
