@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Spooky Service - Secure Tunnel Portal</title>
-   <style>
-       body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spooky Service - Secure Tunnel Portal</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
             background-color: #1a1a2e;
             color: #e0e0e0;
@@ -14,51 +15,41 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-       }
-       .logo-container {
+        }
+        .logo-container {
             text-align: center;
             margin-bottom: 20px;
-       }
-       .logo-container img {
+        }
+        .logo-container img {
             max-width: 100%;
             height: auto;
             border-radius: 6px;
             border: 1px solid #0f3460;
-       }
-       p.subtitle {
+        }
+        p.subtitle {
             text-align: center;
             color: #a0a0c0;
             margin-bottom: 30px;
             font-size: 15px;
             letter-spacing: 1px;
-       }
-       .card {
+        }
+        .card {
             background: #16213e;
             padding: 20px;
             border-radius: 6px;
             margin-bottom: 20px;
             border: 1px solid #0f3460;
-       }
-       .form-group {
+        }
+        .form-group {
             margin-bottom: 20px;
-       }
-       label {
+        }
+        label {
             display: block;
             font-weight: bold;
             margin-bottom: 8px;
             color: #00ffcc;
-       }
-       input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            background: #1a1a2e;
-            border: 1px solid #0f3460;
-            color: #fff;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-       }
-       button {
+        }
+        button {
             background-color: #0f3460;
             color: white;
             border: none;
@@ -69,22 +60,22 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s;
-       }
-       button:hover {
+        }
+        button:hover {
             background-color: #e94560;
-       }
-       .btn-green {
+        }
+        .btn-green {
             background-color: #00b4d8;
-       }
-       .btn-green:hover {
+        }
+        .btn-green:hover {
             background-color: #0096c7;
-       }
-       .btn-green:disabled {
+        }
+        .btn-green:disabled {
             background-color: #2b2b40;
             color: #666;
             cursor: not-allowed;
-       }
-       .terms-box {
+        }
+        .terms-box {
             background: #0f3460;
             border: 1px solid #1f4068;
             padding: 15px;
@@ -96,169 +87,219 @@
             border-radius: 4px;
             line-height: 1.4;
             white-space: pre-wrap;
-       }
-       #status {
+        }
+        #status {
             margin-top: 20px;
             padding: 15px;
             border-radius: 4px;
             display: none;
             font-size: 14px;
             white-space: pre-wrap;
-       }
-       .success {
+        }
+        .success {
             background-color: #1b4332;
             color: #d8f3dc;
             border: 1px solid #2d6a4f;
-       }
-       .error {
+        }
+        .error {
             background-color: #58181f;
             color: #ffccd5;
             border: 1px solid #800f2f;
-       }
-   </style>
+        }
+    </style>
 </head>
 <body>
 
-   <!-- LOGO DISPLAY SECTION -->
-   <div class="logo-container">
-       <img src="SPOOKY_Logo.jpg" alt="Spooky Service Logo">
-   </div>
-   <p class="subtitle">Advanced Anti-Spy Tunneling &bull; Securely Spookifying Every Byte in Transit</p>
+    <!-- LOGO DISPLAY SECTION -->
+    <div class="logo-container">
+        <img src="SPOOKY_Logo.jpg" alt="Spooky Service Logo">
+    </div>
+    <p class="subtitle">Advanced Anti-Spy Tunneling &bull; Securely Spookifying Every Byte in Transit</p>
 
-   <!-- STEP 1: AUTOMATED OS NODE INITIALIZATION & EULA -->
-   <div class="card">
-       <h3>Step 1: Terminal Node Initialization</h3>
-       <p style="font-size: 14px; color: #a0a0c0; margin-bottom: 10px;">Detected Operating System: <strong id="detectedOsDisplay" style="color: #00ffcc;">Detecting...</strong></p>
-       
-       <label>End User License Agreement & Protocol Terms:</label>
-       <div class="terms-box">SPOOKY SERVICE MASTER SOFTWARE LICENSE AND DATA TRANSIT AGREEMENT
+    <!-- STEP 1: AUTOMATED OS NODE INITIALIZATION & EULA -->
+    <div class="card">
+        <h3>Step 1: Terminal Node Initialization</h3>
+        <p style="font-size: 14px; color: #a0a0c0; margin-bottom: 10px;">Detected Operating System: <strong id="detectedOsDisplay" style="color: #00ffcc;">Detecting...</strong></p>
+        
+        <label>End User License Agreement & Protocol Terms:</label>
+        <div class="terms-box">SPOOKY SERVICE ENTERPRISE MASTER SOFTWARE LICENSE, DATA TRANSIT, AND USER AGREEMENT
 
-PLEASE READ THIS AGREEMENT CAREFULLY BEFORE INITIALIZING OR EXECUTING ANY COMPONENT OF THE SPOOKY FRAMEWORK. BY CHECKING THE ACCEPTANCE BOX AND DOWNLOADING THE TERMINAL SCRIPT, YOU AGREE TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL TERMS, DO NOT INITIATE OR RUN THIS SOFTWARE.
+PLEASE READ THIS MASTER AGREEMENT CAREFULLY BEFORE DOWNLOADING, INSTALLING, INITIALIZING, OR EXECUTING ANY COMPONENT OF THE SPOOKY FRAMEWORK, TERMINAL UTILITIES, OR ASSOCIATED WEB INFRASTRUCTURE.
 
-1. GRANT OF LICENSE. Spooky Service grants the authorized entity a non-exclusive, non-transferable, revocable license to deploy the client initialization utility solely for secure, hardware-bound file transit and decryption operations via authorized infrastructure.
+BY CLICKING "I ACCEPT," DOWNLOADING, ACCESSING, OR RUNNING THE SOFTWARE, YOU EXPRESSLY ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND UNEQUIVOCALLY AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS SET FORTH IN THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL TERMS, YOU ARE EXPRESSLY PROHIBITED FROM DOWNLOADING, INSTALLING, OR USING THE SOFTWARE AND MUST IMMEDIATELY PURGE ALL ASSOCIATED FILES FROM YOUR SYSTEM.
 
-2. HARDWARE BINDING AND TELEMETRY. The initialization utility derives an immutable local cryptographic key using system-level hardware attributes (including processor and motherboard identifiers). No personally identifiable information or telemetry is transmitted externally; all cryptographic pairing occurs locally within isolated system directories.
+SECTION 1: DEFINITIONS AND INTERPRETATION
 
-3. RESTRICTIONS. Licensee shall not, and shall not permit any third party to: (a) reverse engineer, decompile, disassemble, or otherwise attempt to derive source code or cryptographic seed matrices from the system cache; (b) distribute, sublicense, rent, or lease the initialization software to unauthorized third parties; (c) bypass, modify, or disable any cryptographic verification or encapsulation protocols implemented by the Spooky server architecture.
+a.	"Agreement" means this Master Software License, Data Transit, and User Agreement, including any amendments, addenda, or supplemental terms published via authorized channels.
 
-4. INTELLECTUAL PROPERTY RIGHTS. All intellectual property rights, titles, and interests in and to the Spooky framework, including architectural logic, data encapsulation algorithms, and associated scripts, remain the exclusive property of Spooky Service.
+b.	"Software" means the Spooky client initialization utility, terminal scripts, proprietary encapsulation frameworks, localized binaries, and all associated web assets hosted on authorized domains (spookyfied.com and spookyfied.tech).
 
-5. DISCLAIMER OF WARRANTIES. THE SOFTWARE AND SECURE TUNNEL UTILITIES ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT. 
+c.	"Licensor" refers to Spooky Service, its authorized officers, developers, and corporate affiliates.
 
-6. LIMITATION OF LIABILITY. IN NO EVENT SHALL SPOOKY SERVICE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE.</div>
+d.	"Licensee" means the individual, corporate entity, or authorized agent deploying or executing the Software.
 
-       <div class="form-group" style="margin-bottom: 15px;">
-           <label style="font-weight: normal; font-size: 14px; display: flex; align-items: center; cursor: pointer; color: #e0e0e0;">
-               <input type="checkbox" id="termsCheck" style="width: 18px; height: 18px; margin-right: 10px; cursor: pointer;">
-               I have read, understood, and accept all terms and conditions outlined in the Spooky Service Master Agreement.
-           </label>
-       </div>
+e.	"Hardware-Bound Key" refers to the immutable local cryptographic seed generated dynamically from system-level hardware metrics (such as processor identifiers and motherboard attributes) during terminal initialization.
 
-       <button id="initNodeBtn" class="btn-green" disabled style="opacity: 0.6;">Download & Run Node Initializer</button>
-   </div>
+SECTION 2: GRANT OF LICENSE AND SCOPE OF USE
 
-   <!-- STEP 2: SECURE FILE TUNNEL CONTAINER REQUEST -->
-   <div class="card">
-       <h3>Step 2: Secure File Container Request</h3>
-       <div class="form-group">
-           <label for="assetId">Target Asset Reference / Identifier:</label>
-           <input type="text" id="assetId" placeholder="Enter secure asset reference (e.g., ASSET_FILE_01)">
-       </div>
-       <button id="downloadBtn">Request Secure .spooky Tunnel Package</button>
-   </div>
+1)	Non-Exclusive License Grant: Subject to full and continuous compliance with the terms of this Agreement, Licensor grants Licensee a personal, non-exclusive, non-transferable, non-sublicensable, revocable, limited license to download, install, and execute the Software solely for secure, localized file transit and decryption operations via authorized infrastructure.
 
-   <div id="status"></div>
+2)	Reservation of Rights: The Software is licensed, not sold. Licensor retains all title, ownership rights, intellectual property rights, and interest in and to the Software and all derivative works. All rights not expressly granted to Licensee are reserved entirely by Licensor.
 
-   <script>
-       // Detect User Operating System on load
-       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-       let detectedOS = "Windows";
-       let scriptFilename = "sys_init.ps1";
+3)	Restrictions on Use: Licensee shall not, directly or indirectly, and shall not permit any third party to:
+a)	Reverse engineer, decompile, disassemble, translate, or otherwise attempt to derive source code, object code, underlying algorithms, or cryptographic seed matrices from the Software.
+b)	Modify, adapt, translate, or create derivative works based upon the Software or its documentation.
+c)	Rent, lease, distribute, pledge, assign, sublicense, or otherwise transfer rights to the Software to any unauthorized third party.
+d)	Remove, alter, or obscure any proprietary notices, trademark symbols, or copyright legends contained within or affixed to the Software.
+e)	Utilize the Software to construct a competing product, service, or unauthorized telemetry capture mechanism.
 
-       if (/android/i.test(userAgent)) {
-           detectedOS = "Android / Mobile";
-           scriptFilename = "sys_init.sh";
-       } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-           detectedOS = "iOS / Mobile";
-           scriptFilename = "sys_init.sh";
-       } else if (/macintosh|mac os x/i.test(userAgent)) {
-           detectedOS = "macOS";
-           scriptFilename = "sys_init.sh";
-       } else if (/linux/i.test(userAgent)) {
-           detectedOS = "Linux";
-           scriptFilename = "sys_init.sh";
-       }
+SECTION 3: HARDWARE BINDING, LOCAL EXECUTION, AND PRIVACY ASSURANCE
 
-       document.getElementById('detectedOsDisplay').textContent = detectedOS;
+1)	Hardware Token Derivation: The terminal initialization script derives an immutable local cryptographic pairing key using specific system hardware attributes. Licensee acknowledges and agrees that this operation is performed entirely locally within isolated system directories.
 
-       // Handle Checkbox State for Button Unlocking
-       const termsCheck = document.getElementById('termsCheck');
-       const initBtn = document.getElementById('initNodeBtn');
+2)	Zero-Telemetry Protocol: No personally identifiable information, browsing history, or private system telemetry is transmitted externally to unauthorized entities during routine local initialization. All cryptographic pairing states remain sandboxed to the local host environment.
 
-       termsCheck.addEventListener('change', () => {
-           if (termsCheck.checked) {
-               initBtn.disabled = false;
-               initBtn.style.opacity = '1';
-           } else {
-               initBtn.disabled = true;
-               initBtn.style.opacity = '0.6';
-           }
-       });
+SECTION 4: ASSUMPTION OF RISK FOR EXPERIMENTAL SOFTWARE
 
-       // Handle Node Initialization Script Download
-       initBtn.addEventListener('click', () => {
-           const statusDiv = document.getElementById('status');
-           statusDiv.style.display = 'block';
-           statusDiv.className = 'success';
-           statusDiv.textContent = `Preparing native node script for ${detectedOS}...\nSave and run '${scriptFilename}' locally to bind your hardware key.`;
+1)	Inherent Operational Risk: Licensee expressly acknowledges and agrees that the Software, terminal scripts, and hardware-binding frameworks involve advanced, experimental, and low-level system interactions.
 
-           const a = document.createElement('a');
-           a.href = `/${scriptFilename}`;
-           a.download = scriptFilename;
-           document.body.appendChild(a);
-           a.click();
-           a.remove();
-       });
+2)	100% User Responsibility: Licensee assumes full, exclusive, and unmitigated responsibility for any environment misconfigurations, data loss, operating system instability, hardware conflicts, or hardware degradation resulting from the execution of the Software or terminal scripts. Licensor bears zero liability for local system outcomes.
 
-       // Handle Secure Container Request
-       document.getElementById('downloadBtn').addEventListener('click', async () => {
-           const assetId = document.getElementById('assetId').value.trim() || "DEFAULT_SECURE_ASSET";
-           const statusDiv = document.getElementById('status');
+SECTION 5: INTELLECTUAL PROPERTY AND PROPRIETARY RIGHTS
 
-           statusDiv.style.display = 'block';
-           statusDiv.className = '';
-           statusDiv.textContent = 'Initiating secure tunnel handshake with Spooky Cave...';
+1)	Ownership: All title, copyrights, trade secrets, patents, and other intellectual property rights in the Software, web designs, logos (including visual assets deployed on spookyfied.com and spookyfied.tech), and documentation are owned exclusively by Licensor.
 
-           try {
-               const apiUrl = '/api/process-order';
-               const response = await fetch(apiUrl, {
-                   method: 'POST',
-                   headers: { 'Content-Type': 'application/json' },
-                   body: JSON.stringify({ asset_id: assetId, os_target: detectedOS })
-               });
+2)	Aggregation and Open Source Exceptions: Mere physical or digital aggregation of independent works or standard open-source components with the Software does not bring those independent works under the scope of Licensor's proprietary code base, provided they remain segregated.
 
-               if (!response.ok) {
-                   throw new Error(`Server returned status ${response.status}. Ensure Spooky Cave backend is active.`);
-               }
+3)	Equitable Relief and Injunctive Remedy: Licensee acknowledges and agrees that any breach or threatened breach of Section 2.3 or Section 5 by Licensee will cause irreparable harm to Licensor for which monetary damages would be inadequate. Therefore, Licensor shall be entitled to seek immediate injunctive relief and other equitable remedies in any court of competent jurisdiction, without the necessity of posting a bond or proving actual monetary damages.
 
-               const blob = await response.blob();
-               const url = window.URL.createObjectURL(blob);
-               const a = document.createElement('a');
-               a.href = url;
-               a.download = `${assetId.replace(/\s+/g, '_')}_secure.spooky`;
-               document.body.appendChild(a);
-               a.click();
-               a.remove();
-               window.URL.revokeObjectURL(url);
+SECTION 6: UPDATES, PATCHES, AND MODIFICATIONS
 
-               statusDiv.className = 'success';
-               statusDiv.textContent = `Success!\nAsset: ${assetId}\nSecure .spooky container downloaded via tunnel!`;
+1)	Software Maintenance: Licensor may, at its sole discretion, issue patches, updates, upgrades, or modifications to the Software. Licensee agrees that Licensor is under no obligation to maintain, support, or release future versions of the Software.
 
-           } catch (error) {
-               statusDiv.className = 'error';
-               statusDiv.textContent = `Connection Error: ${error.message}`;
-           }
-       });
-   </script>
+2)	Automatic Delivery: Licensee consents to automatic downloading and installation of functional updates, security patches, and protocol modifications via web deployment channels without explicit prior notification.
+
+SECTION 7: THIRD-PARTY COMPONENTS AND OPEN-SOURCE NOTICE
+
+1)	Integration of Third-Party Elements: The Software may incorporate open-source software libraries or third-party modules governed by their respective licenses (e.g., standard public distribution frameworks). To the extent required by such licenses, the terms of those specific licenses shall apply in lieu of this Agreement solely with respect to those specific third-party components.
+
+SECTION 8: DISCLAIMER OF WARRANTIES
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE, TERMINAL SCRIPTS, AND WEB INFRASTRUCTURE ARE PROVIDED ON AN "AS IS," "AS AVAILABLE," AND "WITH ALL FAULTS" BASIS. LICENSOR HEREBY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT.
+
+LICENSOR MAKES NO WARRANTY OR REPRESENTATION THAT THE SOFTWARE WILL MEET LICENSEE’S REQUIREMENTS, ACHIEVE ANY INTENDED RESULTS, BE COMPATIBLE OR WORK WITH ANY OTHER SOFTWARE, APPLICATIONS, SYSTEMS, OR SERVICES, OPERATE WITHOUT INTERRUPTION, MEET ANY PERFORMANCE OR RELIABILITY STANDARDS, OR BE ERROR-FREE, OR THAT ANY ERRORS OR DEFECTS CAN OR WILL BE CORRECTED.
+
+SECTION 9: LIMITATION OF LIABILITY
+
+UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY (WHETHER IN TORT, CONTRACT, STRICT LIABILITY, OR OTHERWISE) SHALL LICENSOR, ITS DIRECTORS, OFFICERS, EMPLOYEES, AFFILIATES, AGENTS, CONTRACTORS, OR LICENSORS BE LIABLE TO LICENSEE OR ANY THIRD PARTY FOR ANY INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES OF ANY CHARACTER, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, LOSS OF DATA OR DATA ACCURACY, OR ANY OTHER COMMERCIAL DAMAGES OR LOSSES, ARISING OUT OF OR IN CONNECTION WITH THE USE OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+IN NO EVENT SHALL THE AGGREGATE LIABILITY OF LICENSOR FOR ALL CLAIMS RELATING TO THE SOFTWARE EXCEED THE TOTAL AMOUNT ACTUALLY PAID BY LICENSEE (IF ANY) FOR THE SPECIFIC DEPLOYMENT RIGHTS HEREIN, OR THE SUM OF ONE HUNDRED UNITED STATES DOLLARS ($100.00 USD), WHICHEVER IS LESS.
+
+SECTION 10: INDEMNIFICATION
+
+Licensee agrees to defend, indemnify, and hold harmless Licensor, its officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to: 
+i) Licensee’s violation of any term of this Agreement; 
+ii) Licensee’s misuse or unauthorized deployment of the Software; or 
+iii) violation of any rights of any third party through Licensee's operational conduct.
+
+SECTION 11: LIMITATION OF ACTIONS / STATUTE OF LIMITATIONS
+
+Any claim, dispute, or cause of action arising out of or related to the Software, web infrastructure, or this Agreement must be commenced within one (1) year after the cause of action accrued; otherwise, such claim or cause of action is permanently barred, regardless of any statutory limitation period to the contrary.
+
+SECTION 12: FORCE MAJEURE
+
+Licensor shall not be liable or responsible to Licensee, nor be deemed to have defaulted or breached this Agreement, for any failure or delay in fulfilling or performing any term of this Agreement when and to the extent such failure or delay is caused by or results from acts beyond Licensor’s reasonable control, including, without limitation: acts of God, flood, fire, earthquake, explosion, war, terrorism, invasion, national or regional emergencies, civil unrest, strikes, cyberattacks, systemic internet or telecommunications outages, ISP failures, or governmental actions or restrictions.
+
+SECTION 13: EXPORT CONTROL, SANCTIONS, AND DUAL-USE COMPLIANCE
+
+a) Compliance Responsibility: Licensee acknowledges that the Software, scripts, and cryptographic key-generation mechanics are subject to United States export control and economic sanctions laws, regulations, and executive orders (including those administered by the U.S. Department of Commerce and the Department of the Treasury).
+
+b) Prohibited Destinations: Licensee represents and warrants that they are not located in, under the control of, or a national or resident of any embargoed country or restricted territory, and that they are not named on any U.S. government denied-party lists. Licensee assumes 100% legal responsibility for complying with local encryption import/export laws in their respective jurisdiction.
+
+SECTION 14: TERM AND TERMINATION
+
+a) Effective Term: This Agreement is effective upon the date Licensee first downloads, installs, or executes the Software and shall continue until terminated in accordance with this Section.
+
+b) Termination by Licensor: Licensor may terminate this Agreement immediately and without notice if Licensee breaches any provision, restriction, or covenant contained herein.
+
+c) Effect of Termination: Upon termination, all rights granted to Licensee under this Agreement shall immediately cease, and Licensee must instantly halt all execution of the Software, purge all local script caches, and destroy all copies of documentation in its possession.
+
+SECTION 15: GOVERNING LAW AND DISPUTE RESOLUTION
+
+a) Governing Jurisdiction: This Agreement shall be governed by, construed, and enforced in accordance with the laws of the State of Arizona, United States, without regard to its conflict of law principles.
+
+b) Venue: Any legal action, suit, or proceeding arising out of or relating to this Agreement or the Software shall be instituted exclusively in the state or federal courts located within Maricopa County, Arizona, and each party irrevocably submits to the exclusive personal jurisdiction of such courts.
+
+SECTION 16: MISCELLANEOUS PROVISIONS
+
+a) Severability: If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.
+
+b) Entire Agreement: This Agreement constitutes the entire agreement between Licensee and Licensor regarding the Software and supersedes all prior or contemporaneous understandings, communications, or agreements, whether written or oral.
+
+c) Waiver: No failure to exercise, and no delay in exercising, on the part of either party, any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any right or power preclude further exercise.</div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label style="font-weight: normal; font-size: 14px; display: flex; align-items: center; cursor: pointer; color: #e0e0e0;">
+                <input type="checkbox" id="termsCheck" style="width: 18px; height: 18px; margin-right: 10px; cursor: pointer;">
+                I have read, understood, and accept all terms and conditions outlined in the Spooky Service Master Agreement.
+            </label>
+        </div>
+
+        <button id="initNodeBtn" class="btn-green" disabled style="opacity: 0.6;">Download & Run Node Initializer</button>
+    </div>
+
+    <div id="status"></div>
+
+    <script>
+        // Detect User Operating System on load
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        let detectedOS = "Windows";
+        let scriptFilename = "sys_init.ps1";
+
+        if (/android/i.test(userAgent)) {
+            detectedOS = "Android / Mobile";
+            scriptFilename = "sys_init.sh";
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            detectedOS = "iOS / Mobile";
+            scriptFilename = "sys_init.sh";
+        } else if (/macintosh|mac os x/i.test(userAgent)) {
+            detectedOS = "macOS";
+            scriptFilename = "sys_init.sh";
+        } else if (/linux/i.test(userAgent)) {
+            detectedOS = "Linux";
+            scriptFilename = "sys_init.sh";
+        }
+
+        document.getElementById('detectedOsDisplay').textContent = detectedOS;
+
+        // Handle Checkbox State for Button Unlocking
+        const termsCheck = document.getElementById('termsCheck');
+        const initBtn = document.getElementById('initNodeBtn');
+
+        termsCheck.addEventListener('change', () => {
+            if (termsCheck.checked) {
+                initBtn.disabled = false;
+                initBtn.style.opacity = '1';
+            } else {
+                initBtn.disabled = true;
+                initBtn.style.opacity = '0.6';
+            }
+        });
+
+        // Handle Node Initialization Script Download
+        initBtn.addEventListener('click', () => {
+            const statusDiv = document.getElementById('status');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'success';
+            statusDiv.textContent = `Preparing native node script for ${detectedOS}...\nSave and run '${scriptFilename}' locally to bind your hardware key.`;
+
+            const a = document.createElement('a');
+            a.href = `/${scriptFilename}`;
+            a.download = scriptFilename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        });
+    </script>
 </body>
 </html>
