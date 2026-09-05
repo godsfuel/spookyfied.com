@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -254,7 +253,7 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
         // Detect User Operating System on load
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "Windows";
-        let scriptFilename = "SPOOKYkey.ps1";
+        let scriptFilename = "spookykey.ps1";
 
         if (/android/i.test(userAgent)) {
             detectedOS = "Android / Mobile";
@@ -286,12 +285,25 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
             }
         });
 
-        // Handle Node Initialization Script Download
+        // Handle Node Initialization Script Download & Dynamic Instructions
         initBtn.addEventListener('click', () => {
             const statusDiv = document.getElementById('status');
             statusDiv.style.display = 'block';
             statusDiv.className = 'success';
-            statusDiv.textContent = `Preparing native node script for ${detectedOS}...\nSave and run '${scriptFilename}' locally to bind your hardware key.`;
+            
+            // Rich HTML status box with execution and security guidance
+            statusDiv.innerHTML = `
+                <strong style="font-size: 15px;">[+] Preparing native node script for ${detectedOS}...</strong><br>
+                <p style="margin: 8px 0 5px 0;">File <code>${scriptFilename}</code> downloaded successfully.</p>
+                <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 8px 0;">
+                <strong style="color: #00ffcc;">How to execute your hardware-bound key generator:</strong>
+                <ol style="margin: 5px 0 0 20px; padding: 0; line-height: 1.5;">
+                    <li>Open your <strong>Downloads</strong> folder.</li>
+                    <li><strong>Do not double-click</strong> (this opens Notepad). Instead, <strong>right-click</strong> <code>${scriptFilename}</code> and select <strong>"Run with PowerShell"</strong>.</li>
+                    <li>If Windows displays a <em>"Windows protected your PC"</em> or <em>Unknown Publisher</em> security warning, click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>. (This is normal for local sandbox scripts without an enterprise certificate).</li>
+                    <li>The script will run securely in the background and lock your hardware-bound key into your local system cache.</li>
+                </ol>
+            `;
 
             const a = document.createElement('a');
             a.href = `/${scriptFilename}`;
@@ -301,13 +313,5 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
             a.remove();
         });
     </script>
-	<div class="instructions-box" style="margin-top: 15px; font-family: monospace; font-size: 14px; color: #ccc;">
-  <p><strong>Next Steps:</strong></p>
-  <ol>
-    <li>Click above to download <code>SPOOKY_KEY.ps1</code>.</li>
-    <li>Open your Downloads folder, right-click <code>spookykey.ps1</code>, and select <strong>Run with PowerShell</strong>.</li>
-    <li>Once complete, your hardware-bound key is securely generated locally.</li>
-  </ol>
-</div>
 </body>
 </html>
