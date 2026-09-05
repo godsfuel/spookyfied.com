@@ -99,6 +99,14 @@
             color: #d8f3dc;
             border: 1px solid #2d6a4f;
         }
+        .explain-link {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #00ffcc;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -241,6 +249,13 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
 
     <div id="status"></div>
 
+    <!-- EXPLANATION MODAL OR EXPANDABLE BOX -->
+    <div id="securityExplainModal" style="display:none; background: #16213e; border: 1px solid #00ffcc; padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; line-height: 1.4;">
+        <strong style="color: #00ffcc;">Why does Windows show a security warning?</strong><br>
+        Windows SmartScreen flags any script downloaded from the web that lacks an expensive commercial software publishing certificate. Because Spooky node scripts are generated locally per-node for zero-telemetry hardware binding rather than signed by a central commercial authority, Windows triggers a precautionary notice. You can safely bypass this by clicking <em>"More info"</em> and then <em>"Run anyway"</em>.
+        <br><span class="explain-link" onclick="document.getElementById('securityExplainModal').style.display='none'">Close explanation</span>
+    </div>
+
     <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "Windows";
@@ -287,9 +302,11 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
                 <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute your hardware-bound key generator:</strong>
                 <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
                     <li style="margin: 0 0 2px 0;">Open your <strong>Downloads</strong> folder.</li>
-                    <li style="margin: 0 0 2px 0;"><strong>Do not double-click</strong> (this opens Notepad). Instead, <strong>right-click</strong> <code>${scriptFilename}</code> and select <strong>"Run with PowerShell"</strong>.</li>
-                    <li style="margin: 0 0 2px 0;">If Windows displays a <em>"Windows protected your PC"</em> warning, click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
-                    <li style="margin: 0;">The script will run securely in the background and lock your hardware-bound key into your local system cache.</li>
+                    <li style="margin: 0 0 2px 0;"><span style="color: #ff6b6b; font-size: 16px; font-weight: bold;">Do not double-click</span> (this opens Notepad). Instead, <strong>right-click</strong> <code>${scriptFilename}</code> and select <strong>"Run with PowerShell"</strong>.</li>
+                    <li style="margin: 0 0 2px 0;">Windows will display a security warning. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>. 
+                        <br><span class="explain-link" onclick="document.getElementById('securityExplainModal').style.display='block'">Why am I getting this security warning?</span>
+                    </li>
+                    <li style="margin: 0;">The script will generate your unique Spooky key, lock it into your local cache, and confirm when complete.</li>
                 </ol>
             `;
 
