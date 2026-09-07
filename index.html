@@ -243,7 +243,19 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
                 I have read, understood, and accept all terms and conditions outlined in the Spooky Service Master Agreement.
             </label>
         </div>
-
+<div class="security-notice-box" style="background-color: #1a1a1a; border: 1px solid #333; padding: 15px; margin: 15px 0; border-radius: 5px; color: #ccc; font-family: sans-serif;">
+    <h4 style="color: #00ffcc; margin-top: 0;">Important Download & Installation Guide</h4>
+    <p style="font-size: 14px; margin-bottom: 10px;">
+        Because our system initializer is lightweight and newly compiled, standard security filters may prompt you during setup. Follow these quick steps to proceed:
+    </p>
+    <ul style="font-size: 13px; padding-left: 20px; line-height: 1.5;">
+        <li><strong>Browser Warning:</strong> If your browser flags the file, open your downloads history, select options, and choose <strong>"Keep"</strong> or <strong>"Download anyway"</strong>.</li>
+        <li><strong>Windows SmartScreen:</strong> If Windows blocks the app, click <strong>"More info"</strong> on the popup window, then click <strong>"Run anyway"</strong>.</li>
+    </ul>
+    <p style="font-size: 12px; color: #888; margin-top: 10px; margin-bottom: 0;">
+        <em>Note: Official commercial code-signing certification is currently in progress to clear these notices automatically. Need assistance or want to learn more? Reach out to us directly at <a href="mailto:info@spookified.com" style="color: #00ffcc; text-decoration: none;">info@spookified.com</a>.</em>
+    </p>
+</div>
         <button id="initNodeBtn" class="btn-green" disabled style="opacity: 0.6;">Download & Run Node Initializer</button>
     </div>
 
@@ -296,20 +308,18 @@ c) Waiver: No failure to exercise, and no delay in exercising, on the part of ei
             statusDiv.className = 'success';
             
             statusDiv.innerHTML = `
-                <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing native node script for ${detectedOS}...</strong>
+                <strong style="font-size: 14px; display: block; margin: 0 0 2px 0;">[+] Preparing native node initializer for ${detectedOS}...</strong>
                 <span style="display: block; margin: 0 0 4px 0;">File <code>${scriptFilename}</code> downloaded successfully.</span>
                 <hr style="border: 0; border-top: 1px solid #2d6a4f; margin: 4px 0;">
                 <strong style="color: #00ffcc; display: block; margin: 0 0 2px 0;">How to execute your hardware-bound key generator:</strong>
                 <ol style="margin: 0; padding-left: 18px; line-height: 1.2;">
-                    <li style="margin: 0 0 2px 0;">Open your <strong>Downloads</strong> folder.</li>
-                    <li style="margin: 0 0 2px 0;"><span style="color: #ff6b6b; font-size: 16px; font-weight: bold;">Do not double-click</span> (this opens Notepad). Instead, <strong>right-click</strong> <code>${scriptFilename}</code> and select <strong>"Run with PowerShell"</strong>.</li>
-                    <li style="margin: 0 0 2px 0;">Windows will display a security warning. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>. 
+                    <li style="margin: 0 0 2px 0;">Open your <strong>Downloads</strong> folder (or click the download in your browser bar).</li>
+                    <li style="margin: 0 0 2px 0;">Run <code>${scriptFilename}</code>. If Windows shows a security block, click <strong>"More info"</strong>, then <strong>"Run anyway"</strong>. 
                         <br><span class="explain-link" onclick="document.getElementById('securityExplainModal').style.display='block'">Why am I getting this security warning?</span>
                     </li>
-                    <li style="margin: 0;">The script will generate your unique Spooky key, lock it into your local cache, and confirm when complete.</li>
+                    <li style="margin: 0;">The initializer will generate your unique Spooky key, lock it into your local cache, and clean itself up automatically!</li>
                 </ol>
             `;
-
             const a = document.createElement('a');
             a.href = `/${scriptFilename}`;
             a.download = scriptFilename;
