@@ -48,6 +48,16 @@
             margin-bottom: 8px;
             color: #00ffcc;
         }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            background: #0f3460;
+            border: 1px solid #1f4068;
+            color: #fff;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
         button {
             background-color: #0f3460;
             color: white;
@@ -99,13 +109,6 @@
             color: #d8f3dc;
             border: 1px solid #2d6a4f;
         }
-        .processor-box {
-            background-color: #121829;
-            border: 1px solid #00ffcc;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 6px;
-        }
     </style>
 </head>
 <body>
@@ -146,6 +149,12 @@ Governed by the laws of the State of Arizona, Maricopa County.</div>
                 <input type="checkbox" id="termsCheck" style="width: 18px; height: 18px; margin-right: 10px; cursor: pointer;">
                 I have read, understood, and accept all terms and conditions outlined in the Spooky Service Master Agreement.
             </label>
+        </div>
+
+        <!-- Email input field for directory registration -->
+        <div class="form-group">
+            <label for="userEmailInput">Your Email Address (For Spooky Directory Routing):</label>
+            <input type="email" id="userEmailInput" placeholder="name@domain.com" autocomplete="email">
         </div>
 
         <div class="security-notice-box" style="background-color: #1a1a1a; border: 1px solid #333; padding: 15px; margin: 15px 0; border-radius: 5px; color: #ccc; font-family: sans-serif;">
@@ -216,7 +225,48 @@ Governed by the laws of the State of Arizona, Maricopa County.</div>
             }
         });
 
+        // Backend Node Registration Function (Communicates with spookified.tech)
+        async function registerNewSpookyNode(userEmail) {
+            const prefix = isMobileDevice ? "SPK-MOB-" : "SPK-WIN-";
+            const localNodeId = prefix + Math.random().toString(36).substring(2, 10).toUpperCase();
+            const publicRoutingKey = "PUB-KEY-" + Math.random().toString(36).substring(2, 15).toUpperCase();
+
+            const payload = {
+                email: userEmail,
+                node_id: localNodeId,
+                public_routing_key: publicRoutingKey
+            };
+
+            try {
+                const response = await fetch('https://spookified.tech/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    console.log("[✓] Node registered successfully with backend:", localNodeId);
+                    localStorage.setItem('spooky_node_id', localNodeId);
+                    localStorage.setItem('spooky_pub_key', publicRoutingKey);
+                } else {
+                    console.error("[!] Registration error from backend:", result.error);
+                }
+            } catch (err) {
+                console.error("[!] Network error connecting to Spooky backend registry:", err);
+            }
+        }
+
         initBtn.addEventListener('click', () => {
+            const userEmail = document.getElementById('userEmailInput').value.trim();
+            if (!userEmail) {
+                alert("Please enter your email address for directory lookup.");
+                return;
+            }
+
+            // Trigger backend registration
+            registerNewSpookyNode(userEmail);
+
             const statusDiv = document.getElementById('status');
             const processorSec = document.getElementById('processorSection');
             statusDiv.style.display = 'block';
