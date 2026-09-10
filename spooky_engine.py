@@ -3,6 +3,7 @@ import subprocess
 import hashlib
 import uuid
 from flask import Flask, send_from_directory, request, jsonify
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -23,7 +24,6 @@ def get_hardware_signature():
             lines = [line.strip() for line in output.split('\n') if line.strip()]
             if len(lines) > 1:
                 return lines[1]
-        # Fallback to MAC-based node if wmic is restricted
         return str(uuid.getnode())
     except Exception:
         return "FALLBACK-HARDWARE-NODE"
@@ -49,12 +49,9 @@ def check_status():
     email = data.get('email', 'godsfuel@live.com')
     
     node_id = get_deterministic_key(email)
-    
-    # Check if a vault record exists for this hardware node
     vault_path = os.path.join(VAULT_DIR, f"{node_id}.vault")
     has_key = os.path.exists(vault_path)
     
-    # Auto-initialize vault record if missing so it's always ready
     if not has_key:
         with open(vault_path, 'w') as f:
             f.write(f"Sovereign Anchor Active for {email} on HW: {get_hardware_signature()}")
@@ -75,7 +72,6 @@ def generate_key():
     node_id = get_deterministic_key(email)
     vault_path = os.path.join(VAULT_DIR, f"{node_id}.vault")
     
-    # Re-verify/re-bind vault file
     with open(vault_path, 'w') as f:
         f.write(f"Regenerated Sovereign Anchor for {email}")
         
@@ -86,5 +82,6 @@ def generate_key():
     })
 
 if __name__ == '__main__':
-    print("[*] Starting Spooky Sovereign Engine on http://127.0.0.1:5000")
-    app.run(host='127.0.0.1', port=5000, debug=False)
+    print("[*] Initializing Spooky Sovereign Engine...")
+    print("[*] Starting Production WSGI Server (Waitress) on Port 5000...")
+    serve(app, host='127.0.0.1', port=5000)

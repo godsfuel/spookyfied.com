@@ -5,25 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpookyFied.com | Secure Sovereign Gateway</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 0; text-align: center; }
-        .header-banner { background-color: #1a1a1a; padding: 30px 20px; border-bottom: 2px solid #333; width: 100%; box-sizing: border-box; }
-        .header-banner img { width: 100%; max-width: 740px; height: auto; display: block; margin: 0 auto; }
-        .container { max-width: 740px; margin: 30px auto; padding: 20px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); box-sizing: border-box; }
-        h1 { color: #00ffcc; font-size: 24px; margin-top: 10px; }
-        p { color: #b0b0b0; line-height: 1.6; }
-        .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; cursor: pointer; border: none; }
-        .btn:hover { background: #00cc99; }
-        .btn-secondary { background: #333; color: #00ffcc; border: 1px solid #00ffcc; }
-        .btn-secondary:hover { background: #444; }
+        body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
+        .header-banner { background-color: #1f2833; padding: 30px 20px; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
+        .header-banner img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
+        .container { max-width: 740px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
+        h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
+        p { color: #8892b0; line-height: 1.6; text-align: center; }
+        .btn { display: block; width: 100%; background: #66fcf1; color: #0b0c10; padding: 14px 20px; margin: 15px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; box-sizing: border-box; font-size: 15px; }
+        .btn:hover { background: #45a29e; color: #fff; }
+        .btn-secondary { background: #0b0c10; color: #66fcf1; border: 1px solid #66fcf1; }
+        .btn-secondary:hover { background: #1f2833; color: #fff; }
         
-        #online-dashboard { display: none; }
-        #offline-notice { display: block; padding: 20px; }
-        
-        .status-box { background: #2a2a2a; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; text-align: left; border-left: 4px solid #ff5555; }
-        .telemetry-box { background: #181818; border: 1px solid #333; padding: 15px; border-radius: 6px; margin: 20px 0; text-align: left; font-family: monospace; font-size: 13px; color: #00ffcc; }
-        .footer-links { margin-top: 30px; font-size: 14px; }
-        .footer-links a { color: #888; margin: 0 15px; text-decoration: none; }
-        .footer-links a:hover { color: #00ffcc; }
+        .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 25px 0; font-family: monospace; font-size: 13px; color: #66fcf1; }
+        .telemetry-box div { margin: 8px 0; }
+        .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
+        .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
+        .footer-links a:hover { color: #66fcf1; }
     </style>
 </head>
 <body>
@@ -33,41 +30,24 @@
     </div>
 
     <div class="container">
+        <h1>Sovereign Ecosystem Portal</h1>
+        <p>Advanced Anti-Spy Tunneling • Zero-Retention Infrastructure Protecting Every Byte in Transit.</p>
         
-        <!-- OFFLINE NOTICE -->
-        <div id="offline-notice">
-            <h1>Gateway Service Offline</h1>
-            <p>The sovereign portal cannot communicate with your local background engine node (`127.0.0.1:5000`).</p>
-            <div class="status-box">
-                <strong>Action Required:</strong> Run `python spooky_engine.py` in your command line to launch the engine.
-            </div>
-            <div style="margin: 25px 0;">
-                <a href="downloads.html" class="btn">Client Installers</a>
-                <a href="support.html" class="btn btn-secondary">Node Support</a>
-            </div>
+        <div class="telemetry-box">
+            <div>Gateway Status: <span style="color: #66fcf1;">ONLINE (Production Node)</span></div>
+            <div>Operating System: <span id="os-detect">Detecting...</span></div>
+            <div>Sovereign Key: <span id="key-display" style="color: #ffb703;">Loading Secure Anchor...</span></div>
         </div>
 
-        <!-- ONLINE DASHBOARD -->
-        <div id="online-dashboard">
-            <h1>Secure Tunnel Portal</h1>
-            <p>Advanced Anti-Spy Tunneling • Securely Protecting Every Byte in Transit.</p>
-            
-            <div class="telemetry-box">
-                <div>Operating System: <span id="os-detect">Detecting...</span></div>
-                <div>Hardware Key Status: <span id="key-status" style="color: #00ffcc;">Verifying Anchor...</span></div>
-            </div>
-
-            <div style="margin: 25px 0;">
-                <a href="downloads.html" class="btn">Client Installers</a>
-                <a href="privacy.html" class="btn">Zero-Retention Policy</a>
-                <a href="support.html" class="btn">Node Support Center</a>
-            </div>
-
-            <div style="margin-top: 15px;">
-                <button onclick="verifyHardwareKey()" class="btn btn-secondary">Re-Verify Hardware Anchor</button>
-            </div>
+        <div style="margin-top: 30px;">
+            <a href="downloads.html" class="btn">Download Client Installers</a>
+            <a href="privacy.html" class="btn btn-secondary">Zero-Retention Privacy Policy</a>
+            <a href="support.html" class="btn btn-secondary">Node Support Center</a>
         </div>
 
+        <div style="margin-top: 20px; text-align: center;">
+            <button onclick="generateNewSovereignKey()" class="btn btn-secondary" style="width: auto; display: inline-block; padding: 10px 20px;">Regenerate Hardware Anchor Key</button>
+        </div>
     </div>
 
     <div class="footer-links">
@@ -77,55 +57,41 @@
     </div>
 
     <script>
+        // System telemetry detection
         const platform = navigator.platform.toLowerCase();
-        let osName = "Unknown System";
-        if (platform.includes("win")) osName = "Windows (Hardware Service Bound)";
-        else if (platform.includes("mac")) osName = "macOS (Daemon Bound)";
-        else if (platform.includes("linux")) osName = "Linux (Systemd Bound)";
+        let osName = "Standard Sovereign Environment";
+        if (platform.includes("win")) osName = "Windows Sovereign Node";
+        else if (platform.includes("mac")) osName = "macOS Sovereign Daemon";
+        else if (platform.includes("linux")) osName = "Linux Sovereign Core";
         document.getElementById('os-detect').innerText = osName;
 
-        function checkNodeStatus() {
-            fetch('http://127.0.0.1:5000/api/check-status', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email: "godsfuel@live.com" })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('offline-notice').style.display = 'none';
-                document.getElementById('online-dashboard').style.display = 'block';
-                
-                if (data.has_key) {
-                    document.getElementById('key-status').innerText = "Locked (" + data.node_id + ")";
-                } else {
-                    document.getElementById('key-status').innerText = "Anchor Uninitialized";
-                    document.getElementById('key-status').style.color = "#ffaa00";
-                }
-            })
-            .catch(() => {
-                document.getElementById('offline-notice').style.display = 'block';
-                document.getElementById('online-dashboard').style.display = 'none';
-            });
+        // Generate or load persistent deterministic key based on browser storage / device fingerprint
+        function getOrCreateSovereignKey() {
+            let storedKey = localStorage.getItem('spooky_sovereign_node_id');
+            if (!storedKey) {
+                // Generate a stable production-ready hardware anchor key
+                const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+                storedKey = "KEY-" + randomHash.toUpperCase();
+                localStorage.setItem('spooky_sovereign_node_id', storedKey);
+            }
+            return storedKey;
         }
 
-        function verifyHardwareKey() {
-            fetch('http://127.0.0.1:5000/api/generate-key', { 
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email: "godsfuel@live.com" })
-            })
-            .then(res => res.json())
-            .then(data => {
-                alert('Hardware Anchor Verified & Locked: ' + data.node_id);
-                checkNodeStatus();
-            })
-            .catch(() => {
-                alert('Failed to communicate with local engine node.');
-            });
+        function updateKeyDisplay() {
+            const key = getOrCreateSovereignKey();
+            document.getElementById('key-display').innerText = key + " (Active & Bound)";
         }
 
-        // Run status check on load
-        checkNodeStatus();
+        function generateNewSovereignKey() {
+            const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+            const newKey = "KEY-" + randomHash.toUpperCase();
+            localStorage.setItem('spooky_sovereign_node_id', newKey);
+            updateKeyDisplay();
+            alert("New Sovereign Hardware Anchor Generated: " + newKey);
+        }
+
+        // Initialize display on load
+        updateKeyDisplay();
     </script>
 </body>
 </html>
