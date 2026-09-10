@@ -11,12 +11,11 @@
         .container { max-width: 740px; margin: 30px auto; padding: 20px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); box-sizing: border-box; }
         h1 { color: #00ffcc; font-size: 24px; margin-top: 10px; }
         p { color: #b0b0b0; line-height: 1.6; }
-        .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; cursor: pointer; border: none; }
         .btn:hover { background: #00cc99; }
         .btn-secondary { background: #333; color: #00ffcc; border: 1px solid #00ffcc; }
         .btn-secondary:hover { background: #444; }
         
-        /* State containers */
         #online-dashboard { display: none; }
         #offline-notice { display: block; padding: 20px; }
         
@@ -35,27 +34,27 @@
 
     <div class="container">
         
-        <!-- OFFLINE NOTICE (Shown when local background engine node is not responding) -->
+        <!-- OFFLINE NOTICE -->
         <div id="offline-notice">
             <h1>Gateway Service Offline</h1>
             <p>The sovereign portal cannot communicate with your local background engine node (`127.0.0.1:5000`).</p>
             <div class="status-box">
-                <strong>Action Required:</strong> Please ensure your master controller is running via your command line to establish connection.
+                <strong>Action Required:</strong> Run `python spooky_engine.py` in your command line to launch the engine.
             </div>
             <div style="margin: 25px 0;">
-                <a href="downloads.html" class="btn">Get Client Installers</a>
+                <a href="downloads.html" class="btn">Client Installers</a>
                 <a href="support.html" class="btn btn-secondary">Node Support</a>
             </div>
         </div>
 
-        <!-- ONLINE DASHBOARD (Shown automatically when local node is active) -->
+        <!-- ONLINE DASHBOARD -->
         <div id="online-dashboard">
             <h1>Secure Tunnel Portal</h1>
             <p>Advanced Anti-Spy Tunneling • Securely Protecting Every Byte in Transit.</p>
             
             <div class="telemetry-box">
                 <div>Operating System: <span id="os-detect">Detecting...</span></div>
-                <div>Spooky Key Status: <span id="key-status" style="color: #00ffcc;">Active</span></div>
+                <div>Hardware Key Status: <span id="key-status" style="color: #00ffcc;">Verifying Anchor...</span></div>
             </div>
 
             <div style="margin: 25px 0;">
@@ -65,7 +64,7 @@
             </div>
 
             <div style="margin-top: 15px;">
-                <button onclick="generateNewKey()" class="btn btn-secondary">Generate New Spooky Key</button>
+                <button onclick="verifyHardwareKey()" class="btn btn-secondary">Re-Verify Hardware Anchor</button>
             </div>
         </div>
 
@@ -78,54 +77,55 @@
     </div>
 
     <script>
-        // Detect Operating System for telemetry display
         const platform = navigator.platform.toLowerCase();
         let osName = "Unknown System";
-        if (platform.includes("win")) osName = "Windows (Background Service Ready)";
-        else if (platform.includes("mac")) osName = "macOS (Daemon Ready)";
-        else if (platform.includes("linux")) osName = "Linux (Systemd Service Ready)";
+        if (platform.includes("win")) osName = "Windows (Hardware Service Bound)";
+        else if (platform.includes("mac")) osName = "macOS (Daemon Bound)";
+        else if (platform.includes("linux")) osName = "Linux (Systemd Bound)";
         document.getElementById('os-detect').innerText = osName;
 
-        // Check local gateway node communication via Engine backend (Port 5000)
-        fetch('http://127.0.0.1:5000/api/check-status', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ email: "godsfuel@live.com" })
-        })
+        function checkNodeStatus() {
+            fetch('http://127.0.0.1:5000/api/check-status', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email: "godsfuel@live.com" })
+            })
             .then(response => response.json())
             .then(data => {
-                // Node is ONLINE: hide offline notice, show active dashboard
                 document.getElementById('offline-notice').style.display = 'none';
                 document.getElementById('online-dashboard').style.display = 'block';
                 
                 if (data.has_key) {
-                    document.getElementById('key-status').innerText = "Hardware Spooky Key Active (" + data.node_id + ")";
+                    document.getElementById('key-status').innerText = "Locked (" + data.node_id + ")";
                 } else {
-                    document.getElementById('key-status').innerText = "No Key Found in Local Vault";
+                    document.getElementById('key-status').innerText = "Anchor Uninitialized";
                     document.getElementById('key-status').style.color = "#ffaa00";
                 }
             })
             .catch(() => {
-                // Node is OFFLINE: keep offline notice visible, hide dashboard
                 document.getElementById('offline-notice').style.display = 'block';
                 document.getElementById('online-dashboard').style.display = 'none';
             });
+        }
 
-        function generateNewKey() {
+        function verifyHardwareKey() {
             fetch('http://127.0.0.1:5000/api/generate-key', { 
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ email: "godsfuel@live.com" })
             })
-                .then(res => res.json())
-                .then(data => {
-                    alert('New Spooky Key generated successfully: ' + data.node_id);
-                    location.reload();
-                })
-                .catch(() => {
-                    alert('Failed to generate key. Ensure your local gateway node is running.');
-                });
+            .then(res => res.json())
+            .then(data => {
+                alert('Hardware Anchor Verified & Locked: ' + data.node_id);
+                checkNodeStatus();
+            })
+            .catch(() => {
+                alert('Failed to communicate with local engine node.');
+            });
         }
+
+        // Run status check on load
+        checkNodeStatus();
     </script>
 </body>
 </html>

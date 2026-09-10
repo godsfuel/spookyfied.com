@@ -28,7 +28,7 @@ def run_server(script_name, server_name):
 if __name__ == "__main__":
     print("==================================================")
     print("   SPOOKY UNIFIED ECOSYSTEM MASTER CONTROLLER     ")
-    print("   Domain Target: https://bounceairbags.com       ")
+    print("   Domain Target: https://spookifyed.com       ")
     print("==================================================")
     
     # Ensure local cave vault directory structure exists inside project folder
