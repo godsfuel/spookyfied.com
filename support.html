@@ -2,31 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SpookyFied.com - Node Support Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Node Support Center | SpookyFied.com</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0b0c10; color: #c5c6c7; margin: 0; padding: 40px; line-height: 1.6; }
-        .container { background: #1f2833; max-width: 800px; margin: auto; padding: 40px; border-radius: 12px; border: 1px solid #45a29e; }
-        h1, h2 { color: #66fcf1; }
-        .faq-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 15px 0; }
-        a { color: #66fcf1; text-decoration: none; }
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 0; text-align: left; }
+        .header-banner { background-color: #1a1a1a; padding: 20px; border-bottom: 2px solid #333; text-align: center; }
+        .header-banner img { max-width: 350px; width: 100%; height: auto; display: block; margin: 0 auto; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h1 { color: #00ffcc; font-size: 24px; text-align: center; }
+        h3 { color: #00ffcc; margin-top: 25px; font-size: 16px; }
+        p { color: #b0b0b0; line-height: 1.6; font-size: 14px; }
+        code { background: #2a2a2a; color: #00ffcc; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+        .center { text-align: center; margin-top: 30px; }
+        .btn { display: inline-block; background: #333; color: #e0e0e0; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 4px; }
+        .btn:hover { background: #444; }
     </style>
 </head>
 <body>
+
+    <div class="header-banner">
+        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
+    </div>
+
     <div class="container">
         <h1>Sovereign Node Support Center</h1>
-        <p>Get assistance with your local controller, peer routing, or hardware key verification.</p>
-        
-        <div class="faq-box">
-            <h3 style="color:#66fcf1; margin-top:0;">How do I start my local node automatically?</h3>
-            <p>Your node runs via `spooky_controller.py`. Use the automated `spooky_start.bat` script placed in your Windows startup folder for seamless background operation upon login.</p>
-        </div>
+        <p style="text-align: center;">Get assistance with your local controller, peer routing, or hardware key verification.</p>
 
-        <div class="faq-box">
-            <h3 style="color:#66fcf1; margin-top:0;">How does vendor order redirection work?</h3>
-            <p>When redirected from an authorized storefront (such as Bounce Airbags), the engine passes an HMAC-signed token through `/api/generate-key`, instantly authorizing your session and returning you with full access.</p>
-        </div>
+        <h3>How do I start my local node automatically?</h3>
+        <p>Your local device runs securely via background services. The system handles background execution automatically upon login to ensure your node is always ready.</p>
 
-        <p style="margin-top: 40px;"><a href="/">← Return to Main Gateway</a></p>
+        <h3>How does vendor redirection work?</h3>
+        <p>When redirected from an authorized vendor storefront, the system passes a secure token through our gateway, instantly authorizing your session and linking your device's unique hardware key with complete privacy.</p>
+
+        <div class="center">
+            <a href="index.html" class="btn">Return to Gateway Portal</a>
+        </div>
     </div>
+
 </body>
 </html>

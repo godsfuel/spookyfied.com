@@ -3,118 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpookyFied.com - Sovereign Client Download</title>
+    <title>Sovereign Client Provisioning | SpookyFied.com</title>
     <style>
-        :root {
-            --bg-color: #0b0c10;
-            --card-bg: #1f2833;
-            --accent-cyan: #66fcf1;
-            --accent-teal: #45a29e;
-            --text-main: #c5c6c7;
-            --text-bright: #ffffff;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            background-color: var(--card-bg);
-            max-width: 700px;
-            width: 100%;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--accent-teal);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
-            text-align: center;
-        }
-        h1 { color: var(--accent-cyan); }
-        .highlight-box {
-            background: #0b0c10;
-            border: 1px solid var(--accent-cyan);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-        }
-        button {
-            background-color: var(--accent-cyan);
-            color: var(--bg-color);
-            font-weight: bold;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover { background-color: var(--accent-teal); color: var(--text-bright); }
-        .back-link { display: block; margin-top: 25px; color: var(--accent-teal); text-decoration: none; }
-        .back-link:hover { color: var(--accent-cyan); }
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 0; text-align: center; }
+        .header-banner { background-color: #1a1a1a; padding: 20px; border-bottom: 2px solid #333; }
+        .header-banner img { max-width: 350px; width: 100%; height: auto; display: block; margin: 0 auto; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h1 { color: #00ffcc; font-size: 24px; }
+        p { color: #b0b0b0; line-height: 1.6; }
+        .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .btn:hover { background: #00cc99; }
+        .btn-secondary { background: #333; color: #e0e0e0; }
+        .btn-secondary:hover { background: #444; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Sovereign Client Provisioning</h1>
-        <p>Deploy your silent background node to join the Spooky peer-to-peer network.</p>
 
-        <div class="highlight-box">
-            <h3 id="detectedOS" style="color: #66fcf1; margin-top:0;">Detecting System Architecture...</h3>
-            <p id="osInstructions">Checking your operating system headers to select the correct initializer script.</p>
-            <button id="downloadBtn" onclick="triggerDownload()">Download Recommended Client</button>
-        </div>
-
-        <div style="text-align: left; margin-top: 30px; border-top: 1px solid #45a29e; pt: 20px;">
-            <h4>Manual Alternative Downloads:</h4>
-            <ul>
-                <li><a href="/SpookyInitializer.ps1" style="color:#66fcf1;" download>Windows PowerShell Initializer (.ps1)</a></li>
-                <li><a href="/SpookyInitializer.command" style="color:#66fcf1;" download>macOS Silent Initializer (.command)</a></li>
-                <li><a href="/SpookyInitializer.sh" style="color:#66fcf1;" download>Linux Bash Initializer (.sh)</a></li>
-            </ul>
-        </div>
-
-        <a href="/" class="back-link">← Return to Gateway Portal</a>
+    <div class="header-banner">
+        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
     </div>
 
-    <script>
-        let targetFile = "SpookyInitializer.ps1";
-        let targetName = "Windows PowerShell Installer";
+    <div class="container">
+        <h1>Sovereign Client Provisioning</h1>
+        <p>Deploy your background node to secure your connection. Ready to deploy background service and schedule task integration.</p>
+        
+        <div style="margin: 30px 0;">
+            <a href="SpookyInitializer.exe" class="btn">Download Recommended Client</a>
+        </div>
 
-        function detectUserOS() {
-            const ua = navigator.userAgent;
-            const osHeader = document.getElementById('detectedOS');
-            const descHeader = document.getElementById('osInstructions');
+        <div style="margin-top: 40px;">
+            <a href="index.html" class="btn btn-secondary">Return to Gateway Portal</a>
+        </div>
+    </div>
 
-            if (ua.indexOf("Win") !== -1) {
-                targetFile = "SpookyInitializer.ps1";
-                targetName = "Windows PowerShell Node Initializer";
-                osHeader.textContent = "Detected Operating System: Windows";
-                descHeader.textContent = "Ready to deploy background service and scheduled task integration.";
-            } else if (ua.indexOf("Mac") !== -1) {
-                targetFile = "SpookyInitializer.command";
-                targetName = "macOS Terminal Initializer";
-                osHeader.textContent = "Detected Operating System: macOS";
-                descHeader.textContent = "Ready to configure sovereign launch daemons.";
-            } else if (ua.indexOf("Linux") !== -1) {
-                targetFile = "SpookyInitializer.sh";
-                targetName = "Linux Bash Initializer";
-                osHeader.textContent = "Detected Operating System: Linux";
-                descHeader.textContent = "Ready to setup background systemd service unit.";
-            } else {
-                osHeader.textContent = "Architecture Detected: Universal";
-                descHeader.textContent = "Select your specific platform package below.";
-            }
-        }
-
-        function triggerDownload() {
-            window.location.href = "/" + targetFile;
-        }
-
-        window.onload = detectUserOS;
-    </script>
 </body>
 </html>

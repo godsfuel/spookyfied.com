@@ -3,178 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpookyFied.com - Sovereign Ecosystem & Secure Gateway</title>
+    <title>SpookyFied.com | Secure Sovereign Gateway</title>
     <style>
-        :root {
-            --bg-color: #0b0c10;
-            --card-bg: #1f2833;
-            --accent-cyan: #66fcf1;
-            --accent-teal: #45a29e;
-            --text-main: #c5c6c7;
-            --text-bright: #ffffff;
-            --accent-gold: #ffb703;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            background-color: var(--card-bg);
-            max-width: 600px;
-            width: 90%;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--accent-teal);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
-            text-align: center;
-        }
-        img.logo {
-            max-width: 130px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: var(--accent-cyan);
-            margin-bottom: 5px;
-            font-size: 28px;
-        }
-        p.subtitle {
-            color: var(--text-main);
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        label {
-            display: block;
-            font-size: 13px;
-            color: var(--accent-teal);
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        input[type="email"] {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--bg-color);
-            color: var(--text-bright);
-            border: 1px solid var(--accent-teal);
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        input[type="email"]:focus {
-            border-color: var(--accent-cyan);
-        }
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--accent-cyan);
-            color: var(--bg-color);
-            font-weight: bold;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        button:hover {
-            background-color: var(--accent-teal);
-            color: var(--text-bright);
-        }
-        #outputMsg {
-            font-size: 13px;
-            margin-top: 20px;
-            min-height: 20px;
-        }
-        .footer-links {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #8892b0;
-        }
-        .footer-links a {
-            color: var(--accent-teal);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .footer-links a:hover {
-            color: var(--accent-cyan);
-        }
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 0; text-align: center; }
+        .header-banner { background-color: #1a1a1a; padding: 20px; border-bottom: 2px solid #333; }
+        .header-banner img { max-width: 350px; width: 100%; height: auto; display: block; margin: 0 auto; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h1 { color: #00ffcc; font-size: 24px; }
+        p { color: #b0b0b0; line-height: 1.6; }
+        .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .btn:hover { background: #00cc99; }
+        .footer-links { margin-top: 30px; font-size: 14px; }
+        .footer-links a { color: #888; margin: 0 10px; text-decoration: none; }
+        .footer-links a:hover { color: #00ffcc; }
+        .status-box { background: #2a2a2a; padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; color: #ff5555; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Make sure SPOOKY_Logo.png is placed in this same folder -->
-        <img src="SPOOKY_Logo.png" alt="Spooky Sovereign Logo" class="logo">
-        <h1>SpookyFied.com</h1>
-        <p class="subtitle">Zero-Retention Sovereign Ecosystem & Secure Gateway</p>
-        
-        <div class="input-group">
-            <label for="userEmail">Authorized Node Identity / Email</label>
-            <input type="email" id="userEmail" placeholder="Enter your registered email...">
-        </div>
-        
-        <button onclick="verifyUserAccess()">Access Sovereign Ecosystem</button>
-        <div id="outputMsg"></div>
+    <div class="header-banner">
+        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
+    </div>
 
-        <div class="footer-links">
-            <a href="/downloads.html">Client Installers</a> | 
-            <a href="/privacy.html">Zero-Retention Policy</a> | 
-            <a href="/support.html">Node Support</a>
+    <div class="container">
+        <div id="node-status" class="status-box">Connecting to local gateway node...</div>
+        
+        <h1>Secure Tunnel Portal</h1>
+        <p>Advanced Anti-Spy Tunneling • Securely Protecting Every Byte in Transit.</p>
+        
+        <div style="margin: 30px 0;">
+            <a href="downloads.html" class="btn">Client Installers</a>
+            <a href="privacy.html" class="btn">Zero-Retention Policy</a>
+            <a href="support.html" class="btn">Node Support Center</a>
         </div>
     </div>
 
+    <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a> | 
+        <a href="support.html">Support</a> | 
+        <a href="downloads.html">Downloads</a>
+    </div>
+
     <script>
-        async function verifyUserAccess() {
-            const email = document.getElementById('userEmail').value.trim();
-            const msgBox = document.getElementById('outputMsg');
-            if (!email) { 
-                alert("Please enter a valid email address."); 
-                return; 
-            }
-
-            msgBox.style.color = "#66fcf1";
-            msgBox.textContent = "Verifying cryptographic identity with master node...";
-
-            try {
-                const res = await fetch('/api/check-status', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ email: email })
-                });
-                const data = await res.json();
-
-                if (data.has_key) {
-                    msgBox.textContent = "Spooky Key recognized! Redirecting to secure dashboard...";
-                    setTimeout(() => { window.location.href = `/dashboard?email=${email}`; }, 1000);
-                } else {
-                    msgBox.textContent = "Provisioning hardware-bound Spooky Key anchor...";
-                    const genRes = await fetch('/api/generate-key', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({ email: email })
-                    });
-                    const genData = await genRes.json();
-                    msgBox.textContent = "Key provisioned successfully! Loading dashboard...";
-                    setTimeout(() => { window.location.href = `/dashboard?email=${email}`; }, 1200);
-                }
-            } catch (err) {
-                msgBox.style.color = "#ff5555";
-                msgBox.textContent = "Connection error communicating with local gateway node.";
-            }
-        }
+        // Basic check for local gateway node communication
+        fetch('http://127.0.0.1:8080/status', { mode: 'no-cors' })
+            .then(() => {
+                document.getElementById('node-status').style.display = 'none';
+            })
+            .catch(() => {
+                document.getElementById('node-status').innerText = 'Connection error communicating with local gateway node. Ensure background service is running.';
+            });
     </script>
 </body>
 </html>
