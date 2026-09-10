@@ -18,6 +18,7 @@
         
         .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 25px 0; font-family: monospace; font-size: 13px; color: #66fcf1; }
         .telemetry-box div { margin: 8px 0; }
+        .vendor-banner { background: #2c2200; border: 1px solid #ffb703; padding: 15px; border-radius: 6px; margin-bottom: 25px; color: #ffb703; display: none; }
         .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
         .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
         .footer-links a:hover { color: #66fcf1; }
@@ -30,6 +31,11 @@
     </div>
 
     <div class="container">
+        <!-- Vendor Handshake Notice (Appears only when redirected from a vendor storefront) -->
+        <div id="vendorNotice" class="vendor-banner">
+            <strong>Storefront Handshake Active:</strong> You were redirected from <span id="vendorName" style="color:#fff;"></span> to authorize your Sovereign Key for secure asset delivery.
+        </div>
+
         <h1>Sovereign Ecosystem Portal</h1>
         <p>Advanced Anti-Spy Tunneling • Zero-Retention Infrastructure Protecting Every Byte in Transit.</p>
         
@@ -40,23 +46,25 @@
         </div>
 
         <div style="margin-top: 30px;">
-            <a href="downloads.html" class="btn">Download Client Installers</a>
+            <a href="downloads.html" class="btn">Deploy Client & Node Installers</a>
             <a href="privacy.html" class="btn btn-secondary">Zero-Retention Privacy Policy</a>
-            <a href="support.html" class="btn btn-secondary">Node Support Center</a>
-        </div>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <button onclick="generateNewSovereignKey()" class="btn btn-secondary" style="width: auto; display: inline-block; padding: 10px 20px;">Regenerate Hardware Anchor Key</button>
         </div>
     </div>
 
     <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="support.html">Support</a>
-        <a href="downloads.html">Downloads</a>
+        <a href="downloads.html">Downloads & Node Support</a>
     </div>
 
     <script>
+        // Check for Vendor Redirection Parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const vendorRef = urlParams.get('vendor');
+        if (vendorRef) {
+            document.getElementById('vendorNotice').style.display = 'block';
+            document.getElementById('vendorName').innerText = vendorRef;
+        }
+
         // System telemetry detection
         const platform = navigator.platform.toLowerCase();
         let osName = "Standard Sovereign Environment";
@@ -65,11 +73,10 @@
         else if (platform.includes("linux")) osName = "Linux Sovereign Core";
         document.getElementById('os-detect').innerText = osName;
 
-        // Generate or load persistent deterministic key based on browser storage / device fingerprint
+        // Persistent deterministic hardware anchor management
         function getOrCreateSovereignKey() {
             let storedKey = localStorage.getItem('spooky_sovereign_node_id');
             if (!storedKey) {
-                // Generate a stable production-ready hardware anchor key
                 const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
                 storedKey = "KEY-" + randomHash.toUpperCase();
                 localStorage.setItem('spooky_sovereign_node_id', storedKey);
@@ -80,17 +87,18 @@
         function updateKeyDisplay() {
             const key = getOrCreateSovereignKey();
             document.getElementById('key-display').innerText = key + " (Active & Bound)";
+            
+            // If vendor handshaking, automatically trigger token return callback simulation
+            if (vendorRef) {
+                setTimeout(() => {
+                    const token = btoa(`${vendorRef}:${key}:${Date.now()}`);
+                    if (confirm("Sovereign Key successfully authorized for " + vendorRef + ". Return to merchant storefront?")) {
+                        window.location.href = `${vendorRef}/callback?token=${token}&key=${key}`;
+                    }
+                }, 1000);
+            }
         }
 
-        function generateNewSovereignKey() {
-            const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
-            const newKey = "KEY-" + randomHash.toUpperCase();
-            localStorage.setItem('spooky_sovereign_node_id', newKey);
-            updateKeyDisplay();
-            alert("New Sovereign Hardware Anchor Generated: " + newKey);
-        }
-
-        // Initialize display on load
         updateKeyDisplay();
     </script>
 </body>

