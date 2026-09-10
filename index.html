@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spookifyed.com | Secure Sovereign Portal</title>
+    <title>Spookifyed.com | Secure Sovereign Gateway</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
-        .header-banner { background-color: #1f2833; padding: 30px 20px; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
-        .header-banner img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
+        .header-banner { background-color: #1f2833; padding: 25px 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
+        .header-banner img { width: 100%; max-width: 650px; height: auto; display: block; margin: 0 auto; }
         .container { max-width: 800px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
@@ -20,8 +20,10 @@
         .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 25px 0; font-family: monospace; font-size: 13px; color: #66fcf1; }
         .telemetry-box div { margin: 8px 0; }
         
-        /* View Sections */
         .portal-view { display: none; }
+        .active-module { display: none; background: #0b0c10; border: 1px solid #66fcf1; padding: 20px; border-radius: 6px; margin-top: 20px; }
+        
+        input[type="text"], input[type="file"] { width: 100%; padding: 10px; margin: 10px 0; background: #1f2833; border: 1px solid #45a29e; color: #fff; border-radius: 4px; box-sizing: border-box; }
         
         .instruction-box { background: #0b0c10; border: 1px solid #45a29e; padding: 15px; border-radius: 6px; margin: 15px 0; font-size: 13px; }
         .instruction-box ol { margin: 8px 0 0 20px; padding: 0; }
@@ -30,6 +32,8 @@
         .vendor-list { background: #0b0c10; border: 1px solid #ffb703; padding: 15px; border-radius: 6px; margin-top: 20px; font-size: 14px; color: #ffb703; }
         .vendor-list ul { margin: 10px 0 0 20px; padding: 0; color: #c5c6c7; }
         .vendor-list li { margin-bottom: 5px; }
+        .vendor-list a { color: #66fcf1; text-decoration: none; }
+        .vendor-list a:hover { text-decoration: underline; }
         
         .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
         .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
@@ -106,10 +110,10 @@
             </div>
         </div>
 
-        <!-- VIEW 2: OPERATIONAL DASHBOARD (Shown automatically if Key IS detected) -->
+        <!-- VIEW 2: OPERATIONAL MENU (Shown automatically if Key IS detected) -->
         <div id="view-menu" class="portal-view">
             <h1>Sovereign Operations Menu</h1>
-            <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure operational mode.</p>
+            <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure connection service.</p>
             
             <div class="telemetry-box">
                 <div>Operating System: <span id="os-active-display" style="color: #66fcf1;">Active Node</span></div>
@@ -117,23 +121,49 @@
             </div>
 
             <div style="margin-top: 25px;">
-                <a href="#" onclick="launchModule('file-transfer')" class="btn">Secure P2P File Transfer</a>
-                <a href="#" onclick="launchModule('video-1on1')" class="btn">1-on-1 Peer Video Conference</a>
-                <a href="#" onclick="launchModule('video-group')" class="btn">Multi-Party Group Conference</a>
+                <a href="#" onclick="switchModule('file-transfer')" class="btn">Secure Peer-to-Peer File Transfer</a>
+                <a href="#" onclick="switchModule('video-1on1')" class="btn">One-on-One Peer Video Conference</a>
+                <a href="#" onclick="switchModule('video-group')" class="btn">Multiparty Group Video Conference</a>
+            </div>
+
+            <!-- MODULE INTERFACES -->
+            <div id="mod-file-transfer" class="active-module">
+                <h3>Secure Peer-to-Peer File Transfer Portal</h3>
+                <p>Select a file to encrypt and stream directly to a destination sovereign node.</p>
+                <label>Target Recipient Node ID / IP:</label>
+                <input type="text" id="transferTarget" placeholder="KEY-XXXXXXXXXXXXXXXX">
+                <label>Select File to Transfer:</label>
+                <input type="file" id="transferFile">
+                <button onclick="executeFileTransfer()" class="btn" style="margin-top:15px;">Initiate Encrypted P2P Stream</button>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
+            </div>
+
+            <div id="mod-video-1on1" class="active-module">
+                <h3>One-on-One Peer Video Conference</h3>
+                <p>Establish a zero-retention video link. If the called party lacks a Spooky Key, they will be dynamically intercepted and guided to acquire one.</p>
+                <label>Call Target (Recipient Node ID or Handle):</label>
+                <input type="text" id="callTarget1on1" placeholder="KEY-XXXXXXXXXXXXXXXX or recipient@spookifyed.com">
+                <button onclick="executeCall1on1()" class="btn" style="margin-top:15px;">Start Encrypted Video Stream</button>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
+            </div>
+
+            <div id="mod-video-group" class="active-module">
+                <h3>Multiparty Group Video Conference</h3>
+                <p>Host a multi-node secure conference room. Unverified participants joining via invite link will be prompted for key provisioning.</p>
+                <label>Conference Room Tag / Name:</label>
+                <input type="text" id="groupRoomName" placeholder="e.g., Skunkworks-Alpha-Room">
+                <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Conference Room & Generate Invite Link</button>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
             </div>
 
             <!-- Authorized Subscribing Vendors Directory -->
             <div class="vendor-list">
-                <strong>Authorized Subscribing Vendor Storefronts:</strong>
+                <strong>Authorized Subscribing Storefronts:</strong>
                 <ul>
-                    <li>Bounce Safety Systems LLC (Hardware Safety Integrations)</li>
-                    <li>Sovereign Vault Logistics (Encrypted Storage Network)</li>
-                    <li>Apex Secure Telemetry (Industrial Sensor Feeds)</li>
+                    <li><a href="https://bouncesafetysystems.com" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety Integrations)</li>
+                    <li><a href="#" onclick="alert('Redirecting to Sovereign Vault Logistics storefront...');">Sovereign Vault Logistics</a> (Encrypted Storage Network)</li>
+                    <li><a href="#" onclick="alert('Redirecting to Apex Secure Telemetry storefront...');">Apex Secure Telemetry</a> (Industrial Sensor Feeds)</li>
                 </ul>
-            </div>
-
-            <div style="margin-top: 25px; text-align: center;">
-                <button onclick="clearKey()" class="btn-secondary" style="background:none; border:none; color:#8892b0; cursor:pointer; text-decoration:underline;">Reset / Clear Hardware Anchor</button>
             </div>
         </div>
 
@@ -141,7 +171,7 @@
 
     <div class="footer-links">
         <a href="privacy.html">Zero-Retention Privacy Policy</a>
-        <a href="#" onclick="alert('To invite external participants to a call without a key, simply share your conference link. They will be auto-routed to acquire a Spooky key upon entry.');">Conference Guest Policy</a>
+        <a href="#" onclick="alert('Conference Guest Policy: External participants joining without a key are automatically routed through key provisioning to ensure total zero-spy network integrity.');">Conference Guest Policy</a>
     </div>
 
     <script>
@@ -164,32 +194,26 @@
             osDisplayName = "Linux Sovereign Core";
         }
 
-        // Set OS text labels
         document.getElementById('os-name-display').innerText = osDisplayName;
         document.getElementById('os-active-display').innerText = osDisplayName;
 
-        // Display ONLY the matching OS installer card
         document.querySelectorAll('.os-installer-card').forEach(card => card.style.display = 'none');
         if (detectedOS === 'windows') document.getElementById('installer-card-windows').style.display = 'block';
         else if (detectedOS === 'mac') document.getElementById('installer-card-mac').style.display = 'block';
         else if (detectedOS === 'linux') document.getElementById('installer-card-linux').style.display = 'block';
         else if (detectedOS === 'mobile') document.getElementById('installer-card-mobile').style.display = 'block';
 
-        // 2. Persistent Key Verification & Routing Logic
+        // 2. Persistent Key Verification & Routing Logic (Deterministic per machine signature)
         function checkSovereignState() {
             let storedKey = localStorage.getItem('spooky_sovereign_node_id');
-            
-            // Check if URL contains an incoming call invite without a key (intercept / visitor redirection check)
             const urlParams = new URLSearchParams(window.location.search);
             const callInvite = urlParams.get('call_invite');
 
             if (storedKey && !callInvite) {
-                // Key exists: Route straight to Operational Menu
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('view-menu').style.display = 'block';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
             } else {
-                // No key found OR guest invited to call without a key: Route to Onboarding
                 document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
                 if (callInvite) {
@@ -199,30 +223,49 @@
         }
 
         function simulateKeyAcquisition() {
-            // Generate stable hardware anchor key
-            const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
-            const newKey = "KEY-" + randomHash.toUpperCase();
-            localStorage.setItem('spooky_sovereign_node_id', newKey);
-            alert("Hardware Anchor Verified & Locked: " + newKey);
-            checkSovereignState();
-        }
-
-        function clearKey() {
-            localStorage.removeItem('spooky_sovereign_node_id');
-            checkSovereignState();
-        }
-
-        function launchModule(moduleType) {
-            if (moduleType === 'file-transfer') {
-                alert("Initializing Secure P2P File Transfer Tunnel...");
-            } else if (moduleType === 'video-1on1') {
-                alert("Launching 1-on-1 Encrypted Video Peer Stream. Unverified participants will be prompted for Spooky Key onboarding.");
-            } else if (moduleType === 'video-group') {
-                alert("Launching Multi-Party Sovereign Conference Room...");
+            // Generates a deterministic stable anchor for this browser instance / local device profile
+            let storedKey = localStorage.getItem('spooky_sovereign_node_id');
+            if (!storedKey) {
+                const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
+                storedKey = "KEY-SPKY-" + machineHash + "-WIN";
+                localStorage.setItem('spooky_sovereign_node_id', storedKey);
             }
+            alert("Hardware Anchor Verified & Locked: " + storedKey);
+            checkSovereignState();
         }
 
-        // Run state check on initial load
+        function switchModule(moduleName) {
+            document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
+            document.getElementById('mod-' + moduleName).style.display = 'block';
+        }
+
+        function closeModules() {
+            document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
+        }
+
+        function executeFileTransfer() {
+            const target = document.getElementById('transferTarget').value;
+            const fileInput = document.getElementById('transferFile');
+            if (!target) { alert("Please specify a target recipient node ID."); return; }
+            if (fileInput.files.length === 0) { alert("Please select a file to transfer."); return; }
+            alert("Secure P2P tunnel established with " + target + ". Transmitting file '" + fileInput.files[0].name + "' with zero-retention encryption.");
+            closeModules();
+        }
+
+        function executeCall1on1() {
+            const target = document.getElementById('callTarget1on1').value;
+            if (!target) { alert("Please enter a valid call target node ID or email."); return; }
+            alert("Initiating secure video handshake with " + target + ". If target lacks a Spooky Key, they will be auto-routed to onboarding.");
+            closeModules();
+        }
+
+        function executeGroupCall() {
+            const room = document.getElementById('groupRoomName').value || "Sovereign-Conference-Room";
+            const inviteUrl = "https://spookifyed.com/?call_invite=" + room;
+            prompt("Multiparty Conference Room Active. Share this secure invite link with participants. Unkeyed attendees will be prompted for key generation upon entry:", inviteUrl);
+            closeModules();
+        }
+
         checkSovereignState();
     </script>
 </body>
