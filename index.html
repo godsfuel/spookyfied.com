@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpookyFied.com - Sovereign Ecosystem Gateway</title>
+    <title>SpookyFied.com - Sovereign Ecosystem & Secure Gateway</title>
     <style>
         :root {
             --bg-color: #0b0c10;
@@ -12,6 +12,7 @@
             --accent-teal: #45a29e;
             --text-main: #c5c6c7;
             --text-bright: #ffffff;
+            --accent-gold: #ffb703;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,7 +28,7 @@
         }
         .container {
             background-color: var(--card-bg);
-            max-width: 550px;
+            max-width: 600px;
             width: 90%;
             padding: 40px;
             border-radius: 12px;
@@ -43,7 +44,7 @@
         h1 {
             color: var(--accent-cyan);
             margin-bottom: 5px;
-            font-size: 26px;
+            font-size: 28px;
         }
         p.subtitle {
             color: var(--text-main);
@@ -97,12 +98,25 @@
             margin-top: 20px;
             min-height: 20px;
         }
+        .footer-links {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #8892b0;
+        }
+        .footer-links a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Make sure SPOOKY_Logo.png is uploaded in the same public directory -->
+        <!-- Make sure SPOOKY_Logo.png is placed in this same folder -->
         <img src="SPOOKY_Logo.png" alt="Spooky Sovereign Logo" class="logo">
         <h1>SpookyFied.com</h1>
         <p class="subtitle">Zero-Retention Sovereign Ecosystem & Secure Gateway</p>
@@ -112,8 +126,14 @@
             <input type="email" id="userEmail" placeholder="Enter your registered email...">
         </div>
         
-        <button onclick="verifyUserAccess()">Access Sovereign Dashboard</button>
+        <button onclick="verifyUserAccess()">Access Sovereign Ecosystem</button>
         <div id="outputMsg"></div>
+
+        <div class="footer-links">
+            <a href="/downloads.html">Client Installers</a> | 
+            <a href="/privacy.html">Zero-Retention Policy</a> | 
+            <a href="/support.html">Node Support</a>
+        </div>
     </div>
 
     <script>
@@ -137,7 +157,7 @@
                 const data = await res.json();
 
                 if (data.has_key) {
-                    msgBox.textContent = "Spooky Key recognized! Redirecting to secure ecosystem...";
+                    msgBox.textContent = "Spooky Key recognized! Redirecting to secure dashboard...";
                     setTimeout(() => { window.location.href = `/dashboard?email=${email}`; }, 1000);
                 } else {
                     msgBox.textContent = "Provisioning hardware-bound Spooky Key anchor...";
