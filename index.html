@@ -13,7 +13,13 @@
         p { color: #b0b0b0; line-height: 1.6; }
         .btn { display: inline-block; background: #00ffcc; color: #121212; padding: 12px 25px; margin: 15px 5px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
         .btn:hover { background: #00cc99; }
-        .status-box { background: #2a2a2a; padding: 12px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; color: #ff5555; border-left: 4px solid #ff5555; text-align: left; }
+        .btn-secondary { background: #333; color: #00ffcc; border: 1px solid #00ffcc; }
+        .btn-secondary:hover { background: #444; }
+        .status-box { background: #2a2a2a; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; text-align: left; border-left: 4px solid #ff5555; display: none; }
+        .telemetry-box { background: #181818; border: 1px solid #333; padding: 15px; border-radius: 6px; margin: 20px 0; text-align: left; font-family: monospace; font-size: 13px; color: #00ffcc; }
+        .footer-links { margin-top: 30px; font-size: 14px; }
+        .footer-links a { color: #888; margin: 0 15px; text-decoration: none; }
+        .footer-links a:hover { color: #00ffcc; }
     </style>
 </head>
 <body>
@@ -23,28 +29,78 @@
     </div>
 
     <div class="container">
-        <div id="node-status" class="status-box">Connecting to local gateway node...</div>
-        
+        <!-- Error Alert (Only shows if local node is offline) -->
+        <div id="node-error" class="status-box">
+            <strong>Gateway Offline:</strong> Connection error communicating with local gateway node. Ensure your background service is running.
+        </div>
+
         <h1>Secure Tunnel Portal</h1>
         <p>Advanced Anti-Spy Tunneling • Securely Protecting Every Byte in Transit.</p>
         
-        <div style="margin: 30px 0;">
+        <!-- Dynamic Hardware & OS Telemetry Box -->
+        <div class="telemetry-box" id="telemetry-display">
+            <div>Operating System: <span id="os-detect">Detecting...</span></div>
+            <div>Spooky Key Status: <span id="key-status" style="color: #ff5555;">Checking local vault...</span></div>
+        </div>
+
+        <div style="margin: 25px 0;">
             <a href="downloads.html" class="btn">Client Installers</a>
             <a href="privacy.html" class="btn">Zero-Retention Policy</a>
             <a href="support.html" class="btn">Node Support Center</a>
         </div>
+
+        <div style="margin-top: 15px;">
+            <button onclick="generateNewKey()" class="btn btn-secondary">Generate New Spooky Key</button>
+        </div>
+    </div>
+
+    <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="downloads.html">Downloads</a>
     </div>
 
     <script>
-        // Check communication with local gateway node
-        fetch('http://127.0.0.1:8080/status', { mode: 'no-cors' })
-            .then(() => {
-                document.getElementById('node-status').style.display = 'none';
+        // Detect Operating System
+        const platform = navigator.platform.toLowerCase();
+        let osName = "Unknown System";
+        if (platform.includes("win")) osName = "Windows (Background Service Ready)";
+        else if (platform.includes("mac")) osName = "macOS (Daemon Ready)";
+        else if (platform.includes("linux")) osName = "Linux (Systemd Service Ready)";
+        document.getElementById('os-detect').innerText = osName;
+
+        // Check local gateway node and hardware key status
+        fetch('http://127.0.0.1:8080/api/status')
+            .then(response => response.json())
+            .then(data => {
+                // Node is online, hide error box
+                document.getElementById('node-error').style.display = 'none';
+                if (data.key_detected) {
+                    document.getElementById('key-status').innerText = "Hardware Spooky Key Active (" + data.key_id + ")";
+                    document.getElementById('key-status').style.color = "#00ffcc";
+                } else {
+                    document.getElementById('key-status').innerText = "No Key Found in Local Vault";
+                    document.getElementById('key-status').style.color = "#ffaa00";
+                }
             })
             .catch(() => {
-                document.getElementById('node-status മറ്റൊരു').style.display = 'block'; // ensure visible if offline
-                document.getElementById('node-status').innerText = 'Connection error communicating with local gateway node. Ensure background service is running.';
+                // Node is offline, display error alert
+                document.getElementById('node-error').style.display = 'block';
+                document.getElementById('key-status').innerText = "Offline (Local Node Unreachable)";
+                document.getElementById('key-status').style.color = "#ff5555";
             });
+
+        function generateNewKey() {
+            fetch('http://127.0.0.1:8080/api/generate-key', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    alert('New Spooky Key generated successfully and anchored to local vault.');
+                    location.reload();
+                })
+                .catch(() => {
+                    alert('Failed to generate key. Ensure your local gateway node is running.');
+                });
+        }
     </script>
 </body>
 </html>
