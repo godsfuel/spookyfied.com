@@ -1,0 +1,6 @@
+# Exclude local databases and private vaults from GitHub
+spooky_directory.db
+cave_vault/masters/*
+Archive/
+__pycache__/
+*.pyc

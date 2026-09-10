@@ -1,0 +1,1 @@
+python C:\SpookySovereign\spooky_controller.py
