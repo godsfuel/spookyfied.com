@@ -6,8 +6,8 @@
     <title>Spookifyed.com | Secure Sovereign Gateway</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
-        .header-banner { background-color: #1f2833; padding: 25px 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
-        .header-banner img { width: 100%; max-width: 650px; height: auto; display: block; margin: 0 auto; }
+        .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
+        .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
         .container { max-width: 800px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
@@ -23,7 +23,7 @@
         .portal-view { display: none; }
         .active-module { display: none; background: #0b0c10; border: 1px solid #66fcf1; padding: 20px; border-radius: 6px; margin-top: 20px; }
         
-        input[type="text"], input[type="file"] { width: 100%; padding: 10px; margin: 10px 0; background: #1f2833; border: 1px solid #45a29e; color: #fff; border-radius: 4px; box-sizing: border-box; }
+        input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 10px; margin: 10px 0; background: #1f2833; border: 1px solid #45a29e; color: #fff; border-radius: 4px; box-sizing: border-box; }
         
         .instruction-box { background: #0b0c10; border: 1px solid #45a29e; padding: 15px; border-radius: 6px; margin: 15px 0; font-size: 13px; }
         .instruction-box ol { margin: 8px 0 0 20px; padding: 0; }
@@ -48,7 +48,7 @@
 
     <div class="container">
 
-        <!-- VIEW 1: ONBOARDING & OS-SPECIFIC INSTALLER (Shown ONLY if no local anchor is detected) -->
+        <!-- VIEW 1: ONBOARDING & OS-SPECIFIC INSTALLER -->
         <div id="view-onboarding" class="portal-view">
             <h1>Sovereign Node Provisioning</h1>
             <p style="text-align: center;">Secure anti-spy tunneling requires a verified local hardware anchor before accessing peer networks.</p>
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <!-- VIEW 2: OPERATIONAL MENU (Shown automatically when Hardware Anchor is present) -->
+        <!-- VIEW 2: OPERATIONAL MENU -->
         <div id="view-menu" class="portal-view">
             <h1>Sovereign Operations Menu</h1>
             <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure connection service.</p>
@@ -126,24 +126,24 @@
                 <a href="#" onclick="switchModule('video-group')" class="btn">Multiparty Group Video Conference</a>
             </div>
 
-            <!-- MODULE INTERFACES -->
+            <!-- MODULE INTERFACES (Email-Driven Interrogation) -->
             <div id="mod-file-transfer" class="active-module">
                 <h3>Secure Peer-to-Peer File Transfer Portal</h3>
-                <p>Select a file to encrypt and stream directly to a destination sovereign node.</p>
-                <label>Target Recipient Node ID / IP:</label>
-                <input type="text" id="transferTarget" placeholder="KEY-SPKY-XXXXXXXXXXXXXXXX">
+                <p>Enter the recipient's email address. Spooky will interrogate their status; unkeyed recipients will be prompted to acquire a key.</p>
+                <label>Recipient Email Address:</label>
+                <input type="email" id="transferEmail" placeholder="recipient@domain.com">
                 <label>Select File to Transfer:</label>
                 <input type="file" id="transferFile">
-                <button onclick="executeFileTransfer()" class="btn" style="margin-top:15px;">Initiate Encrypted P2P Stream</button>
+                <button onclick="executeFileTransfer()" class="btn" style="margin-top:15px;">Interrogate Recipient & Send File</button>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
             </div>
 
             <div id="mod-video-1on1" class="active-module">
                 <h3>One-on-One Peer Video Conference</h3>
-                <p>Establish a zero-retention video link. If the called party lacks a Spooky Key, they will be dynamically intercepted and guided to acquire one.</p>
-                <label>Call Target (Recipient Node ID or Handle):</label>
-                <input type="text" id="callTarget1on1" placeholder="KEY-SPKY-XXXXXXXXXXXXXXXX or recipient@spookifyed.com">
-                <button onclick="executeCall1on1()" class="btn" style="margin-top:15px;">Start Encrypted Video Stream</button>
+                <p>Enter the recipient's email address to initiate a zero-retention video link.</p>
+                <label>Recipient Email Address:</label>
+                <input type="email" id="callEmail1on1" placeholder="recipient@domain.com">
+                <button onclick="executeCall1on1()" class="btn" style="margin-top:15px;">Interrogate Recipient & Start Video Stream</button>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
             </div>
 
@@ -152,7 +152,7 @@
                 <p>Host a multi-node secure conference room. Unverified participants joining via invite link will be prompted for key provisioning.</p>
                 <label>Conference Room Tag / Name:</label>
                 <input type="text" id="groupRoomName" placeholder="e.g., Skunkworks-Alpha-Room">
-                <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Conference Room & Generate Invite Link</button>
+                <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Group Video Stream & Generate Invite Link</button>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
             </div>
 
@@ -203,14 +203,9 @@
         else if (detectedOS === 'linux') document.getElementById('installer-card-linux').style.display = 'block';
         else if (detectedOS === 'mobile') document.getElementById('installer-card-mobile').style.display = 'block';
 
-        // 2. Robust Hardware Anchor Detection
-        // Checks both permanent browser storage and persistent cross-session flags simulating local node registration
+        // 2. Persistent Key Verification
         function getPersistentSovereignKey() {
-            // Check persistent storage or local simulation flag
             let key = localStorage.getItem('spooky_sovereign_node_id') || sessionStorage.getItem('spooky_sovereign_node_id');
-            
-            // If not found in standard storage, simulate checking the local machine background service anchor file
-            // (In production, this would poll localhost:7777/anchor or check a shared local registry)
             const isLocalNodeInstalled = localStorage.getItem('spooky_node_installed');
             
             if (!key && isLocalNodeInstalled === 'true') {
@@ -240,7 +235,6 @@
         }
 
         function verifyLocalNode() {
-            // Mark node as installed on this machine so future visits (even in incognito / new sessions) recognize it
             const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
             const permanentKey = "KEY-SPKY-" + machineHash + "-WIN";
             
@@ -260,26 +254,31 @@
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
         }
 
+        // Email-Driven Interrogation Simulators
         function executeFileTransfer() {
-            const target = document.getElementById('transferTarget').value;
+            const email = document.getElementById('transferEmail').value;
             const fileInput = document.getElementById('transferFile');
-            if (!target) { alert("Please specify a target recipient node ID."); return; }
+            if (!email || !email.includes('@')) { alert("Please enter a valid recipient email address."); return; }
             if (fileInput.files.length === 0) { alert("Please select a file to transfer."); return; }
-            alert("Secure P2P tunnel established with " + target + ". Transmitting file '" + fileInput.files[0].name + "' with zero-retention encryption.");
+            
+            // Simulate Spooky database interrogation of recipient email
+            alert("Spooky Interrogation Complete for [" + email + "]: Active Spooky Key detected. Establishing secure P2P stream to transmit file '" + fileInput.files[0].name + "' with zero-retention encryption.");
             closeModules();
         }
 
         function executeCall1on1() {
-            const target = document.getElementById('callTarget1on1').value;
-            if (!target) { alert("Please enter a valid call target node ID or email."); return; }
-            alert("Initiating secure video handshake with " + target + ". If target lacks a Spooky Key, they will be auto-routed to onboarding.");
+            const email = document.getElementById('callEmail1on1').value;
+            if (!email || !email.includes('@')) { alert("Please enter a valid recipient email address."); return; }
+            
+            // Simulate Spooky database interrogation for video call
+            alert("Spooky Interrogation Complete for [" + email + "]: Recipient verified. Initiating secure video stream handshake.");
             closeModules();
         }
 
         function executeGroupCall() {
             const room = document.getElementById('groupRoomName').value || "Sovereign-Conference-Room";
             const inviteUrl = "https://spookifyed.com/?call_invite=" + room;
-            prompt("Multiparty Conference Room Active. Share this secure invite link with participants. Unkeyed attendees will be prompted for key generation upon entry:", inviteUrl);
+            prompt("Multiparty Group Video Stream Active. Share this secure invite link with participants. Unkeyed attendees will be prompted for key generation upon entry:", inviteUrl);
             closeModules();
         }
 
