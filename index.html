@@ -35,12 +35,12 @@
 
     <div class="container">
         
-        <!-- OFFLINE NOTICE (Shown when local background node is not running) -->
+        <!-- OFFLINE NOTICE (Shown when local background engine node is not responding) -->
         <div id="offline-notice">
             <h1>Gateway Service Offline</h1>
-            <p>The sovereign portal cannot communicate with your local background node (`127.0.0.1:8080`).</p>
+            <p>The sovereign portal cannot communicate with your local background engine node (`127.0.0.1:5000`).</p>
             <div class="status-box">
-                <strong>Action Required:</strong> Please ensure your local background service or controller is running on this device to establish a secure cryptographic tunnel.
+                <strong>Action Required:</strong> Please ensure your master controller is running via your command line to establish connection.
             </div>
             <div style="margin: 25px 0;">
                 <a href="downloads.html" class="btn">Get Client Installers</a>
@@ -86,16 +86,20 @@
         else if (platform.includes("linux")) osName = "Linux (Systemd Service Ready)";
         document.getElementById('os-detect').innerText = osName;
 
-        // Check local gateway node communication
-        fetch('http://127.0.0.1:8080/api/status')
+        // Check local gateway node communication via Engine backend (Port 5000)
+        fetch('http://127.0.0.1:5000/api/check-status', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email: "godsfuel@live.com" })
+        })
             .then(response => response.json())
             .then(data => {
                 // Node is ONLINE: hide offline notice, show active dashboard
                 document.getElementById('offline-notice').style.display = 'none';
                 document.getElementById('online-dashboard').style.display = 'block';
                 
-                if (data.key_detected) {
-                    document.getElementById('key-status').innerText = "Hardware Spooky Key Active (" + data.key_id + ")";
+                if (data.has_key) {
+                    document.getElementById('key-status').innerText = "Hardware Spooky Key Active (" + data.node_id + ")";
                 } else {
                     document.getElementById('key-status').innerText = "No Key Found in Local Vault";
                     document.getElementById('key-status').style.color = "#ffaa00";
@@ -108,10 +112,14 @@
             });
 
         function generateNewKey() {
-            fetch('http://127.0.0.1:8080/api/generate-key', { method: 'POST' })
+            fetch('http://127.0.0.1:5000/api/generate-key', { 
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email: "godsfuel@live.com" })
+            })
                 .then(res => res.json())
                 .then(data => {
-                    alert('New Spooky Key generated successfully and anchored to local vault.');
+                    alert('New Spooky Key generated successfully: ' + data.node_id);
                     location.reload();
                 })
                 .catch(() => {
