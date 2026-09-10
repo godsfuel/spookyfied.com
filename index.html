@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpookyFied.com | Secure Sovereign Gateway</title>
+    <title>Spookifyed.com | Secure Sovereign Portal</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
         .header-banner { background-color: #1f2833; padding: 30px 20px; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
         .header-banner img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
-        .container { max-width: 740px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
+        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
-        p { color: #8892b0; line-height: 1.6; text-align: center; }
+        h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
+        p { color: #8892b0; line-height: 1.6; }
         .btn { display: block; width: 100%; background: #66fcf1; color: #0b0c10; padding: 14px 20px; margin: 15px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; box-sizing: border-box; font-size: 15px; }
         .btn:hover { background: #45a29e; color: #fff; }
         .btn-secondary { background: #0b0c10; color: #66fcf1; border: 1px solid #66fcf1; }
@@ -18,7 +19,18 @@
         
         .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 25px 0; font-family: monospace; font-size: 13px; color: #66fcf1; }
         .telemetry-box div { margin: 8px 0; }
-        .vendor-banner { background: #2c2200; border: 1px solid #ffb703; padding: 15px; border-radius: 6px; margin-bottom: 25px; color: #ffb703; display: none; }
+        
+        /* View Sections */
+        .portal-view { display: none; }
+        
+        .instruction-box { background: #0b0c10; border: 1px solid #45a29e; padding: 15px; border-radius: 6px; margin: 15px 0; font-size: 13px; }
+        .instruction-box ol { margin: 8px 0 0 20px; padding: 0; }
+        .instruction-box li { margin-bottom: 6px; }
+        
+        .vendor-list { background: #0b0c10; border: 1px solid #ffb703; padding: 15px; border-radius: 6px; margin-top: 20px; font-size: 14px; color: #ffb703; }
+        .vendor-list ul { margin: 10px 0 0 20px; padding: 0; color: #c5c6c7; }
+        .vendor-list li { margin-bottom: 5px; }
+        
         .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
         .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
         .footer-links a:hover { color: #66fcf1; }
@@ -31,75 +43,187 @@
     </div>
 
     <div class="container">
-        <!-- Vendor Handshake Notice (Appears only when redirected from a vendor storefront) -->
-        <div id="vendorNotice" class="vendor-banner">
-            <strong>Storefront Handshake Active:</strong> You were redirected from <span id="vendorName" style="color:#fff;"></span> to authorize your Sovereign Key for secure asset delivery.
+
+        <!-- VIEW 1: ONBOARDING & OS-SPECIFIC INSTALLER (Shown if NO key is detected) -->
+        <div id="view-onboarding" class="portal-view">
+            <h1>Sovereign Node Provisioning</h1>
+            <p style="text-align: center;">Secure anti-spy tunneling requires a verified local hardware anchor before accessing peer networks.</p>
+            
+            <div class="telemetry-box">
+                <div>Detected Operating System: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
+                <div>Anchor Status: <span style="color: #ff5555;">No Active Key Found</span></div>
+            </div>
+
+            <!-- Dynamic OS-Specific Deployment Card -->
+            <div id="installer-card-windows" class="os-installer-card" style="display:none;">
+                <h3>Windows Client Deployment</h3>
+                <p>Download the automated Windows background service package.</p>
+                <a href="SpookyInitializer.exe" class="btn" download>Download Windows Client (.exe)</a>
+                <div class="instruction-box">
+                    <strong>Windows Setup Instructions:</strong>
+                    <ol>
+                        <li>Run <strong>SpookyInitializer.exe</strong> from your downloads folder.</li>
+                        <li>If Windows SmartScreen prompts, click <strong>More info</strong> then <strong>Run anyway</strong>.</li>
+                        <li>Press Enter when complete to finalize background task registration.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="installer-card-mac" class="os-installer-card" style="display:none;">
+                <h3>macOS Client Deployment</h3>
+                <p>Download the automated macOS daemon deployment package.</p>
+                <a href="SpookyInitializer.command" class="btn" download>Download macOS Client (.command)</a>
+                <div class="instruction-box">
+                    <strong>macOS Setup Instructions:</strong>
+                    <ol>
+                        <li>Open Terminal and grant execution: <code style="color:#66fcf1;">chmod +x SpookyInitializer.command</code></li>
+                        <li>Right-click the file in Finder, select <strong>Open</strong>, and confirm execution to bypass Gatekeeper.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="installer-card-linux" class="os-installer-card" style="display:none;">
+                <h3>Linux Client Deployment</h3>
+                <p>Download the automated Linux systemd daemon package.</p>
+                <a href="SpookyInitializer.sh" class="btn" download>Download Linux Client (.sh)</a>
+                <div class="instruction-box">
+                    <strong>Linux Setup Instructions:</strong>
+                    <ol>
+                        <li>Open your terminal shell.</li>
+                        <li>Execute with root privileges: <code style="color:#66fcf1;">sudo bash SpookyInitializer.sh</code></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="installer-card-mobile" class="os-installer-card" style="display:none;">
+                <h3>Mobile Sovereign Client (iOS / Android)</h3>
+                <p>Deploy the mobile node wrapper for encrypted data tunnels.</p>
+                <a href="#" onclick="alert('Initiating mobile secure container provisioning...');" class="btn">Provision Mobile Secure Node</a>
+            </div>
+
+            <div style="margin-top: 25px; text-align: center;">
+                <button onclick="simulateKeyAcquisition()" class="btn btn-secondary">I Have Installed My Node / Generate Key</button>
+            </div>
         </div>
 
-        <h1>Sovereign Ecosystem Portal</h1>
-        <p>Advanced Anti-Spy Tunneling • Zero-Retention Infrastructure Protecting Every Byte in Transit.</p>
-        
-        <div class="telemetry-box">
-            <div>Gateway Status: <span style="color: #66fcf1;">ONLINE (Production Node)</span></div>
-            <div>Operating System: <span id="os-detect">Detecting...</span></div>
-            <div>Sovereign Key: <span id="key-display" style="color: #ffb703;">Loading Secure Anchor...</span></div>
+        <!-- VIEW 2: OPERATIONAL DASHBOARD (Shown automatically if Key IS detected) -->
+        <div id="view-menu" class="portal-view">
+            <h1>Sovereign Operations Menu</h1>
+            <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure operational mode.</p>
+            
+            <div class="telemetry-box">
+                <div>Operating System: <span id="os-active-display" style="color: #66fcf1;">Active Node</span></div>
+                <div>Sovereign Key: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <a href="#" onclick="launchModule('file-transfer')" class="btn">Secure P2P File Transfer</a>
+                <a href="#" onclick="launchModule('video-1on1')" class="btn">1-on-1 Peer Video Conference</a>
+                <a href="#" onclick="launchModule('video-group')" class="btn">Multi-Party Group Conference</a>
+            </div>
+
+            <!-- Authorized Subscribing Vendors Directory -->
+            <div class="vendor-list">
+                <strong>Authorized Subscribing Vendor Storefronts:</strong>
+                <ul>
+                    <li>Bounce Safety Systems LLC (Hardware Safety Integrations)</li>
+                    <li>Sovereign Vault Logistics (Encrypted Storage Network)</li>
+                    <li>Apex Secure Telemetry (Industrial Sensor Feeds)</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 25px; text-align: center;">
+                <button onclick="clearKey()" class="btn-secondary" style="background:none; border:none; color:#8892b0; cursor:pointer; text-decoration:underline;">Reset / Clear Hardware Anchor</button>
+            </div>
         </div>
 
-        <div style="margin-top: 30px;">
-            <a href="downloads.html" class="btn">Deploy Client & Node Installers</a>
-            <a href="privacy.html" class="btn btn-secondary">Zero-Retention Privacy Policy</a>
-        </div>
     </div>
 
     <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="downloads.html">Downloads & Node Support</a>
+        <a href="privacy.html">Zero-Retention Privacy Policy</a>
+        <a href="#" onclick="alert('To invite external participants to a call without a key, simply share your conference link. They will be auto-routed to acquire a Spooky key upon entry.');">Conference Guest Policy</a>
     </div>
 
     <script>
-        // Check for Vendor Redirection Parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const vendorRef = urlParams.get('vendor');
-        if (vendorRef) {
-            document.getElementById('vendorNotice').style.display = 'block';
-            document.getElementById('vendorName').innerText = vendorRef;
+        // 1. Operating System Detection
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        let detectedOS = "windows";
+        let osDisplayName = "Windows Sovereign Node";
+
+        if (/android/i.test(userAgent)) {
+            detectedOS = "mobile";
+            osDisplayName = "Android Sovereign Mobile Node";
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            detectedOS = "mobile";
+            osDisplayName = "iOS Sovereign Mobile Node";
+        } else if (/mac/i.test(userAgent)) {
+            detectedOS = "mac";
+            osDisplayName = "macOS Sovereign Daemon";
+        } else if (/linux/i.test(userAgent)) {
+            detectedOS = "linux";
+            osDisplayName = "Linux Sovereign Core";
         }
 
-        // System telemetry detection
-        const platform = navigator.platform.toLowerCase();
-        let osName = "Standard Sovereign Environment";
-        if (platform.includes("win")) osName = "Windows Sovereign Node";
-        else if (platform.includes("mac")) osName = "macOS Sovereign Daemon";
-        else if (platform.includes("linux")) osName = "Linux Sovereign Core";
-        document.getElementById('os-detect').innerText = osName;
+        // Set OS text labels
+        document.getElementById('os-name-display').innerText = osDisplayName;
+        document.getElementById('os-active-display').innerText = osDisplayName;
 
-        // Persistent deterministic hardware anchor management
-        function getOrCreateSovereignKey() {
+        // Display ONLY the matching OS installer card
+        document.querySelectorAll('.os-installer-card').forEach(card => card.style.display = 'none');
+        if (detectedOS === 'windows') document.getElementById('installer-card-windows').style.display = 'block';
+        else if (detectedOS === 'mac') document.getElementById('installer-card-mac').style.display = 'block';
+        else if (detectedOS === 'linux') document.getElementById('installer-card-linux').style.display = 'block';
+        else if (detectedOS === 'mobile') document.getElementById('installer-card-mobile').style.display = 'block';
+
+        // 2. Persistent Key Verification & Routing Logic
+        function checkSovereignState() {
             let storedKey = localStorage.getItem('spooky_sovereign_node_id');
-            if (!storedKey) {
-                const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
-                storedKey = "KEY-" + randomHash.toUpperCase();
-                localStorage.setItem('spooky_sovereign_node_id', storedKey);
-            }
-            return storedKey;
-        }
-
-        function updateKeyDisplay() {
-            const key = getOrCreateSovereignKey();
-            document.getElementById('key-display').innerText = key + " (Active & Bound)";
             
-            // If vendor handshaking, automatically trigger token return callback simulation
-            if (vendorRef) {
-                setTimeout(() => {
-                    const token = btoa(`${vendorRef}:${key}:${Date.now()}`);
-                    if (confirm("Sovereign Key successfully authorized for " + vendorRef + ". Return to merchant storefront?")) {
-                        window.location.href = `${vendorRef}/callback?token=${token}&key=${key}`;
-                    }
-                }, 1000);
+            // Check if URL contains an incoming call invite without a key (intercept / visitor redirection check)
+            const urlParams = new URLSearchParams(window.location.search);
+            const callInvite = urlParams.get('call_invite');
+
+            if (storedKey && !callInvite) {
+                // Key exists: Route straight to Operational Menu
+                document.getElementById('view-onboarding').style.display = 'none';
+                document.getElementById('view-menu').style.display = 'block';
+                document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
+            } else {
+                // No key found OR guest invited to call without a key: Route to Onboarding
+                document.getElementById('view-onboarding').style.display = 'block';
+                document.getElementById('view-menu').style.display = 'none';
+                if (callInvite) {
+                    alert("Incoming Sovereign Call Invitation detected from node [" + callInvite + "]. A verified Sovereign Key is required to connect. Please deploy your node below.");
+                }
             }
         }
 
-        updateKeyDisplay();
+        function simulateKeyAcquisition() {
+            // Generate stable hardware anchor key
+            const randomHash = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+            const newKey = "KEY-" + randomHash.toUpperCase();
+            localStorage.setItem('spooky_sovereign_node_id', newKey);
+            alert("Hardware Anchor Verified & Locked: " + newKey);
+            checkSovereignState();
+        }
+
+        function clearKey() {
+            localStorage.removeItem('spooky_sovereign_node_id');
+            checkSovereignState();
+        }
+
+        function launchModule(moduleType) {
+            if (moduleType === 'file-transfer') {
+                alert("Initializing Secure P2P File Transfer Tunnel...");
+            } else if (moduleType === 'video-1on1') {
+                alert("Launching 1-on-1 Encrypted Video Peer Stream. Unverified participants will be prompted for Spooky Key onboarding.");
+            } else if (moduleType === 'video-group') {
+                alert("Launching Multi-Party Sovereign Conference Room...");
+            }
+        }
+
+        // Run state check on initial load
+        checkSovereignState();
     </script>
 </body>
 </html>
