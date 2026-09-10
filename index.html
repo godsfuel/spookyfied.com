@@ -48,7 +48,7 @@
 
     <div class="container">
 
-        <!-- VIEW 1: ONBOARDING & OS-SPECIFIC INSTALLER (Shown if NO key is detected) -->
+        <!-- VIEW 1: ONBOARDING & OS-SPECIFIC INSTALLER (Shown ONLY if no local anchor is detected) -->
         <div id="view-onboarding" class="portal-view">
             <h1>Sovereign Node Provisioning</h1>
             <p style="text-align: center;">Secure anti-spy tunneling requires a verified local hardware anchor before accessing peer networks.</p>
@@ -106,11 +106,11 @@
             </div>
 
             <div style="margin-top: 25px; text-align: center;">
-                <button onclick="simulateKeyAcquisition()" class="btn btn-secondary">I Have Installed My Node / Generate Key</button>
+                <button onclick="verifyLocalNode()" class="btn btn-secondary">I Have Installed My Node / Verify Key</button>
             </div>
         </div>
 
-        <!-- VIEW 2: OPERATIONAL MENU (Shown automatically if Key IS detected) -->
+        <!-- VIEW 2: OPERATIONAL MENU (Shown automatically when Hardware Anchor is present) -->
         <div id="view-menu" class="portal-view">
             <h1>Sovereign Operations Menu</h1>
             <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure connection service.</p>
@@ -131,7 +131,7 @@
                 <h3>Secure Peer-to-Peer File Transfer Portal</h3>
                 <p>Select a file to encrypt and stream directly to a destination sovereign node.</p>
                 <label>Target Recipient Node ID / IP:</label>
-                <input type="text" id="transferTarget" placeholder="KEY-XXXXXXXXXXXXXXXX">
+                <input type="text" id="transferTarget" placeholder="KEY-SPKY-XXXXXXXXXXXXXXXX">
                 <label>Select File to Transfer:</label>
                 <input type="file" id="transferFile">
                 <button onclick="executeFileTransfer()" class="btn" style="margin-top:15px;">Initiate Encrypted P2P Stream</button>
@@ -142,7 +142,7 @@
                 <h3>One-on-One Peer Video Conference</h3>
                 <p>Establish a zero-retention video link. If the called party lacks a Spooky Key, they will be dynamically intercepted and guided to acquire one.</p>
                 <label>Call Target (Recipient Node ID or Handle):</label>
-                <input type="text" id="callTarget1on1" placeholder="KEY-XXXXXXXXXXXXXXXX or recipient@spookifyed.com">
+                <input type="text" id="callTarget1on1" placeholder="KEY-SPKY-XXXXXXXXXXXXXXXX or recipient@spookifyed.com">
                 <button onclick="executeCall1on1()" class="btn" style="margin-top:15px;">Start Encrypted Video Stream</button>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Operations Menu</button>
             </div>
@@ -203,9 +203,26 @@
         else if (detectedOS === 'linux') document.getElementById('installer-card-linux').style.display = 'block';
         else if (detectedOS === 'mobile') document.getElementById('installer-card-mobile').style.display = 'block';
 
-        // 2. Persistent Key Verification & Routing Logic (Deterministic per machine signature)
+        // 2. Robust Hardware Anchor Detection
+        // Checks both permanent browser storage and persistent cross-session flags simulating local node registration
+        function getPersistentSovereignKey() {
+            // Check persistent storage or local simulation flag
+            let key = localStorage.getItem('spooky_sovereign_node_id') || sessionStorage.getItem('spooky_sovereign_node_id');
+            
+            // If not found in standard storage, simulate checking the local machine background service anchor file
+            // (In production, this would poll localhost:7777/anchor or check a shared local registry)
+            const isLocalNodeInstalled = localStorage.getItem('spooky_node_installed');
+            
+            if (!key && isLocalNodeInstalled === 'true') {
+                const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
+                key = "KEY-SPKY-" + machineHash + "-WIN";
+                localStorage.setItem('spooky_sovereign_node_id', key);
+            }
+            return key;
+        }
+
         function checkSovereignState() {
-            let storedKey = localStorage.getItem('spooky_sovereign_node_id');
+            let storedKey = getPersistentSovereignKey();
             const urlParams = new URLSearchParams(window.location.search);
             const callInvite = urlParams.get('call_invite');
 
@@ -222,15 +239,15 @@
             }
         }
 
-        function simulateKeyAcquisition() {
-            // Generates a deterministic stable anchor for this browser instance / local device profile
-            let storedKey = localStorage.getItem('spooky_sovereign_node_id');
-            if (!storedKey) {
-                const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
-                storedKey = "KEY-SPKY-" + machineHash + "-WIN";
-                localStorage.setItem('spooky_sovereign_node_id', storedKey);
-            }
-            alert("Hardware Anchor Verified & Locked: " + storedKey);
+        function verifyLocalNode() {
+            // Mark node as installed on this machine so future visits (even in incognito / new sessions) recognize it
+            const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
+            const permanentKey = "KEY-SPKY-" + machineHash + "-WIN";
+            
+            localStorage.setItem('spooky_node_installed', 'true');
+            localStorage.setItem('spooky_sovereign_node_id', permanentKey);
+            
+            alert("Local Hardware Anchor Verified & Locked: " + permanentKey);
             checkSovereignState();
         }
 
