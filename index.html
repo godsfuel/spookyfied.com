@@ -12,14 +12,14 @@
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
         p { color: #8892b0; line-height: 1.6; }
-        .btn { display: block; width: 100%; background: #66fcf1; color: #0b0c10; padding: 16px 20px; margin: 15px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; box-sizing: border-box; font-size: 16px; }
+        .btn { display: block; width: 100%; background: #66fcf1; color: #0b0c10; padding: 16px 20px; margin: 12px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; box-sizing: border-box; font-size: 16px; }
         .btn:hover { background: #45a29e; color: #fff; }
         .btn-secondary { background: #0b0c10; color: #66fcf1; border: 1px solid #66fcf1; }
         .btn-secondary:hover { background: #1f2833; color: #fff; }
-        .btn-confirm { background: #2a9d8f; color: #fff; font-size: 17px; margin-top: 20px; border: 1px solid #66fcf1; }
-        .btn-confirm:hover { background: #21867a; }
+        .btn-activate { background: #2a9d8f; color: #ffffff; font-size: 18px; border: 1px solid #66fcf1; box-shadow: 0 0 12px rgba(102, 252, 241, 0.3); }
+        .btn-activate:hover { background: #21867a; }
         
-        .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 25px 0; font-family: monospace; font-size: 13px; color: #66fcf1; }
+        .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 20px 0; font-family: monospace; font-size: 14px; color: #66fcf1; }
         .telemetry-box div { margin: 8px 0; }
         
         .portal-view { display: none; }
@@ -28,19 +28,19 @@
         
         input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 10px; margin: 10px 0; background: #1f2833; border: 1px solid #45a29e; color: #fff; border-radius: 4px; box-sizing: border-box; }
         
-        .instruction-box { background: #0b0c10; border: 1px solid #ffb703; padding: 18px; border-radius: 6px; margin: 20px 0; font-size: 14px; color: #c5c6c7; line-height: 1.5; }
-        .instruction-box ol { margin: 10px 0 0 20px; padding: 0; }
-        .instruction-box li { margin-bottom: 8px; }
+        .instruction-box { background: #0b0c10; border: 2px solid #ffb703; padding: 20px; border-radius: 6px; margin: 25px 0; font-size: 15px; color: #e0e0e0; line-height: 1.6; }
+        .instruction-box ol { margin: 12px 0 0 20px; padding: 0; }
+        .instruction-box li { margin-bottom: 10px; }
         
         .feedback-panel { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; line-height: 1.5; }
         .feedback-success { background: rgba(102, 252, 241, 0.1); border: 1px solid #66fcf1; color: #66fcf1; }
         .feedback-warning { background: rgba(255, 183, 3, 0.1); border: 1px solid #ffb703; color: #ffb703; }
         
-        .vendor-list { background: #0b0c10; border: 1px solid #ffb703; padding: 15px; border-radius: 6px; margin-top: 20px; font-size: 14px; color: #ffb703; }
+        .vendor-list { background: #0b0c10; border: 1px solid #45a29e; padding: 18px; border-radius: 6px; margin-top: 25px; font-size: 14px; color: #66fcf1; }
         .vendor-list ul { margin: 10px 0 0 20px; padding: 0; color: #c5c6c7; }
-        .vendor-list li { margin-bottom: 5px; }
-        .vendor-list a { color: #66fcf1; text-decoration: none; }
-        .vendor-list a:hover { text-decoration: underline; }
+        .vendor-list li { margin-bottom: 8px; }
+        .vendor-list a { color: #66fcf1; text-decoration: underline; font-weight: bold; }
+        .vendor-list a:hover { color: #ffffff; }
         
         .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
         .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
@@ -58,26 +58,27 @@
         <!-- VIEW 1: ONE-BUTTON DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Sovereign Node Provisioning</h1>
-            <p style="text-align: center;">Secure anti-spy tunneling requires a verified local hardware anchor before accessing peer networks.</p>
+            <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
             <div class="telemetry-box">
                 <div>Detected Terminal: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
-                <div>Anchor Status: <span style="color: #ff5555;">No Active Key Bound in Session</span></div>
+                <div>Anchor Status: <span id="anchor-status-display" style="color: #ff5555;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Single Dynamic Action Button -->
+            <!-- Activation / Entrance Button (Prominent near top telemetry) -->
+            <div id="activation-btn-container" style="display:none;">
+                <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Sovereign Gateway</button>
+            </div>
+
+            <!-- Primary Client Download Action Button -->
             <div id="single-action-container">
-                <a id="primary-action-btn" href="#" class="btn">Detecting Terminal...</a>
+                <a id="primary-action-btn" href="#" class="btn">Detecting Terminal Client...</a>
             </div>
 
-            <!-- Detailed Instructions Explaining Browser & Windows Prompts -->
+            <!-- Prominent Setup & Security Notice -->
             <div id="desktop-instructions" class="instruction-box" style="display:none;">
-                <strong style="color: #ffb703;">Important Setup & Security Notice:</strong>
+                <strong style="color: #ffb703; font-size: 17px; display: block; margin-bottom: 5px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
-            </div>
-
-            <div id="desktop-verify-container" style="display:none;">
-                <button onclick="verifyLocalNode()" class="btn btn-confirm">Confirm Node Initialized & Enter Gateway</button>
             </div>
 
             <div id="onboarding-feedback" class="feedback-panel"></div>
@@ -87,33 +88,31 @@
         <div id="view-menu" class="portal-view">
             <div id="operations-menu-wrapper" class="operations-menu-container">
                 <h1>Spooky Operations Menu</h1>
-                <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure connection service below.</p>
+                <p style="text-align: center;">Hardware Anchor Authenticated. Sovereign Gateway Active.</p>
                 
                 <div class="telemetry-box">
-                    <div>Operating System: <span id="os-active-display" style="color: #66fcf1;">Active Node</span></div>
-                    <div>Sovereign Key: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
+                    <div>Terminal Architecture: <span id="os-active-display" style="color: #66fcf1;">Active Node</span></div>
+                    <div>Sovereign Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
                 <div style="margin-top: 25px;">
-                    <button onclick="switchModule('file-transfer')" class="btn">Secure Peer-to-Peer File Transfer</button>
-                    <button onclick="switchModule('video-1on1')" class="btn">One-on-One Peer Video Conference</button>
-                    <button onclick="switchModule('video-group')" class="btn">Multiparty Group Video Conference</button>
+                    <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
+                    <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
+                    <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
                 </div>
 
+                <!-- Verified Subscribing Storefronts Directory -->
                 <div class="vendor-list">
-                    <strong>Authorized Subscribing Storefronts:</strong>
+                    <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
-                        <li><a href="https://bouncesafetysystems.com" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety Integrations)</li>
-                        <li><a href="#" onclick="showStorefrontNotice('Sovereign Vault Logistics'); return false;">Sovereign Vault Logistics</a> (Encrypted Storage Network)</li>
-                        <li><a href="#" onclick="showStorefrontNotice('Apex Secure Telemetry'); return false;">Apex Secure Telemetry</a> (Industrial Sensor Feeds)</li>
+                        <li><a href="https://bounceairbags.com/tester" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
                     </ul>
-                    <div id="storefront-notice" class="feedback-panel" style="display:none; margin-top: 10px;"></div>
                 </div>
             </div>
 
             <!-- MODULE 1: FILE TRANSFER -->
             <div id="mod-file-transfer" class="active-module">
-                <h3>Secure Peer-to-Peer File Transfer Portal</h3>
+                <h3>Spooky Secure Peer-to-Peer File Transfer Portal</h3>
                 <p>Enter the recipient's email address. Spooky interrogates their node status instantly.</p>
                 <label>Recipient Email Address:</label>
                 <input type="email" id="transferEmail" placeholder="recipient@domain.com">
@@ -126,7 +125,7 @@
 
             <!-- MODULE 2: ONE-ON-ONE VIDEO -->
             <div id="mod-video-1on1" class="active-module">
-                <h3>One-on-One Peer Video Conference</h3>
+                <h3>Spooky One-on-One Peer Video Conference</h3>
                 <p>Enter your colleague's email address to establish a zero-retention encrypted video link.</p>
                 <label>Recipient Email Address:</label>
                 <input type="email" id="callEmail1on1" placeholder="recipient@domain.com">
@@ -137,7 +136,7 @@
 
             <!-- MODULE 3: GROUP VIDEO -->
             <div id="mod-video-group" class="active-module">
-                <h3>Multiparty Group Video Conference</h3>
+                <h3>Spooky Multiparty Group Video Conference</h3>
                 <p>Host a multi-node secure conference room. Provide a room tag and invite participant emails below.</p>
                 <label>Conference Room Tag / Name:</label>
                 <input type="text" id="groupRoomName" value="Skunkworks-Alpha-Room">
@@ -181,47 +180,47 @@
         const actionBtn = document.getElementById('primary-action-btn');
         const instructionsBox = document.getElementById('desktop-instructions');
         const instructionSteps = document.getElementById('instruction-steps');
-        const verifyContainer = document.getElementById('desktop-verify-container');
+        const activationBtnContainer = document.getElementById('activation-btn-container');
 
         if (detectedOS === 'windows') {
             actionBtn.innerText = "Download Windows Client (.exe)";
             actionBtn.href = "SpookyInitializer.exe";
             actionBtn.setAttribute("download", "SpookyInitializer.exe");
             instructionsBox.style.display = 'block';
-            verifyContainer.style.display = 'block';
+            activationBtnContainer.style.display = 'block';
             instructionSteps.innerHTML = `
-                <li><strong>Browser Warning:</strong> If your browser warns the file is unrecognized or suspicious, click the menu/arrow next to the download and select <em>"Keep"</em> or <em>"Download suspicious file"</em>. (Sovereign skunkworks tools do not carry commercial certificate tags).</li>
-                <li><strong>Windows SmartScreen:</strong> When you open the file, Windows will display a blue warning screen. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
-                <li><strong>Console Execution:</strong> The utility will extract your hardware profile, write your local key to cache, and ask you to press Enter.</li>
-                <li><strong>Enter Gateway:</strong> Return to this page and click the green <strong>"Confirm Node Initialized & Enter Gateway"</strong> button below.</li>
+                <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
+                <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
+                <li><strong>Node Execution:</strong> The DOS console will extract your hardware components, bind your cryptographic seed to local system cache, and ask you to press Enter for final cleanup.</li>
+                <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Sovereign Gateway"</strong> button above.</li>
             `;
         } else if (detectedOS === 'mac') {
             actionBtn.innerText = "Download macOS Client (.command)";
             actionBtn.href = "SpookyInitializer.command";
             actionBtn.setAttribute("download", "SpookyInitializer.command");
             instructionsBox.style.display = 'block';
-            verifyContainer.style.display = 'block';
+            activationBtnContainer.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
                 <li>Right-click the file in Finder and select <strong>Open</strong> to bypass Gatekeeper.</li>
-                <li>Press Enter in terminal, return here, and click <strong>"Confirm Node Initialized & Enter Gateway"</strong> below.</li>
+                <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Sovereign Gateway"</strong> above.</li>
             `;
         } else if (detectedOS === 'linux') {
             actionBtn.innerText = "Download Linux Client (.sh)";
             actionBtn.href = "SpookyInitializer.sh";
             actionBtn.setAttribute("download", "SpookyInitializer.sh");
             instructionsBox.style.display = 'block';
-            verifyContainer.style.display = 'block';
+            activationBtnContainer.style.display = 'block';
             instructionSteps.innerHTML = `
-                <li>Open terminal and execute: <code>sudo bash SpookyInitializer.sh</code></li>
-                <li>Return here and click <strong>"Confirm Node Initialized & Enter Gateway"</strong> below.</li>
+                <li>Open your terminal and run: <code>sudo bash SpookyInitializer.sh</code></li>
+                <li>Return here and click <strong>"Activate Node & Enter Sovereign Gateway"</strong> above.</li>
             `;
         } else if (detectedOS === 'ios' || detectedOS === 'android') {
             actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
             actionBtn.href = "#";
             actionBtn.onclick = function(e) { e.preventDefault(); provisionMobileDirect(); };
             instructionsBox.style.display = 'none';
-            verifyContainer.style.display = 'none';
+            activationBtnContainer.style.display = 'none';
         }
 
         async function provisionMobileDirect() {
@@ -335,13 +334,6 @@
                 "Room Tag: <code>" + room + "</code><br>" +
                 (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
                 "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#0b0c10; color:#66fcf1; border:1px solid #66fcf1; padding:5px; width:100%; margin-top:5px;' onclick='this.select()'>";
-        }
-
-        function showStorefrontNotice(storeName) {
-            const notice = document.getElementById('storefront-notice');
-            notice.style.display = 'block';
-            notice.className = 'feedback-panel feedback-success';
-            notice.innerHTML = "Secure tunnel routing initialized for <strong>" + storeName + "</strong>.";
         }
 
         checkSovereignState();
