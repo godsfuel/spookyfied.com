@@ -20,6 +20,8 @@
         .btn-activate:hover { background: #21867a; }
         .btn-subscribe { background: #ffb703; color: #0b0c10; font-size: 17px; }
         .btn-subscribe:hover { background: #f0a500; color: #0b0c10; }
+        .btn-restore { background: #1f2833; color: #66fcf1; border: 1px dashed #66fcf1; font-size: 14px; margin-top: 15px; }
+        .btn-restore:hover { background: #0b0c10; color: #fff; }
         
         .intro-card { background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
         .intro-card h2 { color: #66fcf1; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #45a29e; padding-bottom: 10px; }
@@ -100,6 +102,11 @@
             <!-- Step 2: Activation Button -->
             <div id="activation-btn-container" style="display:none;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
+            </div>
+
+            <!-- Always-available fallback for users switching browsers or clearing cache -->
+            <div>
+                <button onclick="verifyLocalNode()" class="btn btn-restore">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
 
             <!-- Prominent Setup & Security Notice -->
