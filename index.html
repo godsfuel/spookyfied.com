@@ -6,8 +6,8 @@
     <title>Spookifyed.com | Secure Spooky Gateway</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
-        .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
-        .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
+        .header-banner { background-color: #1f2833; padding: 10px 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; }
+        .header-banner img { max-width: 280px; height: auto; display: block; margin: 0 auto; }
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
@@ -65,27 +65,28 @@
 
     <div class="container">
 
-        <!-- INTRO CARD: HOW SPOOKY ANTI-SPY TUNNELING WORKS -->
-        <div class="intro-card">
-            <h2>How Spooky Anti-Spy Tunneling Works</h2>
-            <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
-                Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
-            </p>
-            <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
-                Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
-            </p>
-            <ol>
-                <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
-                <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
-                <li><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
-            </ol>
-            <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
-                No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
-            </p>
-        </div>
-
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
+            
+            <!-- INTRO CARD: Only visible on onboarding screen -->
+            <div class="intro-card">
+                <h2>How Spooky Anti-Spy Tunneling Works</h2>
+                <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                    Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
+                </p>
+                <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                    Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
+                </p>
+                <ol>
+                    <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
+                    <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
+                    <li><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
+                </ol>
+                <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
+                    No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
+                </p>
+            </div>
+
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
@@ -104,7 +105,7 @@
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback for users switching browsers or clearing cache -->
+            <!-- Always-available fallback -->
             <div>
                 <button onclick="verifyLocalNode()" class="btn btn-restore">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
