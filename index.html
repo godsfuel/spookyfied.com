@@ -8,7 +8,7 @@
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
-        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
+        .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
         p { color: #8892b0; line-height: 1.6; }
@@ -19,6 +19,12 @@
         .btn-activate { background: #2a9d8f; color: #ffffff; font-size: 18px; border: 1px solid #66fcf1; box-shadow: 0 0 12px rgba(102, 252, 241, 0.3); }
         .btn-activate:hover { background: #21867a; }
         
+        .intro-card { background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
+        .intro-card h2 { color: #66fcf1; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #45a29e; padding-bottom: 10px; }
+        .intro-card ol { margin: 12px 0 0 20px; padding: 0; }
+        .intro-card li { margin-bottom: 10px; color: #e0e0e0; font-size: 14px; }
+        .intro-card strong { color: #ffb703; }
+
         .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 20px 0; font-family: monospace; font-size: 14px; color: #66fcf1; }
         .telemetry-box div { margin: 8px 0; }
         
@@ -55,6 +61,25 @@
 
     <div class="container">
 
+        <!-- INTRO CARD: HOW SPOOKY ANTI-SPY TUNNELING WORKS -->
+        <div class="intro-card">
+            <h2>How Spooky Anti-Spy Tunneling Works</h2>
+            <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
+            </p>
+            <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
+            </p>
+            <ol>
+                <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% cryptographic anchor. This identity stays locked on your device and is never stored on our servers.</li>
+                <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
+                <li><strong>Seamless Zero-Footprint Restructuring:</strong> When the packet reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
+            </ol>
+            <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
+                No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
+            </p>
+        </div>
+
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Sovereign Node Provisioning</h1>
@@ -65,12 +90,12 @@
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff5555;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Step 1: Initial Download Action Button (Visible first) -->
+            <!-- Step 1: Initial Download Action Button -->
             <div id="single-action-container">
                 <a id="primary-action-btn" href="#" class="btn" onclick="handleClientDownload();">Detecting Terminal Client...</a>
             </div>
 
-            <!-- Step 2: Activation Button (Only replaces download button AFTER download is triggered) -->
+            <!-- Step 2: Activation Button (Replaces download button AFTER click) -->
             <div id="activation-btn-container" style="display:none;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Sovereign Gateway</button>
             </div>
@@ -105,7 +130,7 @@
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
-                        <li><a href="https://bounceairbags.com/tester" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
+                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
                     </ul>
                 </div>
             </div>
@@ -220,7 +245,6 @@
             instructionsBox.style.display = 'none';
         }
 
-        // Handle Download Step: swap button immediately to Activation
         function handleClientDownload() {
             if (detectedOS !== 'ios' && detectedOS !== 'android') {
                 sessionStorage.setItem('client_downloaded', 'true');
@@ -231,7 +255,6 @@
             }
         }
 
-        // Restore download state if page is refreshed before activating
         if (sessionStorage.getItem('client_downloaded') === 'true') {
             singleActionContainer.style.display = 'none';
             activationBtnContainer.style.display = 'block';
