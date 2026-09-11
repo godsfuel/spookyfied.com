@@ -16,6 +16,8 @@
         .btn:hover { background: #45a29e; color: #fff; }
         .btn-secondary { background: #0b0c10; color: #66fcf1; border: 1px solid #66fcf1; }
         .btn-secondary:hover { background: #1f2833; color: #fff; }
+        .btn-confirm { background: #2a9d8f; color: #fff; font-size: 17px; margin-top: 20px; border: 1px solid #66fcf1; }
+        .btn-confirm:hover { background: #21867a; }
         
         .telemetry-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 25px 0; font-family: monospace; font-size: 13px; color: #66fcf1; }
         .telemetry-box div { margin: 8px 0; }
@@ -26,9 +28,9 @@
         
         input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 10px; margin: 10px 0; background: #1f2833; border: 1px solid #45a29e; color: #fff; border-radius: 4px; box-sizing: border-box; }
         
-        .instruction-box { background: #0b0c10; border: 1px solid #45a29e; padding: 15px; border-radius: 6px; margin: 15px 0; font-size: 13px; }
-        .instruction-box ol { margin: 8px 0 0 20px; padding: 0; }
-        .instruction-box li { margin-bottom: 6px; }
+        .instruction-box { background: #0b0c10; border: 1px solid #ffb703; padding: 18px; border-radius: 6px; margin: 20px 0; font-size: 14px; color: #c5c6c7; line-height: 1.5; }
+        .instruction-box ol { margin: 10px 0 0 20px; padding: 0; }
+        .instruction-box li { margin-bottom: 8px; }
         
         .feedback-panel { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; line-height: 1.5; }
         .feedback-success { background: rgba(102, 252, 241, 0.1); border: 1px solid #66fcf1; color: #66fcf1; }
@@ -60,7 +62,7 @@
             
             <div class="telemetry-box">
                 <div>Detected Terminal: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
-                <div>Anchor Status: <span style="color: #ff5555;">No Active Key Found</span></div>
+                <div>Anchor Status: <span style="color: #ff5555;">No Active Key Bound in Session</span></div>
             </div>
 
             <!-- Single Dynamic Action Button -->
@@ -68,17 +70,17 @@
                 <a id="primary-action-btn" href="#" class="btn">Detecting Terminal...</a>
             </div>
 
-            <!-- Dynamic Instructions (Only appears on desktop where files are run) -->
+            <!-- Detailed Instructions Explaining Browser & Windows Prompts -->
             <div id="desktop-instructions" class="instruction-box" style="display:none;">
-                <strong>Quick Setup Instructions:</strong>
+                <strong style="color: #ffb703;">Important Setup & Security Notice:</strong>
                 <ol id="instruction-steps"></ol>
             </div>
 
-            <div id="onboarding-feedback" class="feedback-panel"></div>
-
-            <div id="desktop-verify-container" style="margin-top: 20px; text-align: center; display:none;">
-                <button onclick="verifyLocalNode()" class="btn btn-secondary">I Have Run My Client / Verify Key</button>
+            <div id="desktop-verify-container" style="display:none;">
+                <button onclick="verifyLocalNode()" class="btn btn-confirm">Confirm Node Initialized & Enter Gateway</button>
             </div>
+
+            <div id="onboarding-feedback" class="feedback-panel"></div>
         </div>
 
         <!-- VIEW 2: OPERATIONS MENU -->
@@ -151,8 +153,7 @@
 
     <div class="footer-links">
         <a href="privacy.html">Zero-Retention Privacy Policy</a>
-        <a href="#" onclick="showPolicyNotice(); return false;">Conference Guest Policy</a>
-        <div id="policy-notice" class="feedback-panel" style="display:none; margin-top: 10px;"></div>
+        <a href="support.html">Technical Support</a>
     </div>
 
     <script>
@@ -177,7 +178,6 @@
         document.getElementById('os-name-display').innerText = osDisplayName;
         document.getElementById('os-active-display').innerText = osDisplayName;
 
-        // Configure the Single Adaptive Button
         const actionBtn = document.getElementById('primary-action-btn');
         const instructionsBox = document.getElementById('desktop-instructions');
         const instructionSteps = document.getElementById('instruction-steps');
@@ -190,9 +190,10 @@
             instructionsBox.style.display = 'block';
             verifyContainer.style.display = 'block';
             instructionSteps.innerHTML = `
-                <li>Run <strong>SpookyInitializer.exe</strong> from your downloads folder.</li>
-                <li>If Windows SmartScreen appears, click <strong>More info</strong> then <strong>Run anyway</strong>.</li>
-                <li>Click the verify button below once finished.</li>
+                <li><strong>Browser Warning:</strong> If your browser warns the file is unrecognized or suspicious, click the menu/arrow next to the download and select <em>"Keep"</em> or <em>"Download suspicious file"</em>. (Sovereign skunkworks tools do not carry commercial certificate tags).</li>
+                <li><strong>Windows SmartScreen:</strong> When you open the file, Windows will display a blue warning screen. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
+                <li><strong>Console Execution:</strong> The utility will extract your hardware profile, write your local key to cache, and ask you to press Enter.</li>
+                <li><strong>Enter Gateway:</strong> Return to this page and click the green <strong>"Confirm Node Initialized & Enter Gateway"</strong> button below.</li>
             `;
         } else if (detectedOS === 'mac') {
             actionBtn.innerText = "Download macOS Client (.command)";
@@ -202,8 +203,8 @@
             verifyContainer.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
-                <li>Right-click the file and select <strong>Open</strong> to bypass Gatekeeper.</li>
-                <li>Click the verify button below once finished.</li>
+                <li>Right-click the file in Finder and select <strong>Open</strong> to bypass Gatekeeper.</li>
+                <li>Press Enter in terminal, return here, and click <strong>"Confirm Node Initialized & Enter Gateway"</strong> below.</li>
             `;
         } else if (detectedOS === 'linux') {
             actionBtn.innerText = "Download Linux Client (.sh)";
@@ -213,7 +214,7 @@
             verifyContainer.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open terminal and execute: <code>sudo bash SpookyInitializer.sh</code></li>
-                <li>Click the verify button below once finished.</li>
+                <li>Return here and click <strong>"Confirm Node Initialized & Enter Gateway"</strong> below.</li>
             `;
         } else if (detectedOS === 'ios' || detectedOS === 'android') {
             actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
@@ -223,7 +224,6 @@
             verifyContainer.style.display = 'none';
         }
 
-        // Instant Mobile Cryptographic Anchoring
         async function provisionMobileDirect() {
             const fb = document.getElementById('onboarding-feedback');
             fb.style.display = 'block';
@@ -272,9 +272,9 @@
             const fb = document.getElementById('onboarding-feedback');
             fb.style.display = 'block';
             fb.className = 'feedback-panel feedback-success';
-            fb.innerHTML = "Local Hardware Anchor Verified & Locked: <strong>" + permanentKey + "</strong>. Loading operations menu...";
+            fb.innerHTML = "Local Hardware Anchor Authenticated: <strong>" + permanentKey + "</strong>. Loading Operations Menu...";
             
-            setTimeout(() => { checkSovereignState(); }, 1000);
+            setTimeout(() => { checkSovereignState(); }, 900);
         }
 
         function switchModule(moduleName) {
@@ -342,13 +342,6 @@
             notice.style.display = 'block';
             notice.className = 'feedback-panel feedback-success';
             notice.innerHTML = "Secure tunnel routing initialized for <strong>" + storeName + "</strong>.";
-        }
-
-        function showPolicyNotice() {
-            const notice = document.getElementById('policy-notice');
-            notice.style.display = 'block';
-            notice.className = 'feedback-panel feedback-success';
-            notice.innerHTML = "<strong>Conference Guest Policy:</strong> External participants joining without a key are routed through node provisioning to ensure network integrity.";
         }
 
         checkSovereignState();
