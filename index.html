@@ -6,16 +6,8 @@
     <title>Spookifyed.com | Secure Spooky Gateway</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
-        
-        /* Massive Landing Banner */
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
-
-        /* Compact 1-Inch Web Header for Menu & Module Pages */
-        .compact-header { background-color: #1f2833; padding: 8px 20px; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; }
-        .compact-header img { height: 35px; width: auto; display: block; }
-        .compact-header span { color: #66fcf1; font-weight: bold; font-size: 14px; font-family: monospace; }
-
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
@@ -30,10 +22,8 @@
         .btn-subscribe:hover { background: #f0a500; color: #0b0c10; }
         .btn-restore { background: #1f2833; color: #66fcf1; border: 1px dashed #66fcf1; font-size: 14px; margin-top: 15px; }
         .btn-restore:hover { background: #0b0c10; color: #fff; }
-        .btn-toggle { background: #1f2833; color: #ffb703; border: 1px solid #ffb703; font-size: 15px; margin-bottom: 20px; }
-        .btn-toggle:hover { background: #0b0c10; color: #fff; }
         
-        .intro-card { display: none; background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
+        .intro-card { background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
         .intro-card h2 { color: #66fcf1; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #45a29e; padding-bottom: 10px; }
         .intro-card ol { margin: 12px 0 0 20px; padding: 0; }
         .intro-card li { margin-bottom: 10px; color: #e0e0e0; font-size: 14px; }
@@ -69,42 +59,33 @@
 </head>
 <body>
 
-    <!-- Dynamic Header: Massive on Landing, Compact 1-Inch Bar on Menu/Modules -->
-    <div id="landing-header" class="header-banner">
+    <div class="header-banner">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
-    </div>
-    <div id="menu-header" class="compact-header" style="display:none;">
-        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
-        <span>SECURE SPOOKY GATEWAY</span>
     </div>
 
     <div class="container">
 
+        <!-- INTRO CARD: HOW SPOOKY ANTI-SPY TUNNELING WORKS -->
+        <div class="intro-card">
+            <h2>How Spooky Anti-Spy Tunneling Works</h2>
+            <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
+            </p>
+            <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
+            </p>
+            <ol>
+                <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
+                <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
+                <li><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
+            </ol>
+            <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
+                No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
+            </p>
+        </div>
+
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
-            
-            <!-- Toggle Button for Explaining How Spooky Works -->
-            <button onclick="toggleIntroCard()" class="btn btn-toggle" id="intro-toggle-btn">How Spooky Anti-Spy Tunneling Works (Toggle Info)</button>
-
-            <!-- INTRO CARD: Hidden by default behind button -->
-            <div id="intro-card" class="intro-card">
-                <h2>How Spooky Anti-Spy Tunneling Works</h2>
-                <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
-                    Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
-                </p>
-                <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
-                    Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
-                </p>
-                <ol>
-                    <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
-                    <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
-                    <li><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
-                </ol>
-                <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
-                    No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
-                </p>
-            </div>
-
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
@@ -202,7 +183,7 @@
                 <h3>Spooky Multiparty Group Video Conference</h3>
                 <p>Host a multi-node secure conference room. Provide a room tag and invite participant emails below.</p>
                 <label>Conference Room Tag / Name:</label>
-                <input type="text" id="groupRoomName" value="Spooky-Conference-Room">
+                <input type="text" id="groupRoomName" value="Skunkworks-Alpha-Room">
                 <label>Participant Email Addresses (comma separated):</label>
                 <input type="text" id="groupEmails" placeholder="colleague1@domain.com, colleague2@domain.com">
                 <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Group Video Stream & Generate Invite Link</button>
@@ -283,18 +264,6 @@
             instructionsBox.style.display = 'none';
         }
 
-        function toggleIntroCard() {
-            const card = document.getElementById('intro-card');
-            const btn = document.getElementById('intro-toggle-btn');
-            if (card.style.display === 'block') {
-                card.style.display = 'none';
-                btn.innerText = "How Spooky Anti-Spy Tunneling Works (Toggle Info)";
-            } else {
-                card.style.display = 'block';
-                btn.innerText = "Hide Spooky Tunneling Info";
-            }
-        }
-
         function handleClientDownload() {
             if (detectedOS !== 'ios' && detectedOS !== 'android') {
                 sessionStorage.setItem('client_downloaded', 'true');
@@ -341,14 +310,10 @@
             if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('view-menu').style.display = 'block';
-                document.getElementById('landing-header').style.display = 'none';
-                document.getElementById('menu-header').style.display = 'flex';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
             } else {
                 document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
-                document.getElementById('landing-header').style.display = 'block';
-                document.getElementById('menu-header').style.display = 'none';
             }
         }
 
