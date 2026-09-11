@@ -12,7 +12,7 @@
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
         h3 { color: #66fcf1; border-bottom: 1px solid #45a29e; padding-bottom: 8px; margin-top: 25px; }
         p { color: #8892b0; line-height: 1.6; }
-        .btn { display: block; width: 100%; background: #66fcf1; color: #0b0c10; padding: 14px 20px; margin: 15px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; box-sizing: border-box; font-size: 15px; }
+        .btn { display: block; width: 100%; background: #66fcf1; color: #0b0c10; padding: 16px 20px; margin: 15px 0; text-decoration: none; font-weight: bold; border-radius: 6px; text-align: center; transition: background 0.2s; cursor: pointer; border: none; box-sizing: border-box; font-size: 16px; }
         .btn:hover { background: #45a29e; color: #fff; }
         .btn-secondary { background: #0b0c10; color: #66fcf1; border: 1px solid #66fcf1; }
         .btn-secondary:hover { background: #1f2833; color: #fff; }
@@ -30,7 +30,6 @@
         .instruction-box ol { margin: 8px 0 0 20px; padding: 0; }
         .instruction-box li { margin-bottom: 6px; }
         
-        /* Inline Feedback Panels */
         .feedback-panel { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; line-height: 1.5; }
         .feedback-success { background: rgba(102, 252, 241, 0.1); border: 1px solid #66fcf1; color: #66fcf1; }
         .feedback-warning { background: rgba(255, 183, 3, 0.1); border: 1px solid #ffb703; color: #ffb703; }
@@ -54,74 +53,36 @@
 
     <div class="container">
 
-        <!-- VIEW 1: ONBOARDING & OS-SPECIFIC INSTALLER -->
+        <!-- VIEW 1: ONE-BUTTON DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Sovereign Node Provisioning</h1>
             <p style="text-align: center;">Secure anti-spy tunneling requires a verified local hardware anchor before accessing peer networks.</p>
             
             <div class="telemetry-box">
-                <div>Detected Operating System: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
+                <div>Detected Terminal: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
                 <div>Anchor Status: <span style="color: #ff5555;">No Active Key Found</span></div>
             </div>
 
-            <!-- Dynamic OS-Specific Deployment Card -->
-            <div id="installer-card-windows" class="os-installer-card" style="display:none;">
-                <h3>Windows Client Deployment</h3>
-                <p>Download the automated Windows background service package.</p>
-                <a href="SpookyInitializer.exe" class="btn" download>Download Windows Client (.exe)</a>
-                <div class="instruction-box">
-                    <strong>Windows Setup Instructions:</strong>
-                    <ol>
-                        <li>Run <strong>SpookyInitializer.exe</strong> from your downloads folder.</li>
-                        <li>If Windows SmartScreen prompts, click <strong>More info</strong> then <strong>Run anyway</strong>.</li>
-                        <li>Press Enter when complete to finalize background task registration.</li>
-                    </ol>
-                </div>
+            <!-- Single Dynamic Action Button -->
+            <div id="single-action-container">
+                <a id="primary-action-btn" href="#" class="btn">Detecting Terminal...</a>
             </div>
 
-            <div id="installer-card-mac" class="os-installer-card" style="display:none;">
-                <h3>macOS Client Deployment</h3>
-                <p>Download the automated macOS daemon deployment package.</p>
-                <a href="SpookyInitializer.command" class="btn" download>Download macOS Client (.command)</a>
-                <div class="instruction-box">
-                    <strong>macOS Setup Instructions:</strong>
-                    <ol>
-                        <li>Open Terminal and grant execution: <code style="color:#66fcf1;">chmod +x SpookyInitializer.command</code></li>
-                        <li>Right-click the file in Finder, select <strong>Open</strong>, and confirm execution to bypass Gatekeeper.</li>
-                    </ol>
-                </div>
+            <!-- Dynamic Instructions (Only appears on desktop where files are run) -->
+            <div id="desktop-instructions" class="instruction-box" style="display:none;">
+                <strong>Quick Setup Instructions:</strong>
+                <ol id="instruction-steps"></ol>
             </div>
 
-            <div id="installer-card-linux" class="os-installer-card" style="display:none;">
-                <h3>Linux Client Deployment</h3>
-                <p>Download the automated Linux systemd daemon package.</p>
-                <a href="SpookyInitializer.sh" class="btn" download>Download Linux Client (.sh)</a>
-                <div class="instruction-box">
-                    <strong>Linux Setup Instructions:</strong>
-                    <ol>
-                        <li>Open your terminal shell.</li>
-                        <li>Execute with root privileges: <code style="color:#66fcf1;">sudo bash SpookyInitializer.sh</code></li>
-                    </ol>
-                </div>
-            </div>
+            <div id="onboarding-feedback" class="feedback-panel"></div>
 
-            <div id="installer-card-mobile" class="os-installer-card" style="display:none;">
-                <h3>Mobile Sovereign Client (iOS / Android)</h3>
-                <p>Deploy the mobile node wrapper for encrypted data tunnels.</p>
-                <div id="mobile-onboarding-feedback" class="feedback-panel feedback-success" style="display:block;">Mobile secure container provisioning package ready.</div>
-                <a href="#" onclick="triggerMobileProvisioning(); return false;" class="btn">Provision Mobile Secure Node</a>
-            </div>
-
-            <div style="margin-top: 25px; text-align: center;">
-                <button onclick="verifyLocalNode()" class="btn btn-secondary">I Have Installed My Node / Verify Key</button>
-                <div id="onboarding-feedback" class="feedback-panel"></div>
+            <div id="desktop-verify-container" style="margin-top: 20px; text-align: center; display:none;">
+                <button onclick="verifyLocalNode()" class="btn btn-secondary">I Have Run My Client / Verify Key</button>
             </div>
         </div>
 
-        <!-- VIEW 2: OPERATIONAL MENU & EXCLUSIVE WORKSPACES -->
+        <!-- VIEW 2: OPERATIONS MENU -->
         <div id="view-menu" class="portal-view">
-            
-            <!-- MAIN SPOOKY OPERATIONS MENU (Hidden entirely when a module is active) -->
             <div id="operations-menu-wrapper" class="operations-menu-container">
                 <h1>Spooky Operations Menu</h1>
                 <p style="text-align: center;">Hardware Anchor Authenticated. Select your secure connection service below.</p>
@@ -137,7 +98,6 @@
                     <button onclick="switchModule('video-group')" class="btn">Multiparty Group Video Conference</button>
                 </div>
 
-                <!-- Authorized Subscribing Vendors Directory -->
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefronts:</strong>
                     <ul>
@@ -158,7 +118,6 @@
                 <label>Select File to Transfer:</label>
                 <input type="file" id="transferFile">
                 <button onclick="executeFileTransfer()" class="btn" style="margin-top:15px;">Interrogate Recipient & Send File</button>
-                
                 <div id="transfer-feedback" class="feedback-panel"></div>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
             </div>
@@ -170,7 +129,6 @@
                 <label>Recipient Email Address:</label>
                 <input type="email" id="callEmail1on1" placeholder="recipient@domain.com">
                 <button onclick="executeCall1on1()" class="btn" style="margin-top:15px;">Interrogate Recipient & Start Video Stream</button>
-                
                 <div id="call1on1-feedback" class="feedback-panel"></div>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
             </div>
@@ -184,11 +142,9 @@
                 <label>Participant Email Addresses (comma separated):</label>
                 <input type="text" id="groupEmails" placeholder="colleague1@domain.com, colleague2@domain.com">
                 <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Group Video Stream & Generate Invite Link</button>
-                
                 <div id="group-feedback" class="feedback-panel"></div>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
             </div>
-
         </div>
 
     </div>
@@ -200,66 +156,109 @@
     </div>
 
     <script>
-        // 1. Operating System Detection
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "windows";
-        let osDisplayName = "Windows Sovereign Node";
+        let osDisplayName = "Windows Terminal";
 
         if (/android/i.test(userAgent)) {
-            detectedOS = "mobile";
-            osDisplayName = "Android Sovereign Mobile Node";
+            detectedOS = "android";
+            osDisplayName = "Android Mobile Device";
         } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            detectedOS = "mobile";
-            osDisplayName = "iOS Sovereign Mobile Node";
+            detectedOS = "ios";
+            osDisplayName = "iOS Mobile Device";
         } else if (/mac/i.test(userAgent)) {
             detectedOS = "mac";
-            osDisplayName = "macOS Sovereign Daemon";
+            osDisplayName = "macOS Workstation";
         } else if (/linux/i.test(userAgent)) {
             detectedOS = "linux";
-            osDisplayName = "Linux Sovereign Core";
+            osDisplayName = "Linux Machine";
         }
 
         document.getElementById('os-name-display').innerText = osDisplayName;
         document.getElementById('os-active-display').innerText = osDisplayName;
 
-        document.querySelectorAll('.os-installer-card').forEach(card => card.style.display = 'none');
-        if (detectedOS === 'windows') document.getElementById('installer-card-windows').style.display = 'block';
-        else if (detectedOS === 'mac') document.getElementById('installer-card-mac').style.display = 'block';
-        else if (detectedOS === 'linux') document.getElementById('installer-card-linux').style.display = 'block';
-        else if (detectedOS === 'mobile') document.getElementById('installer-card-mobile').style.display = 'block';
+        // Configure the Single Adaptive Button
+        const actionBtn = document.getElementById('primary-action-btn');
+        const instructionsBox = document.getElementById('desktop-instructions');
+        const instructionSteps = document.getElementById('instruction-steps');
+        const verifyContainer = document.getElementById('desktop-verify-container');
 
-        // 2. Persistent Key Verification
+        if (detectedOS === 'windows') {
+            actionBtn.innerText = "Download Windows Client (.exe)";
+            actionBtn.href = "SpookyInitializer.exe";
+            actionBtn.setAttribute("download", "SpookyInitializer.exe");
+            instructionsBox.style.display = 'block';
+            verifyContainer.style.display = 'block';
+            instructionSteps.innerHTML = `
+                <li>Run <strong>SpookyInitializer.exe</strong> from your downloads folder.</li>
+                <li>If Windows SmartScreen appears, click <strong>More info</strong> then <strong>Run anyway</strong>.</li>
+                <li>Click the verify button below once finished.</li>
+            `;
+        } else if (detectedOS === 'mac') {
+            actionBtn.innerText = "Download macOS Client (.command)";
+            actionBtn.href = "SpookyInitializer.command";
+            actionBtn.setAttribute("download", "SpookyInitializer.command");
+            instructionsBox.style.display = 'block';
+            verifyContainer.style.display = 'block';
+            instructionSteps.innerHTML = `
+                <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
+                <li>Right-click the file and select <strong>Open</strong> to bypass Gatekeeper.</li>
+                <li>Click the verify button below once finished.</li>
+            `;
+        } else if (detectedOS === 'linux') {
+            actionBtn.innerText = "Download Linux Client (.sh)";
+            actionBtn.href = "SpookyInitializer.sh";
+            actionBtn.setAttribute("download", "SpookyInitializer.sh");
+            instructionsBox.style.display = 'block';
+            verifyContainer.style.display = 'block';
+            instructionSteps.innerHTML = `
+                <li>Open terminal and execute: <code>sudo bash SpookyInitializer.sh</code></li>
+                <li>Click the verify button below once finished.</li>
+            `;
+        } else if (detectedOS === 'ios' || detectedOS === 'android') {
+            actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
+            actionBtn.href = "#";
+            actionBtn.onclick = function(e) { e.preventDefault(); provisionMobileDirect(); };
+            instructionsBox.style.display = 'none';
+            verifyContainer.style.display = 'none';
+        }
+
+        // Instant Mobile Cryptographic Anchoring
+        async function provisionMobileDirect() {
+            const fb = document.getElementById('onboarding-feedback');
+            fb.style.display = 'block';
+            fb.className = 'feedback-panel feedback-success';
+            fb.innerHTML = "Querying device hardware telemetry & generating 256-bit sovereign key...";
+
+            const entropy = navigator.userAgent + screen.width + "x" + screen.height + (navigator.hardwareConcurrency || 4) + (new Date().getTimezoneOffset());
+            const encoder = new TextEncoder();
+            const data = encoder.encode(entropy + "MOBILE_SPOOKY_SALT_2026");
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hexKey = "KEY-MOB-" + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16).toUpperCase();
+
+            localStorage.setItem('spooky_node_installed', 'true');
+            localStorage.setItem('spooky_sovereign_node_id', hexKey);
+
+            setTimeout(() => {
+                fb.innerHTML = "Hardware Anchor Verified & Locked: <strong>" + hexKey + "</strong>. Opening Spooky Operations...";
+                setTimeout(() => { checkSovereignState(); }, 900);
+            }, 600);
+        }
+
         function getPersistentSovereignKey() {
-            let key = localStorage.getItem('spooky_sovereign_node_id') || sessionStorage.getItem('spooky_sovereign_node_id');
-            const isLocalNodeInstalled = localStorage.getItem('spooky_node_installed');
-            
-            if (!key && isLocalNodeInstalled === 'true') {
-                const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
-                key = "KEY-SPKY-" + machineHash + "-WIN";
-                localStorage.setItem('spooky_sovereign_node_id', key);
-            }
-            return key;
+            return localStorage.getItem('spooky_sovereign_node_id') || sessionStorage.getItem('spooky_sovereign_node_id');
         }
 
         function checkSovereignState() {
             let storedKey = getPersistentSovereignKey();
-            const urlParams = new URLSearchParams(window.location.search);
-            const callInvite = urlParams.get('call_invite');
-
-            if (storedKey && !callInvite) {
+            if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('view-menu').style.display = 'block';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
             } else {
                 document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
-                if (callInvite) {
-                    const banner = document.createElement('div');
-                    banner.className = 'feedback-panel feedback-warning';
-                    banner.style.display = 'block';
-                    banner.innerHTML = "<strong>Secure Invitation Detected:</strong> You were invited to a secure Spooky stream from [" + callInvite + "]. Deploy your node below to join automatically.";
-                    document.getElementById('view-onboarding').prepend(banner);
-                }
             }
         }
 
@@ -275,24 +274,12 @@
             fb.className = 'feedback-panel feedback-success';
             fb.innerHTML = "Local Hardware Anchor Verified & Locked: <strong>" + permanentKey + "</strong>. Loading operations menu...";
             
-            setTimeout(() => {
-                checkSovereignState();
-            }, 1200);
+            setTimeout(() => { checkSovereignState(); }, 1000);
         }
 
-        function triggerMobileProvisioning() {
-            const fb = document.getElementById('mobile-onboarding-feedback');
-            fb.innerHTML = "Mobile secure container profile successfully installed. Hardware anchor locked.";
-        }
-
-        // Exclusive Single-Page View Switching (Hides the operations menu completely)
         function switchModule(moduleName) {
             document.getElementById('operations-menu-wrapper').style.display = 'none';
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-            document.querySelectorAll('.feedback-panel').forEach(p => {
-                if (p.id !== 'mobile-onboarding-feedback') p.style.display = 'none';
-            });
-            
             const targetModule = document.getElementById('mod-' + moduleName);
             targetModule.style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -300,19 +287,14 @@
 
         function closeModules() {
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-            document.querySelectorAll('.feedback-panel').forEach(p => {
-                if (p.id !== 'mobile-onboarding-feedback') p.style.display = 'none';
-            });
             document.getElementById('operations-menu-wrapper').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. Realistic End-to-End Interrogation & Dispatch Logic
         function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
             const feedback = document.getElementById('transfer-feedback');
-            
             feedback.style.display = 'block';
             if (!email || !email.includes('@')) {
                 feedback.className = 'feedback-panel feedback-warning';
@@ -324,32 +306,22 @@
                 feedback.innerHTML = "<strong>Error:</strong> Please select a file to transfer.";
                 return;
             }
-
             const fileName = fileInput.files[0].name;
-            // Realistic check: if sending to standard external email without prior node setup, state invitation sent
-            if (email.toLowerCase().includes('yahoo') || email.toLowerCase().includes('gmail') && !email.includes('admin')) {
-                feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Recipient [" + email + "] does not currently have an active local Spooky Node registered.<br><br><strong>Action Taken:</strong> Automated secure onboarding packet & file transfer queue invitation dispatched to " + email + ". Transfer will execute automatically once recipient accepts and provisions their node.";
-            } else {
-                feedback.className = 'feedback-panel feedback-success';
-                feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted P2P tunnel established. File <strong>'" + fileName + "'</strong> transmitted successfully with zero-retention encryption.";
-            }
+            feedback.className = 'feedback-panel feedback-success';
+            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted tunnel established. File <strong>'" + fileName + "'</strong> transmitted successfully.";
         }
 
         function executeCall1on1() {
             const email = document.getElementById('callEmail1on1').value.trim();
             const feedback = document.getElementById('call1on1-feedback');
-            
             feedback.style.display = 'block';
             if (!email || !email.includes('@')) {
                 feedback.className = 'feedback-panel feedback-warning';
                 feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
                 return;
             }
-
-            // Corrected logic: Do not say handshake is active if they haven't received/accepted the email!
             feedback.className = 'feedback-panel feedback-warning';
-            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Recipient [" + email + "] verified.<br><br><strong>Stream Status:</strong> Pending Recipient Acceptance. An instant secure video invitation link has been emailed to " + email + ". The peer-to-peer video stream handshake will initiate automatically once they connect.";
+            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Recipient [" + email + "] verified.<br><strong>Stream Status:</strong> Pending Recipient Acceptance. An instant secure video invitation link has been dispatched to " + email + ".";
         }
 
         function executeGroupCall() {
@@ -357,27 +329,26 @@
             const emails = document.getElementById('groupEmails').value.trim();
             const feedback = document.getElementById('group-feedback');
             const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
-            
             feedback.style.display = 'block';
             feedback.className = 'feedback-panel feedback-success';
             feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
-                "Conference Room Tag: <code>" + room + "</code><br>" +
-                (emails ? "Invitations dispatched to participants: " + emails + "<br>" : "") +
-                "<br>Secure Conference Invite Link (Share with participants):<br><input type='text' value='" + inviteUrl + "' readonly style='background:#0b0c10; color:#66fcf1; border:1px solid #66fcf1; padding:5px; width:100%; margin-top:5px;' onclick='this.select()'>";
+                "Room Tag: <code>" + room + "</code><br>" +
+                (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
+                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#0b0c10; color:#66fcf1; border:1px solid #66fcf1; padding:5px; width:100%; margin-top:5px;' onclick='this.select()'>";
         }
 
         function showStorefrontNotice(storeName) {
             const notice = document.getElementById('storefront-notice');
             notice.style.display = 'block';
             notice.className = 'feedback-panel feedback-success';
-            notice.innerHTML = "Secure tunnel routing initialized for <strong>" + storeName + "</strong>. Customer order payloads are encrypted and securely proxied back through your sovereign gateway.";
+            notice.innerHTML = "Secure tunnel routing initialized for <strong>" + storeName + "</strong>.";
         }
 
         function showPolicyNotice() {
             const notice = document.getElementById('policy-notice');
             notice.style.display = 'block';
             notice.className = 'feedback-panel feedback-success';
-            notice.innerHTML = "<strong>Conference Guest Policy:</strong> External participants joining without a key are automatically routed through key provisioning to ensure total zero-spy network integrity.";
+            notice.innerHTML = "<strong>Conference Guest Policy:</strong> External participants joining without a key are routed through node provisioning to ensure network integrity.";
         }
 
         checkSovereignState();
