@@ -55,7 +55,7 @@
 
     <div class="container">
 
-        <!-- VIEW 1: ONE-BUTTON DYNAMIC ONBOARDING -->
+        <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Sovereign Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
@@ -65,14 +65,14 @@
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff5555;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Activation / Entrance Button (Prominent near top telemetry) -->
-            <div id="activation-btn-container" style="display:none;">
-                <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Sovereign Gateway</button>
+            <!-- Step 1: Initial Download Action Button (Visible first) -->
+            <div id="single-action-container">
+                <a id="primary-action-btn" href="#" class="btn" onclick="handleClientDownload();">Detecting Terminal Client...</a>
             </div>
 
-            <!-- Primary Client Download Action Button -->
-            <div id="single-action-container">
-                <a id="primary-action-btn" href="#" class="btn">Detecting Terminal Client...</a>
+            <!-- Step 2: Activation Button (Only replaces download button AFTER download is triggered) -->
+            <div id="activation-btn-container" style="display:none;">
+                <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Sovereign Gateway</button>
             </div>
 
             <!-- Prominent Setup & Security Notice -->
@@ -180,6 +180,7 @@
         const actionBtn = document.getElementById('primary-action-btn');
         const instructionsBox = document.getElementById('desktop-instructions');
         const instructionSteps = document.getElementById('instruction-steps');
+        const singleActionContainer = document.getElementById('single-action-container');
         const activationBtnContainer = document.getElementById('activation-btn-container');
 
         if (detectedOS === 'windows') {
@@ -187,40 +188,53 @@
             actionBtn.href = "SpookyInitializer.exe";
             actionBtn.setAttribute("download", "SpookyInitializer.exe");
             instructionsBox.style.display = 'block';
-            activationBtnContainer.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
                 <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
                 <li><strong>Node Execution:</strong> The DOS console will extract your hardware components, bind your cryptographic seed to local system cache, and ask you to press Enter for final cleanup.</li>
-                <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Sovereign Gateway"</strong> button above.</li>
+                <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Sovereign Gateway"</strong> button.</li>
             `;
         } else if (detectedOS === 'mac') {
             actionBtn.innerText = "Download macOS Client (.command)";
             actionBtn.href = "SpookyInitializer.command";
             actionBtn.setAttribute("download", "SpookyInitializer.command");
             instructionsBox.style.display = 'block';
-            activationBtnContainer.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
                 <li>Right-click the file in Finder and select <strong>Open</strong> to bypass Gatekeeper.</li>
-                <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Sovereign Gateway"</strong> above.</li>
+                <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Sovereign Gateway"</strong>.</li>
             `;
         } else if (detectedOS === 'linux') {
             actionBtn.innerText = "Download Linux Client (.sh)";
             actionBtn.href = "SpookyInitializer.sh";
             actionBtn.setAttribute("download", "SpookyInitializer.sh");
             instructionsBox.style.display = 'block';
-            activationBtnContainer.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open your terminal and run: <code>sudo bash SpookyInitializer.sh</code></li>
-                <li>Return here and click <strong>"Activate Node & Enter Sovereign Gateway"</strong> above.</li>
+                <li>Return here and click <strong>"Activate Node & Enter Sovereign Gateway"</strong>.</li>
             `;
         } else if (detectedOS === 'ios' || detectedOS === 'android') {
             actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
             actionBtn.href = "#";
             actionBtn.onclick = function(e) { e.preventDefault(); provisionMobileDirect(); };
             instructionsBox.style.display = 'none';
-            activationBtnContainer.style.display = 'none';
+        }
+
+        // Handle Download Step: swap button immediately to Activation
+        function handleClientDownload() {
+            if (detectedOS !== 'ios' && detectedOS !== 'android') {
+                sessionStorage.setItem('client_downloaded', 'true');
+                setTimeout(() => {
+                    singleActionContainer.style.display = 'none';
+                    activationBtnContainer.style.display = 'block';
+                }, 300);
+            }
+        }
+
+        // Restore download state if page is refreshed before activating
+        if (sessionStorage.getItem('client_downloaded') === 'true') {
+            singleActionContainer.style.display = 'none';
+            activationBtnContainer.style.display = 'block';
         }
 
         async function provisionMobileDirect() {
@@ -267,6 +281,7 @@
             
             localStorage.setItem('spooky_node_installed', 'true');
             localStorage.setItem('spooky_sovereign_node_id', permanentKey);
+            sessionStorage.removeItem('client_downloaded');
             
             const fb = document.getElementById('onboarding-feedback');
             fb.style.display = 'block';
