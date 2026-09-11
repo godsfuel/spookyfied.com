@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spookifyed.com | Secure Sovereign Gateway</title>
+    <title>Spookifyed.com | Secure Spooky Gateway</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
@@ -18,6 +18,8 @@
         .btn-secondary:hover { background: #1f2833; color: #fff; }
         .btn-activate { background: #2a9d8f; color: #ffffff; font-size: 18px; border: 1px solid #66fcf1; box-shadow: 0 0 12px rgba(102, 252, 241, 0.3); }
         .btn-activate:hover { background: #21867a; }
+        .btn-subscribe { background: #ffb703; color: #0b0c10; font-size: 17px; }
+        .btn-subscribe:hover { background: #f0a500; color: #0b0c10; }
         
         .intro-card { background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
         .intro-card h2 { color: #66fcf1; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #45a29e; padding-bottom: 10px; }
@@ -71,7 +73,7 @@
                 Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
             </p>
             <ol>
-                <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a <strong>stateless, zero-knowledge architecture</strong>.</li>
+                <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
                 <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
                 <li><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
             </ol>
@@ -82,7 +84,7 @@
 
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
-            <h1>Sovereign Node Provisioning</h1>
+            <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
             <div class="telemetry-box">
@@ -95,9 +97,9 @@
                 <a id="primary-action-btn" href="#" class="btn" onclick="handleClientDownload();">Detecting Terminal Client...</a>
             </div>
 
-            <!-- Step 2: Activation Button (Replaces download button AFTER click) -->
+            <!-- Step 2: Activation Button -->
             <div id="activation-btn-container" style="display:none;">
-                <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Sovereign Gateway</button>
+                <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
             <!-- Prominent Setup & Security Notice -->
@@ -113,17 +115,27 @@
         <div id="view-menu" class="portal-view">
             <div id="operations-menu-wrapper" class="operations-menu-container">
                 <h1>Spooky Operations Menu</h1>
-                <p style="text-align: center;">Hardware Anchor Authenticated. Sovereign Gateway Active.</p>
+                <p style="text-align: center;">Hardware Anchor Authenticated. Spooky Gateway Active.</p>
                 
                 <div class="telemetry-box">
                     <div>Terminal Architecture: <span id="os-active-display" style="color: #66fcf1;">Active Node</span></div>
-                    <div>Sovereign Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
+                    <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
                     <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
+                </div>
+
+                <!-- Spooky Access Tiers & Billing Section -->
+                <div style="background: #0b0c10; border: 1px solid #ffb703; padding: 20px; border-radius: 6px; margin-top: 25px;">
+                    <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703;">Spooky Access Tiers & Subscriptions</h3>
+                    <p style="font-size: 13px; color: #c5c6c7;">Choose your billing schedule to maintain continuous unthrottled node transmission priority.</p>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <a href="https://buy.stripe.com/your_monthly_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; margin:0; text-align:center;">Monthly Plan ($19/mo)</a>
+                        <a href="https://buy.stripe.com/your_annual_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; margin:0; text-align:center;">Annual Plan ($190/yr - Save 16%)</a>
+                    </div>
                 </div>
 
                 <!-- Verified Subscribing Storefronts Directory -->
@@ -217,7 +229,7 @@
                 <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
                 <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
                 <li><strong>Node Execution:</strong> The DOS console will extract your hardware components, bind your cryptographic seed to local system cache, and ask you to press Enter for final cleanup.</li>
-                <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Sovereign Gateway"</strong> button.</li>
+                <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Spooky Gateway"</strong> button.</li>
             `;
         } else if (detectedOS === 'mac') {
             actionBtn.innerText = "Download macOS Client (.command)";
@@ -227,7 +239,7 @@
             instructionSteps.innerHTML = `
                 <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
                 <li>Right-click the file in Finder and select <strong>Open</strong> to bypass Gatekeeper.</li>
-                <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Sovereign Gateway"</strong>.</li>
+                <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Spooky Gateway"</strong>.</li>
             `;
         } else if (detectedOS === 'linux') {
             actionBtn.innerText = "Download Linux Client (.sh)";
@@ -236,7 +248,7 @@
             instructionsBox.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open your terminal and run: <code>sudo bash SpookyInitializer.sh</code></li>
-                <li>Return here and click <strong>"Activate Node & Enter Sovereign Gateway"</strong>.</li>
+                <li>Return here and click <strong>"Activate Node & Enter Spooky Gateway"</strong>.</li>
             `;
         } else if (detectedOS === 'ios' || detectedOS === 'android') {
             actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
@@ -264,7 +276,7 @@
             const fb = document.getElementById('onboarding-feedback');
             fb.style.display = 'block';
             fb.className = 'feedback-panel feedback-success';
-            fb.innerHTML = "Querying device hardware telemetry & generating 256-bit sovereign key...";
+            fb.innerHTML = "Querying device hardware telemetry & generating 256-bit Spooky key...";
 
             const entropy = navigator.userAgent + screen.width + "x" + screen.height + (navigator.hardwareConcurrency || 4) + (new Date().getTimezoneOffset());
             const encoder = new TextEncoder();
@@ -362,7 +374,7 @@
         }
 
         function executeGroupCall() {
-            const room = document.getElementById('groupRoomName').value.trim() || "Sovereign-Conference-Room";
+            const room = document.getElementById('groupRoomName').value.trim() || "Spooky-Conference-Room";
             const emails = document.getElementById('groupEmails').value.trim();
             const feedback = document.getElementById('group-feedback');
             const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
