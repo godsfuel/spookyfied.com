@@ -7,16 +7,33 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
         
-        /* Massive Landing Banner (Front Page Only) */
+        /* Full-Size Landing Banner (Stays visible on Home Page at all times) */
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
-        /* Compact 1-Inch Web Banner (Menu & Module Pages) */
-        .compact-header { background-color: #0b0c10; padding: 10px 20px; border-bottom: 2px solid #66fcf1; width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(102, 252, 241, 0.15); }
-        .compact-header-left { display: flex; align-items: center; gap: 10px; }
-        .compact-dot { width: 12px; height: 12px; background-color: #66fcf1; border-radius: 50%; box-shadow: 0 0 8px #66fcf1, 0 0 16px #45a29e; }
-        .compact-title { color: #ffffff; font-family: monospace; font-size: 15px; font-weight: bold; letter-spacing: 2px; }
-        .compact-badge { color: #66fcf1; font-family: monospace; font-size: 11px; letter-spacing: 1px; border: 1px solid #45a29e; padding: 3px 8px; border-radius: 4px; background: rgba(31, 40, 51, 0.6); }
+        /* Custom Logo Banner for Interior Module Pages (Using SPOOKY_Logo.png cropped gracefully) */
+        .module-header { 
+            background: url('SPOOKY_Logo.png') no-repeat center center; 
+            background-size: cover;
+            height: 110px; 
+            width: 100%; 
+            border-bottom: 3px solid #66fcf1; 
+            box-sizing: border-box; 
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+        }
+        .module-header-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 12, 16, 0.65);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+        .module-header-title { color: #66fcf1; font-family: monospace; font-size: 18px; font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .module-header-badge { color: #ffb703; font-family: monospace; font-size: 12px; letter-spacing: 1px; border: 1px solid #ffb703; padding: 4px 10px; border-radius: 4px; background: rgba(11, 12, 16, 0.85); }
 
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
@@ -69,16 +86,17 @@
 </head>
 <body>
 
-    <!-- Dynamic Headers: Massive Logo on Front Page, 1-Inch Cyber Banner on Menu/Modules -->
-    <div id="landing-header" class="header-banner">
+    <!-- Full-Size Landing Banner (Stays visible on Home Page at all times) -->
+    <div class="header-banner">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
     </div>
-    <div id="menu-header" class="compact-header" style="display:none;">
-        <div class="compact-header-left">
-            <div class="compact-dot"></div>
-            <span class="compact-title">SPOOKY<span style="color: #66fcf1;">.</span>SYS</span>
+
+    <!-- Custom Logo-Based Banner for Interior Module Pages -->
+    <div id="module-banner" class="module-header" style="display:none;">
+        <div class="module-header-overlay">
+            <span class="module-header-title">SPOOKY OPERATIONS PORTAL</span>
+            <span class="module-header-badge">SECURE TUNNEL ACTIVE</span>
         </div>
-        <div class="compact-badge">SECURE TUNNEL ACTIVE</div>
     </div>
 
     <div class="container">
@@ -128,7 +146,7 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Operations Menu Buttons (Including 4th How Spooky Works Button) -->
+                <!-- Operations Menu Buttons (4th Button is How Spooky Works) -->
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
@@ -263,7 +281,7 @@
             `;
         } else if (detectedOS === 'mac') {
             actionBtn.innerText = "Download macOS Client (.command)";
-            actionBtn.href = "SpookyInitializer.command";
+            actionBtn.href = "SpoureakingInitializer.command";
             actionBtn.setAttribute("download", "SpookyInitializer.command");
             instructionsBox.style.display = 'block';
             instructionSteps.innerHTML = `
@@ -333,14 +351,10 @@
             if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('view-menu').style.display = 'block';
-                document.getElementById('landing-header').style.display = 'none';
-                document.getElementById('menu-header').style.display = 'flex';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
             } else {
                 document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
-                document.getElementById('landing-header').style.display = 'block';
-                document.getElementById('menu-header').style.display = 'none';
             }
         }
 
@@ -365,12 +379,16 @@
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
             const targetModule = document.getElementById('mod-' + moduleName);
             targetModule.style.display = 'block';
+            document.querySelector('.header-banner').style.display = 'none';
+            document.getElementById('module-banner').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function closeModules() {
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
             document.getElementById('operations-menu-wrapper').style.display = 'block';
+            document.getElementById('module-banner').style.display = 'none';
+            document.querySelector('.header-banner').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -411,13 +429,12 @@
             const room = document.getElementById('groupRoomName').value.trim() || "Spooky-Conference-Room";
             const emails = document.getElementById('groupEmails').value.trim();
             const feedback = document.getElementById('group-feedback');
-            const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
             feedback.style.display = 'block';
             feedback.className = 'feedback-panel feedback-success';
             feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
                 "Room Tag: <code>" + room + "</code><br>" +
                 (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
-                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#0b0c10; color:#66fcf1; border:1px solid #66fcf1; padding:5px; width:100%; margin-top:5px;' onclick='this.select()'>";
+                "<br>Invite Link:<br><input type='text' value='https://spookifyed.com/?call_invite=" + encodeURIComponent(room) + "' readonly style='background:#0b0c10; color:#66fcf1; border:1px solid #66fcf1; padding:5px; width:100%; margin-top:5px;' onclick='this.select()'>";
         }
 
         checkSovereignState();
