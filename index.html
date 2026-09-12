@@ -15,8 +15,8 @@
 
         .container { max-width: 840px; margin: 40px auto; padding: 40px; background: #12141c; border-radius: 14px; border: 1px solid #3b4252; box-shadow: 0 15px 40px rgba(0,0,0,0.9); box-sizing: border-box; text-align: center; }
         
-        /* Standardized, Centered, Commandingly Scaled Headings */
-        h1 { color: #e0aaff; font-size: 32px; margin-top: 0; letter-spacing: 0.8px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.3; }
+        /* Edge-to-edge scaled heading rule */
+        h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; white-space: nowrap; }
         h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 24px; width: 100%; text-align: center; letter-spacing: 0.5px; }
         p { color: #94a3b8; line-height: 1.6; font-size: 18px; }
 
@@ -174,8 +174,8 @@
 
             <!-- MODULE 1: FILE TRANSFER -->
             <div id="mod-file-transfer" class="active-module">
-                <h3>Spooky Secure Peer-to-Peer File Transfer Portal</h3>
-                <p>Enter the recipient's email address. Spooky interrogates their node status instantly.</p>
+                <h1>Spooky Secure Peer-to-Peer File Transfer Portal</h1>
+                <p style="text-align:center;">Enter the recipient's email address. Spooky interrogates their node status instantly.</p>
                 <label>Recipient Email Address:</label>
                 <input type="email" id="transferEmail" placeholder="recipient@domain.com">
                 <label>Select File to Transfer:</label>
@@ -191,8 +191,8 @@
 
             <!-- MODULE 2: ONE-ON-ONE VIDEO -->
             <div id="mod-video-1on1" class="active-module">
-                <h3>Spooky One-on-One Peer Video Conference</h3>
-                <p>Enter your colleague's email address to establish a zero-retention encrypted video link.</p>
+                <h1>Spooky One-on-One Peer Video Conference</h1>
+                <p style="text-align:center;">Enter your colleague's email address to establish a zero-retention encrypted video link.</p>
                 <label>Recipient Email Address:</label>
                 <input type="email" id="callEmail1on1" placeholder="recipient@domain.com">
                 <div style="text-align: center;">
@@ -206,8 +206,8 @@
 
             <!-- MODULE 3: GROUP VIDEO -->
             <div id="mod-video-group" class="active-module">
-                <h3>Spooky Multiparty Group Video Conference</h3>
-                <p>Host a multi-node secure conference room. Provide a room tag and invite participant emails below.</p>
+                <h1>Spooky Multiparty Group Video Conference</h1>
+                <p style="text-align:center;">Host a multi-node secure conference room. Provide a room tag and invite participant emails below.</p>
                 <label>Conference Room Tag / Name:</label>
                 <input type="text" id="groupRoomName" value="Spooky-Conference-Room">
                 <label>Participant Email Addresses (comma separated):</label>
@@ -225,8 +225,8 @@
         <!-- STANDALONE MODULE: HOW SPOOKY WORKS -->
         <div id="mod-how-it-works" class="active-module">
             <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
-                <h2>How Spooky Anti-Spy Tunneling Works</h2>
-                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
+                <h1>How Spooky Anti-Spy Tunneling Works</h1>
+                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px; text-align: center;">
                     Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
                 </p>
                 <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
