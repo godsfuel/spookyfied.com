@@ -13,7 +13,7 @@
 
         /* Proportional Logo Banner for Interior Module Pages Only */
         .module-header { 
-            background: url('SPOOKY_Logo.png') no-repeat center center; 
+            background: url('SPOOKY_Logo.png') no-repeat center 35%; 
             background-size: cover; 
             background-color: #0b0c10;
             height: 140px; 
@@ -26,15 +26,27 @@
         .module-header-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(11, 12, 16, 0.4);
+            background: rgba(11, 12, 16, 0.25);
             display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            padding: 12px 30px;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 45px;
             box-sizing: border-box;
         }
-        .module-header-title { color: #66fcf1; font-family: monospace; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.9); }
-        .module-header-badge { color: #ffb703; font-family: monospace; font-size: 11px; letter-spacing: 1px; border: 1px solid #ffb703; padding: 3px 8px; border-radius: 4px; background: rgba(11, 12, 16, 0.9); }
+        .module-header-badge { 
+            color: #ff4444; 
+            font-family: monospace; 
+            font-size: 11px; 
+            font-weight: bold;
+            line-height: 1.3;
+            letter-spacing: 1px; 
+            text-align: right;
+            border: 1px solid rgba(255, 68, 68, 0.4); 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            background: rgba(11, 12, 16, 0.85); 
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+        }
 
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
@@ -95,7 +107,9 @@
     <!-- Proportional Logo Banner for Interior Module Pages Only -->
     <div id="module-banner" class="module-header" style="display:none;">
         <div class="module-header-overlay">
-            <span class="module-header-badge">SECURE TUNNEL ACTIVE</span>
+            <div class="module-header-badge">
+                Secure<br>Tunnel<br>Active
+            </div>
         </div>
     </div>
 
