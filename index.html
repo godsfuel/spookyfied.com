@@ -90,15 +90,32 @@
     <div class="header-banner">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
     </div>
-
-    <!-- Custom Logo-Based Banner for Interior Module Pages -->
-    <div id="module-banner" class="module-header" style="display:none;">
-        <div class="module-header-overlay">
-            <span class="module-header-title">SPOOKY OPERATIONS PORTAL</span>
-            <span class="module-header-badge">SECURE TUNNEL ACTIVE</span>
-        </div>
-    </div>
-
+	
+/* Proportional Logo Banner for Interior Module Pages */
+        .module-header { 
+            background: url('SPOOKY_Logo.png') no-repeat center center; 
+            background-size: contain; 
+            background-color: #0b0c10;
+            height: 140px; 
+            width: 100%; 
+            border-bottom: 3px solid #66fcf1; 
+            box-sizing: border-box; 
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+        }
+        .module-header-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 12, 16, 0.4); /* Lighter tint so the full logo pops clearly */
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 12px 30px;
+            box-sizing: border-box;
+        }
+        .module-header-title { color: #66fcf1; font-family: monospace; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.9); }
+        .module-header-badge { color: #ffb703; font-family: monospace; font-size: 11px; letter-spacing: 1px; border: 1px solid #ffb703; padding: 3px 8px; border-radius: 4px; background: rgba(11, 12, 16, 0.9); }
+		
     <div class="container">
 
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
