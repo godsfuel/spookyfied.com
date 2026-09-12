@@ -7,35 +7,9 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
         
-        /* Massive Landing Banner (Front Page Only)[cite: 5] */
+        /* Massive Landing Banner (Remains full-size and visible at all times) */
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
-
-        /* Inner Page Cyber Banner (Made slightly taller via vertical padding)[cite: 5] */
-        .compact-header { 
-            background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%); 
-            padding: 20px 25px; 
-            border-bottom: 2px solid #66fcf1; 
-            width: 100%; 
-            box-sizing: border-box; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            box-shadow: 0 0 20px rgba(102, 252, 241, 0.2);
-        }
-        .cyber-logo-area { display: flex; align-items: center; gap: 12px; }
-        .cyber-radar-ring { 
-            width: 16px; height: 16px; border: 2px solid #66fcf1; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 0 10px #66fcf1;
-        }
-        .cyber-radar-core { width: 6px; height: 6px; background-color: #ffb703; border-radius: 50%; }
-        .cyber-brand-text { color: #ffffff; font-family: monospace; font-size: 16px; font-weight: bold; letter-spacing: 3px; }
-        .cyber-telemetry-badge { 
-            color: #ffb703; font-family: monospace; font-size: 11px; letter-spacing: 1.5px; 
-            border: 1px solid #ffb703; padding: 4px 10px; border-radius: 3px; background: rgba(11, 12, 16, 0.8);
-            box-shadow: inset 0 0 8px rgba(255, 183, 3, 0.2);
-        }
 
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
@@ -88,23 +62,14 @@
 </head>
 <body>
 
-    <!-- Dynamic Headers: Massive Logo on Landing, New Cool Cyber Banner on Menu/Modules[cite: 5] -->
-    <div id="landing-header" class="header-banner">
+    <!-- Full-Size Landing Banner (Stays visible on Home Page at all times) -->
+    <div class="header-banner">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
-    </div>
-    <div id="menu-header" class="compact-header" style="display:none;">
-        <div class="cyber-logo-area">
-            <div class="cyber-radar-ring">
-                <div class="cyber-radar-core"></div>
-            </div>
-            <span class="cyber-brand-text">SPOOKY<span style="color: #66fcf1;">.</span>CORE</span>
-        </div>
-        <div class="cyber-telemetry-badge">SECURE TUNNEL: ONLINE</div>
     </div>
 
     <div class="container">
 
-        <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING[cite: 5] -->
+        <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
@@ -114,22 +79,22 @@
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff5555;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Step 1: Initial Download Action Button[cite: 5] -->
+            <!-- Step 1: Initial Download Action Button -->
             <div id="single-action-container">
                 <a id="primary-action-btn" href="#" class="btn" onclick="handleClientDownload();">Detecting Terminal Client...</a>
             </div>
 
-            <!-- Step 2: Activation Button[cite: 5] -->
+            <!-- Step 2: Activation Button -->
             <div id="activation-btn-container" style="display:none;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback[cite: 5] -->
+            <!-- Always-available fallback -->
             <div>
                 <button onclick="verifyLocalNode()" class="btn btn-restore">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
 
-            <!-- Prominent Setup & Security Notice[cite: 5] -->
+            <!-- Prominent Setup & Security Notice -->
             <div id="desktop-instructions" class="instruction-box" style="display:none;">
                 <strong style="color: #ffb703; font-size: 17px; display: block; margin-bottom: 5px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
@@ -138,7 +103,7 @@
             <div id="onboarding-feedback" class="feedback-panel"></div>
         </div>
 
-        <!-- VIEW 2: OPERATIONS MENU[cite: 5] -->
+        <!-- VIEW 2: OPERATIONS MENU -->
         <div id="view-menu" class="portal-view">
             <div id="operations-menu-wrapper" class="operations-menu-container">
                 <h1>Spooky Operations Menu</h1>
@@ -149,7 +114,7 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Operations Menu Buttons (4th Button is How Spooky Works)[cite: 5] -->
+                <!-- Operations Menu Buttons (4th Button is How Spooky Works) -->
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
@@ -157,7 +122,7 @@
                     <button onclick="switchModule('how-it-works')" class="btn" style="background: #1f2833; color: #66fcf1; border: 1px solid #66fcf1;">How Spooky Anti-Spy Tunneling Works</button>
                 </div>
 
-                <!-- Spooky Access Tiers & Billing Section[cite: 5] -->
+                <!-- Spooky Access Tiers & Billing Section -->
                 <div style="background: #0b0c10; border: 1px solid #ffb703; padding: 20px; border-radius: 6px; margin-top: 25px;">
                     <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703;">Spooky Access Tiers & Subscriptions</h3>
                     <p style="font-size: 13px; color: #c5c6c7;">Choose your billing schedule to maintain continuous unthrottled node transmission priority.</p>
@@ -167,7 +132,7 @@
                     </div>
                 </div>
 
-                <!-- Verified Subscribing Storefronts Directory[cite: 5] -->
+                <!-- Verified Subscribing Storefronts Directory -->
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
@@ -176,7 +141,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 1: FILE TRANSFER[cite: 5] -->
+            <!-- MODULE 1: FILE TRANSFER -->
             <div id="mod-file-transfer" class="active-module">
                 <h3>Spooky Secure Peer-to-Peer File Transfer Portal</h3>
                 <p>Enter the recipient's email address. Spooky interrogates their node status instantly.</p>
@@ -189,7 +154,7 @@
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
             </div>
 
-            <!-- MODULE 2: ONE-ON-ONE VIDEO[cite: 5] -->
+            <!-- MODULE 2: ONE-ON-ONE VIDEO -->
             <div id="mod-video-1on1" class="active-module">
                 <h3>Spooky One-on-One Peer Video Conference</h3>
                 <p>Enter your colleague's email address to establish a zero-retention encrypted video link.</p>
@@ -200,7 +165,7 @@
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
             </div>
 
-            <!-- MODULE 3: GROUP VIDEO[cite: 5] -->
+            <!-- MODULE 3: GROUP VIDEO -->
             <div id="mod-video-group" class="active-module">
                 <h3>Spooky Multiparty Group Video Conference</h3>
                 <p>Host a multi-node secure conference room. Provide a room tag and invite participant emails below.</p>
@@ -213,7 +178,7 @@
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
             </div>
 
-            <!-- MODULE 4: HOW SPOOKY WORKS INFO VIEW[cite: 5] -->
+            <!-- MODULE 4: HOW SPOOKY WORKS INFO VIEW -->
             <div id="mod-how-it-works" class="active-module">
                 <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
                     <h2>How Spooky Anti-Spy Tunneling Works</h2>
@@ -354,14 +319,10 @@
             if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('view-menu').style.display = 'block';
-                document.getElementById('landing-header').style.display = 'none';
-                document.getElementById('menu-header').style.display = 'flex';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
             } else {
                 document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
-                document.getElementById('landing-header').style.display = 'block';
-                document.getElementById('menu-header').style.display = 'none';
             }
         }
 
