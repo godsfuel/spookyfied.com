@@ -11,12 +11,31 @@
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
-        /* Compact 1-Inch Web Banner (Menu & Module Pages Only) */
-        .compact-header { background-color: #0b0c10; padding: 10px 20px; border-bottom: 2px solid #66fcf1; width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(102, 252, 241, 0.15); }
-        .compact-header-left { display: flex; align-items: center; gap: 10px; }
-        .compact-dot { width: 12px; height: 12px; background-color: #66fcf1; border-radius: 50%; box-shadow: 0 0 8px #66fcf1, 0 0 16px #45a29e; }
-        .compact-title { color: #ffffff; font-family: monospace; font-size: 15px; font-weight: bold; letter-spacing: 2px; }
-        .compact-badge { color: #66fcf1; font-family: monospace; font-size: 11px; letter-spacing: 1px; border: 1px solid #45a29e; padding: 3px 8px; border-radius: 4px; background: rgba(31, 40, 51, 0.6); }
+        /* Brand New Cool Cyber Banner (Menu & Module Pages) */
+        .compact-header { 
+            background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%); 
+            padding: 12px 25px; 
+            border-bottom: 2px solid #66fcf1; 
+            width: 100%; 
+            box-sizing: border-box; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.2);
+        }
+        .cyber-logo-area { display: flex; align-items: center; gap: 12px; }
+        .cyber-radar-ring { 
+            width: 16px; height: 16px; border: 2px solid #66fcf1; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 0 10px #66fcf1;
+        }
+        .cyber-radar-core { width: 6px; height: 6px; background-color: #ffb703; border-radius: 50%; }
+        .cyber-brand-text { color: #ffffff; font-family: monospace; font-size: 16px; font-weight: bold; letter-spacing: 3px; }
+        .cyber-telemetry-badge { 
+            color: #ffb703; font-family: monospace; font-size: 11px; letter-spacing: 1.5px; 
+            border: 1px solid #ffb703; padding: 4px 10px; border-radius: 3px; background: rgba(11, 12, 16, 0.8);
+            box-shadow: inset 0 0 8px rgba(255, 183, 3, 0.2);
+        }
 
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
@@ -32,10 +51,8 @@
         .btn-subscribe:hover { background: #f0a500; color: #0b0c10; }
         .btn-restore { background: #1f2833; color: #66fcf1; border: 1px dashed #66fcf1; font-size: 14px; margin-top: 15px; }
         .btn-restore:hover { background: #0b0c10; color: #fff; }
-        .btn-toggle { background: #1f2833; color: #ffb703; border: 1px solid #ffb703; font-size: 16px; margin-bottom: 15px; }
-        .btn-toggle:hover { background: #0b0c10; color: #fff; }
         
-        .intro-card { display: none; background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
+        .intro-card { background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
         .intro-card h2 { color: #66fcf1; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #45a29e; padding-bottom: 10px; }
         .intro-card ol { margin: 12px 0 0 20px; padding: 0; }
         .intro-card li { margin-bottom: 10px; color: #e0e0e0; font-size: 14px; }
@@ -71,45 +88,24 @@
 </head>
 <body>
 
-    <!-- Dynamic Headers: Massive Logo on Front Page, 1-Inch Banner on Interior Views -->
+    <!-- Dynamic Headers: Massive Logo on Landing, New Cool Cyber Banner on Menu/Modules -->
     <div id="landing-header" class="header-banner">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
     </div>
     <div id="menu-header" class="compact-header" style="display:none;">
-        <div class="compact-header-left">
-            <div class="compact-dot"></div>
-            <span class="compact-title">SPOOKY<span style="color: #66fcf1;">.</span>SYS</span>
+        <div class="cyber-logo-area">
+            <div class="cyber-radar-ring">
+                <div class="cyber-radar-core"></div>
+            </div>
+            <span class="cyber-brand-text">SPOOKY<span style="color: #66fcf1;">.</span>CORE</span>
         </div>
-        <div class="compact-badge">SECURE TUNNEL ACTIVE</div>
+        <div class="cyber-telemetry-badge">SECURE TUNNEL: ONLINE</div>
     </div>
 
     <div class="container">
 
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
-            
-            <!-- Instruction 2: "How Spooky Works" converted to a 4th landing-page toggle button -->
-            <button onclick="toggleIntroCard()" class="btn btn-toggle" id="intro-toggle-btn">How Spooky Anti-Spy Tunneling Works</button>
-
-            <!-- Explanatory Intro Card Panel -->
-            <div id="intro-card" class="intro-card">
-                <h2>How Spooky Anti-Spy Tunneling Works</h2>
-                <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
-                    Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
-                </p>
-                <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
-                    Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
-                </p>
-                <ol>
-                    <li><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
-                    <li><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
-                    <li><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
-                </ol>
-                <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
-                    No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
-                </p>
-            </div>
-
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
@@ -153,10 +149,12 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
+                <!-- Operations Menu Buttons (4th Button is How Spooky Works) -->
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
                     <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
+                    <button onclick="switchModule('how-it-works')" class="btn" style="background: #1f2833; color: #66fcf1; border: 1px solid #66fcf1;">How Spooky Anti-Spy Tunneling Works</button>
                 </div>
 
                 <!-- Spooky Access Tiers & Billing Section -->
@@ -213,6 +211,28 @@
                 <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Group Video Stream & Generate Invite Link</button>
                 <div id="group-feedback" class="feedback-panel"></div>
                 <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:10px;">Back to Spooky Operations Menu</button>
+            </div>
+
+            <!-- MODULE 4: HOW SPOOKY WORKS INFO VIEW -->
+            <div id="mod-how-it-works" class="active-module">
+                <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
+                    <h2>How Spooky Anti-Spy Tunneling Works</h2>
+                    <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                        Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
+                    </p>
+                    <p style="font-size: 14px; color: #c5c6c7; margin-bottom: 12px;">
+                        Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
+                    </p>
+                    <ol style="text-align: left; margin: 15px 0 15px 20px;">
+                        <li style="margin-bottom: 10px; color: #e0e0e0;"><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
+                        <li style="margin-bottom: 10px; color: #e0e0e0;"><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
+                        <li style="margin-bottom: 10px; color: #e0e0e0;"><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
+                    </ol>
+                    <p style="font-size: 13px; color: #66fcf1; text-align: center; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px;">
+                        No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
+                    </p>
+                </div>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:20px;">Back to Spooky Operations Menu</button>
             </div>
         </div>
 
@@ -286,18 +306,6 @@
             actionBtn.href = "#";
             actionBtn.onclick = function(e) { e.preventDefault(); provisionMobileDirect(); };
             instructionsBox.style.display = 'none';
-        }
-
-        function toggleIntroCard() {
-            const card = document.getElementById('intro-card');
-            const btn = document.getElementById('intro-toggle-btn');
-            if (card.style.display === 'block') {
-                card.style.display = 'none';
-                btn.innerText = "How Spooky Anti-Spy Tunneling Works";
-            } else {
-                card.style.display = 'block';
-                btn.innerText = "Hide Spooky Tunneling Info";
-            }
         }
 
         function handleClientDownload() {
