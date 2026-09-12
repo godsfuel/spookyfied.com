@@ -5,75 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spookifyed.com | Secure Spooky Gateway</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0b0c10; color: #c5c6c7; margin: 0; padding: 0; text-align: center; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #07080a; color: #d1d5db; margin: 0; padding: 0; text-align: center; font-size: 18px; }
         
         /* Full-Size Landing Banner (Visible on Home Page & Operations Menu) */
         .header-banner { background-color: #121316; padding: 0; border-bottom: 2px solid #9d4edd; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
         /* Interior Module Banner */
-        .module-banner { background-color: #121316; padding: 0; border-bottom: 3px solid #9d4edd; width: 100%; box-sizing: border-box; overflow: hidden; box-shadow: 0 4px 25px rgba(157, 78, 221, 0.2); }
+        .module-banner { background-color: #121316; padding: 0; border-bottom: 3px solid #9d4edd; width: 100%; box-sizing: border-box; overflow: hidden; box-shadow: 0 4px 25px rgba(157, 78, 221, 0.3); }
         .module-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
-        .container { max-width: 750px; margin: 40px auto; padding: 35px; background: #151820; border-radius: 12px; border: 1px solid #323846; box-shadow: 0 12px 35px rgba(0,0,0,0.85); box-sizing: border-box; text-align: center; }
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: #12141c; border-radius: 14px; border: 1px solid #3b4252; box-shadow: 0 15px 40px rgba(0,0,0,0.9); box-sizing: border-box; text-align: center; }
         
-        h1 { color: #e0aaff; font-size: 28px; margin-top: 0; letter-spacing: 0.5px; }
-        h3 { color: #e0aaff; border-bottom: 1px solid #323846; padding-bottom: 10px; margin-top: 25px; }
-        p { color: #94a3b8; line-height: 1.6; font-size: 15px; }
+        /* Commanding, Scaled-Up Headings */
+        h1 { color: #e0aaff; font-size: 34px; margin-top: 0; letter-spacing: 0.8px; text-shadow: 0 2px 10px rgba(157, 78, 221, 0.4); }
+        h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 22px; }
+        p { color: #94a3b8; line-height: 1.6; font-size: 18px; }
 
-        /* Slim, Centered Button Styling with Purple Theme */
-        .btn { display: inline-block; width: auto; min-width: 280px; max-width: 100%; background: #7b2cbf; color: #ffffff; padding: 14px 28px; margin: 10px auto; text-decoration: none; font-weight: 600; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer; border: 1px solid #9d4edd; box-sizing: border-box; font-size: 15px; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.3); }
-        .btn:hover { background: #9d4edd; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(157, 78, 221, 0.4); }
+        /* Slim, Centered Button Styling with Vibrant Purple Theme */
+        .btn { display: inline-block; width: auto; min-width: 310px; max-width: 100%; background: #7b2cbf; color: #ffffff; padding: 16px 30px; margin: 12px auto; text-decoration: none; font-weight: 700; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer; border: 1px solid #9d4edd; box-sizing: border-box; font-size: 18px; box-shadow: 0 4px 18px rgba(123, 44, 191, 0.4); }
+        .btn:hover { background: #9d4edd; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(157, 78, 221, 0.6); }
         
-        .btn-secondary { background: #1b1f2b; color: #c77dff; border: 1px solid #7b2cbf; box-shadow: none; }
-        .btn-secondary:hover { background: #232838; color: #ffffff; }
+        .btn-secondary { background: #1a1e29; color: #c77dff; border: 1px solid #7b2cbf; box-shadow: none; }
+        .btn-secondary:hover { background: #252b3b; color: #ffffff; }
         
-        .btn-activate { background: #2a9d8f; color: #ffffff; font-size: 16px; border: 1px solid #38b000; box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3); }
-        .btn-activate:hover { background: #21867a; }
+        .btn-activate { background: #3a86ff; color: #ffffff; font-size: 19px; border: 1px solid #4ea8de; box-shadow: 0 4px 18px rgba(58, 134, 255, 0.4); }
+        .btn-activate:hover { background: #2667cc; }
         
-        .btn-subscribe { background: #ffb703; color: #0b0c10; font-size: 16px; border: none; }
+        .btn-subscribe { background: #ffb703; color: #0b0c10; font-size: 19px; border: none; font-weight: 800; }
         .btn-subscribe:hover { background: #f0a500; color: #0b0c10; }
         
-        .btn-restore { background: #1b1f2b; color: #94a3b8; border: 1px dashed #4a5568; font-size: 13px; min-width: auto; padding: 10px 20px; margin-top: 20px; }
-        .btn-restore:hover { background: #232838; color: #ffffff; }
+        .btn-restore { background: #1a1e29; color: #94a3b8; border: 1px dashed #4a5568; font-size: 16px; min-width: auto; padding: 12px 24px; margin-top: 25px; }
+        .btn-restore:hover { background: #252b3b; color: #ffffff; }
         
-        .btn-small-link { background: #1b1f2b; color: #e0aaff; border: 1px solid #7b2cbf; font-size: 16px; padding: 12px 24px; margin: 10px auto 20px auto; min-width: auto; box-shadow: 0 3px 12px rgba(123, 44, 191, 0.2); }
+        .btn-small-link { background: #1a1e29; color: #e0aaff; border: 1px solid #7b2cbf; font-size: 19px; padding: 14px 28px; margin: 12px auto 25px auto; min-width: auto; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.3); }
         .btn-small-link:hover { background: #7b2cbf; color: #ffffff; }
         
-        .intro-card { background: #1b1f2b; border: 1px solid #323846; padding: 25px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; text-align: left; }
-        .intro-card h2 { color: #e0aaff; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #323846; padding-bottom: 10px; }
-        .intro-card ol { margin: 12px 0 0 20px; padding: 0; }
-        .intro-card li { margin-bottom: 10px; color: #cbd5e1; font-size: 14px; }
+        .intro-card { background: #1a1e29; border: 1px solid #3b4252; padding: 30px; border-radius: 10px; margin-bottom: 30px; line-height: 1.7; text-align: left; }
+        .intro-card h2 { color: #e0aaff; font-size: 24px; margin-top: 0; text-align: center; border-bottom: 1px solid #3b4252; padding-bottom: 12px; }
+        .intro-card ol { margin: 15px 0 0 25px; padding: 0; }
+        .intro-card li { margin-bottom: 14px; color: #e2e8f0; font-size: 17px; }
         .intro-card strong { color: #ffb703; }
 
         /* High-Contrast Status & Telemetry Container */
-        .telemetry-box { background: #1b1f2b; border: 1px solid #4a5568; padding: 18px 22px; border-radius: 8px; margin: 20px auto; font-family: monospace; font-size: 14px; color: #e0aaff; text-align: left; max-width: 550px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.5); }
-        .telemetry-box div { margin: 6px 0; }
+        .telemetry-box { background: #1a1e29; border: 1px solid #4a5568; padding: 22px 26px; border-radius: 10px; margin: 25px auto; font-family: monospace; font-size: 17px; color: #e0aaff; text-align: left; max-width: 600px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
+        .telemetry-box div { margin: 8px 0; }
         
         .portal-view { display: none; }
         .operations-menu-container { display: block; }
-        .active-module { display: none; background: #1b1f2b; border: 1px solid #7b2cbf; padding: 25px; border-radius: 8px; margin-top: 15px; text-align: left; }
+        .active-module { display: none; background: #1a1e29; border: 1px solid #7b2cbf; padding: 30px; border-radius: 10px; margin-top: 20px; text-align: left; }
         
-        input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 12px; margin: 10px 0 15px 0; background: #0b0c10; border: 1px solid #4a5568; color: #fff; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
-        input[type="email"]:focus, input[type="text"]:focus { border-color: #9d4edd; outline: none; box-shadow: 0 0 8px rgba(157, 78, 221, 0.3); }
+        input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 15px; margin: 12px 0 20px 0; background: #07080a; border: 1px solid #4a5568; color: #fff; border-radius: 8px; box-sizing: border-box; font-size: 17px; }
+        input[type="email"]:focus, input[type="text"]:focus { border-color: #9d4edd; outline: none; box-shadow: 0 0 10px rgba(157, 78, 221, 0.4); }
         
-        .instruction-box { background: #1b1f2b; border: 2px solid #ffb703; padding: 20px; border-radius: 8px; margin: 25px auto; font-size: 14px; color: #cbd5e1; line-height: 1.6; display: none; text-align: left; max-width: 600px; }
-        .instruction-box ol { margin: 12px 0 0 20px; padding: 0; }
-        .instruction-box li { margin-bottom: 10px; }
+        .instruction-box { background: #1a1e29; border: 2px solid #ffb703; padding: 25px; border-radius: 10px; margin: 30px auto; font-size: 17px; color: #e2e8f0; line-height: 1.7; display: none; text-align: left; max-width: 650px; }
+        .instruction-box ol { margin: 15px 0 0 25px; padding: 0; }
+        .instruction-box li { margin-bottom: 12px; }
         
-        .feedback-panel { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; line-height: 1.5; text-align: left; }
-        .feedback-success { background: rgba(123, 44, 191, 0.15); border: 1px solid #9d4edd; color: #e0aaff; }
-        .feedback-warning { background: rgba(255, 183, 3, 0.15); border: 1px solid #ffb703; color: #ffb703; }
+        .feedback-panel { display: none; margin-top: 20px; padding: 18px; border-radius: 8px; font-size: 17px; line-height: 1.6; text-align: left; }
+        .feedback-success { background: rgba(123, 44, 191, 0.2); border: 1px solid #9d4edd; color: #e0aaff; }
+        .feedback-warning { background: rgba(255, 183, 3, 0.2); border: 1px solid #ffb703; color: #ffb703; }
         
-        .vendor-list { background: #1b1f2b; border: 1px solid #323846; padding: 18px; border-radius: 8px; margin-top: 25px; font-size: 14px; color: #e0aaff; text-align: left; }
-        .vendor-list ul { margin: 10px 0 0 20px; padding: 0; color: #94a3b8; }
-        .vendor-list li { margin-bottom: 8px; }
+        .vendor-list { background: #1a1e29; border: 1px solid #3b4252; padding: 22px; border-radius: 10px; margin-top: 30px; font-size: 17px; color: #e0aaff; text-align: left; }
+        .vendor-list ul { margin: 12px 0 0 25px; padding: 0; color: #94a3b8; }
+        .vendor-list li { margin-bottom: 10px; }
         .vendor-list a { color: #c77dff; text-decoration: underline; font-weight: bold; }
         .vendor-list a:hover { color: #ffffff; }
         
-        .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
-        .footer-links a { color: #64748b; margin: 0 15px; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: #e0aaff; }
+        .footer-links { margin-top: 50px; font-size: 17px; text-align: center; padding-bottom: 40px; }
+        .footer-links a { color: #c77dff; margin: 0 20px; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .footer-links a:hover { color: #e0aaff; text-shadow: 0 0 8px rgba(157, 78, 221, 0.5); }
     </style>
 </head>
 <body>
@@ -112,14 +113,14 @@
 
             <!-- Prominent Setup & Security Notice -->
             <div id="desktop-instructions" class="instruction-box">
-                <strong style="color: #ffb703; font-size: 16px; display: block; margin-bottom: 8px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
+                <strong style="color: #ffb703; font-size: 19px; display: block; margin-bottom: 10px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
-                <a id="continue-download-btn" href="#" class="btn" download="SpookyInitializer.exe" onclick="handleContinueDownload();" style="margin-top: 15px; background: #2a9d8f; color: #ffffff;">Continue to Download</a>
-                <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 10px;">Return to Main Gateway</button>
+                <a id="continue-download-btn" href="#" class="btn" download="SpookyInitializer.exe" onclick="handleContinueDownload();" style="margin-top: 18px; background: #3a86ff; color: #ffffff;">Continue to Download</a>
+                <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 12px;">Return to Main Gateway</button>
             </div>
 
             <!-- Step 2: Activation Button -->
-            <div id="activation-btn-container" style="display:none; margin-top: 20px;">
+            <div id="activation-btn-container" style="display:none; margin-top: 25px;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
@@ -143,24 +144,24 @@
                 </div>
 
                 <div class="telemetry-box">
-                    <div>Terminal Architecture: <span id="os-active-display" style="color: #c77dff;">Active Node</span></div>
+                    <div>Terminal Architecture: <span id="os-active-display" style="color: #e0aaff;">Active Node</span></div>
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
                 <!-- Slim Operations Menu Buttons -->
-                <div style="margin-top: 25px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <div style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
                     <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
                 </div>
 
                 <!-- Spooky Access Tiers & Billing Section -->
-                <div style="background: #0b0c10; border: 1px solid #ffb703; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: left;">
+                <div style="background: #07080a; border: 1px solid #ffb703; padding: 25px; border-radius: 10px; margin-top: 35px; text-align: left;">
                     <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703; text-align: center;">Spooky Access Tiers & Subscriptions</h3>
-                    <p style="font-size: 13px; color: #94a3b8; text-align: center;">Choose your billing schedule to maintain continuous unthrottled node transmission priority.</p>
-                    <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                        <a href="https://buy.stripe.com/your_monthly_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; min-width: 200px; margin:0; text-align:center;">Monthly Plan ($19/mo)</a>
-                        <a href="https://buy.stripe.com/your_annual_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; min-width: 200px; margin:0; text-align:center;">Annual Plan ($190/yr - Save 16%)</a>
+                    <p style="font-size: 16px; color: #94a3b8; text-align: center;">Choose your billing schedule to maintain continuous unthrottled node transmission priority.</p>
+                    <div style="display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
+                        <a href="https://buy.stripe.com/your_monthly_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; min-width: 220px; margin:0; text-align:center;">Monthly Plan ($19/mo)</a>
+                        <a href="https://buy.stripe.com/your_annual_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; min-width: 220px; margin:0; text-align:center;">Annual Plan ($190/yr - Save 16%)</a>
                     </div>
                 </div>
 
@@ -182,10 +183,10 @@
                 <label>Select File to Transfer:</label>
                 <input type="file" id="transferFile">
                 <div style="text-align: center;">
-                    <button onclick="executeFileTransfer()" class="btn" style="margin-top:15px;">Interrogate Recipient & Send File</button>
+                    <button onclick="executeFileTransfer()" class="btn" style="margin-top:18px;">Interrogate Recipient & Send File</button>
                 </div>
                 <div id="transfer-feedback" class="feedback-panel"></div>
-                <div style="text-align: center; margin-top: 15px;">
+                <div style="text-align: center; margin-top: 18px;">
                     <button onclick="closeModules()" class="btn btn-secondary">Back to Spooky Operations Menu</button>
                 </div>
             </div>
@@ -197,10 +198,10 @@
                 <label>Recipient Email Address:</label>
                 <input type="email" id="callEmail1on1" placeholder="recipient@domain.com">
                 <div style="text-align: center;">
-                    <button onclick="executeCall1on1()" class="btn" style="margin-top:15px;">Interrogate Recipient & Start Video Stream</button>
+                    <button onclick="executeCall1on1()" class="btn" style="margin-top:18px;">Interrogate Recipient & Start Video Stream</button>
                 </div>
                 <div id="call1on1-feedback" class="feedback-panel"></div>
-                <div style="text-align: center; margin-top: 15px;">
+                <div style="text-align: center; margin-top: 18px;">
                     <button onclick="closeModules()" class="btn btn-secondary">Back to Spooky Operations Menu</button>
                 </div>
             </div>
@@ -214,10 +215,10 @@
                 <label>Participant Email Addresses (comma separated):</label>
                 <input type="text" id="groupEmails" placeholder="colleague1@domain.com, colleague2@domain.com">
                 <div style="text-align: center;">
-                    <button onclick="executeGroupCall()" class="btn" style="margin-top:15px;">Open Group Video Stream & Generate Invite Link</button>
+                    <button onclick="executeGroupCall()" class="btn" style="margin-top:18px;">Open Group Video Stream & Generate Invite Link</button>
                 </div>
                 <div id="group-feedback" class="feedback-panel"></div>
-                <div style="text-align: center; margin-top: 15px;">
+                <div style="text-align: center; margin-top: 18px;">
                     <button onclick="closeModules()" class="btn btn-secondary">Back to Spooky Operations Menu</button>
                 </div>
             </div>
@@ -227,23 +228,23 @@
         <div id="mod-how-it-works" class="active-module">
             <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
                 <h2>How Spooky Anti-Spy Tunneling Works</h2>
-                <p style="font-size: 14px; color: #94a3b8; margin-bottom: 12px;">
+                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
                     Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
                 </p>
-                <p style="font-size: 14px; color: #94a3b8; margin-bottom: 12px;">
+                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
                     Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
                 </p>
-                <ol style="text-align: left; margin: 15px 0 15px 20px;">
-                    <li style="margin-bottom: 10px; color: #cbd5e1;"><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
-                    <li style="margin-bottom: 10px; color: #cbd5e1;"><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
-                    <li style="margin-bottom: 10px; color: #cbd5e1;"><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
+                <ol style="text-align: left; margin: 18px 0 18px 25px;">
+                    <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
+                    <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
+                    <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time.</li>
                 </ol>
-                <p style="font-size: 13px; color: #e0aaff; text-align: center; margin-top: 20px; font-weight: bold; letter-spacing: 0.5px;">
+                <p style="font-size: 16px; color: #e0aaff; text-align: center; margin-top: 25px; font-weight: bold; letter-spacing: 0.5px;">
                     No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
                 </p>
             </div>
             <div style="text-align: center;">
-                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:20px;">Back to Spooky Menu / Gateway</button>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:25px;">Back to Spooky Menu / Gateway</button>
             </div>
         </div>
 
@@ -491,7 +492,7 @@
             feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
                 "Room Tag: <code>" + room + "</code><br>" +
                 (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
-                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#0b0c10; color:#e0aaff; border:1px solid #7b2cbf; padding:5px; width:100%; margin-top:5px;' onclick='this.select()'>";
+                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#07080a; color:#e0aaff; border:1px solid #7b2cbf; padding:8px; width:100%; margin-top:8px; font-size:16px;' onclick='this.select()'>";
         }
 
         checkSovereignState();
