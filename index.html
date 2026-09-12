@@ -11,31 +11,12 @@
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
-        /* Brand New Cool Cyber Banner (Menu & Module Pages) */
-        .compact-header { 
-            background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%); 
-            padding: 12px 25px; 
-            border-bottom: 2px solid #66fcf1; 
-            width: 100%; 
-            box-sizing: border-box; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            box-shadow: 0 0 20px rgba(102, 252, 241, 0.2);
-        }
-        .cyber-logo-area { display: flex; align-items: center; gap: 12px; }
-        .cyber-radar-ring { 
-            width: 16px; height: 16px; border: 2px solid #66fcf1; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 0 10px #66fcf1;
-        }
-        .cyber-radar-core { width: 6px; height: 6px; background-color: #ffb703; border-radius: 50%; }
-        .cyber-brand-text { color: #ffffff; font-family: monospace; font-size: 16px; font-weight: bold; letter-spacing: 3px; }
-        .cyber-telemetry-badge { 
-            color: #ffb703; font-family: monospace; font-size: 11px; letter-spacing: 1.5px; 
-            border: 1px solid #ffb703; padding: 4px 10px; border-radius: 3px; background: rgba(11, 12, 16, 0.8);
-            box-shadow: inset 0 0 8px rgba(255, 183, 3, 0.2);
-        }
+        /* Compact 1-Inch Web Banner (Menu & Module Pages) */
+        .compact-header { background-color: #0b0c10; padding: 10px 20px; border-bottom: 2px solid #66fcf1; width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(102, 252, 241, 0.15); }
+        .compact-header-left { display: flex; align-items: center; gap: 10px; }
+        .compact-dot { width: 12px; height: 12px; background-color: #66fcf1; border-radius: 50%; box-shadow: 0 0 8px #66fcf1, 0 0 16px #45a29e; }
+        .compact-title { color: #ffffff; font-family: monospace; font-size: 15px; font-weight: bold; letter-spacing: 2px; }
+        .compact-badge { color: #66fcf1; font-family: monospace; font-size: 11px; letter-spacing: 1px; border: 1px solid #45a29e; padding: 3px 8px; border-radius: 4px; background: rgba(31, 40, 51, 0.6); }
 
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: #1f2833; border-radius: 10px; border: 1px solid #45a29e; box-shadow: 0 8px 25px rgba(0,0,0,0.8); box-sizing: border-box; text-align: left; }
         h1 { color: #66fcf1; font-size: 26px; margin-top: 0; text-align: center; }
@@ -88,18 +69,16 @@
 </head>
 <body>
 
-    <!-- Dynamic Headers: Massive Logo on Landing, New Cool Cyber Banner on Menu/Modules -->
+    <!-- Dynamic Headers: Massive Logo on Front Page, 1-Inch Cyber Banner on Menu/Modules -->
     <div id="landing-header" class="header-banner">
         <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
     </div>
     <div id="menu-header" class="compact-header" style="display:none;">
-        <div class="cyber-logo-area">
-            <div class="cyber-radar-ring">
-                <div class="cyber-radar-core"></div>
-            </div>
-            <span class="cyber-brand-text">SPOOKY<span style="color: #66fcf1;">.</span>CORE</span>
+        <div class="compact-header-left">
+            <div class="compact-dot"></div>
+            <span class="compact-title">SPOOKY<span style="color: #66fcf1;">.</span>SYS</span>
         </div>
-        <div class="cyber-telemetry-badge">SECURE TUNNEL: ONLINE</div>
+        <div class="compact-badge">SECURE TUNNEL ACTIVE</div>
     </div>
 
     <div class="container">
@@ -149,7 +128,7 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Operations Menu Buttons (4th Button is How Spooky Works) -->
+                <!-- Operations Menu Buttons (Including 4th How Spooky Works Button) -->
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
