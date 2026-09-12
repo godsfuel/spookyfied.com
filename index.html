@@ -132,7 +132,7 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Operations Menu Buttons (How it works removed from bottom grid) -->
+                <!-- Operations Menu Buttons -->
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
@@ -288,7 +288,6 @@
 
         function handleClientDownload() {
             if (detectedOS !== 'ios' && detectedOS !== 'android') {
-                // Reveal instructions and continue button, pause automatic download
                 instructionsBox.style.display = 'block';
                 actionBtn.style.display = 'none';
             }
@@ -323,7 +322,12 @@
 
             setTimeout(() => {
                 fb.innerHTML = "Hardware Anchor Verified & Locked: <strong>" + hexKey + "</strong>. Opening Spooky Operations...";
-                setTimeout(() => { checkSovereignState(); }, 900);
+                setTimeout(() => { 
+                    document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
+                    document.getElementById('module-banner').style.display = 'none';
+                    document.getElementById('landing-header').style.display = 'block';
+                    checkSovereignState(); 
+                }, 900);
             }, 600);
         }
 
@@ -335,6 +339,7 @@
             let storedKey = getPersistentSovereignKey();
             if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
+                document.getElementById('operations-menu-wrapper').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'block';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
             } else {
@@ -356,16 +361,22 @@
             fb.className = 'feedback-panel feedback-success';
             fb.innerHTML = "Local Hardware Anchor Authenticated: <strong>" + permanentKey + "</strong>. Loading Operations Menu...";
             
-            setTimeout(() => { checkSovereignState(); }, 900);
+            setTimeout(() => { 
+                document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
+                document.getElementById('module-banner').style.display = 'none';
+                document.getElementById('landing-header').style.display = 'block';
+                checkSovereignState(); 
+            }, 900);
         }
 
         function switchModule(moduleName) {
+            document.getElementById('view-onboarding').style.display = 'none';
             document.getElementById('operations-menu-wrapper').style.display = 'none';
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
+            
             const targetModule = document.getElementById('mod-' + moduleName);
             targetModule.style.display = 'block';
             
-            // Dynamic banner switching: Use clean new-user banner if unauthenticated and viewing "how-it-works", else use active banner
             const bannerImg = document.getElementById('module-banner-img');
             if (moduleName === 'how-it-works' && !getPersistentSovereignKey()) {
                 bannerImg.src = "spooky_banner_new_user.png";
