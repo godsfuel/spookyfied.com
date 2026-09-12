@@ -103,6 +103,7 @@
                 <strong style="color: #ffb703; font-size: 17px; display: block; margin-bottom: 5px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
                 <a id="continue-download-btn" href="#" class="btn" download="SpookyInitializer.exe" onclick="handleContinueDownload();" style="margin-top: 15px; background: #2a9d8f; color: #ffffff;">Continue to Download</a>
+                <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 10px;">Return to Main Gateway</button>
             </div>
 
             <!-- Step 2: Activation Button -->
@@ -110,7 +111,7 @@
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback (Hidden once download/instructions start) -->
+            <!-- Always-available fallback -->
             <div id="restore-session-container">
                 <button onclick="verifyLocalNode()" class="btn btn-restore">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
@@ -196,7 +197,7 @@
             </div>
         </div>
 
-        <!-- STANDALONE MODULE: HOW SPOOKY WORKS (Accessible to both new and regular users) -->
+        <!-- STANDALONE MODULE: HOW SPOOKY WORKS -->
         <div id="mod-how-it-works" class="active-module">
             <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
                 <h2>How Spooky Anti-Spy Tunneling Works</h2>
@@ -291,8 +292,15 @@
             if (detectedOS !== 'ios' && detectedOS !== 'android') {
                 instructionsBox.style.display = 'block';
                 actionBtn.style.display = 'none';
-                restoreSessionContainer.style.display = 'none'; // Hide restore button once download starts
+                restoreSessionContainer.style.display = 'none';
             }
+        }
+
+        function resetDownloadFlow() {
+            instructionsBox.style.display = 'none';
+            actionBtn.style.display = 'block';
+            restoreSessionContainer.style.display = 'block';
+            activationBtnContainer.style.display = 'none';
         }
 
         function handleContinueDownload() {
