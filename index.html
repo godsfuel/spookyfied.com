@@ -11,7 +11,7 @@
         .header-banner { background-color: #1f2833; padding: 0; border-bottom: 2px solid #45a29e; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
-        /* Interior Module Banner (Using exact filename: spooky_banner.png) */
+        /* Interior Module Banner */
         .module-banner { background-color: #1f2833; padding: 0; border-bottom: 3px solid #66fcf1; width: 100%; box-sizing: border-box; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9); }
         .module-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
 
@@ -29,6 +29,8 @@
         .btn-subscribe:hover { background: #f0a500; color: #0b0c10; }
         .btn-restore { background: #1f2833; color: #66fcf1; border: 1px dashed #66fcf1; font-size: 14px; margin-top: 15px; }
         .btn-restore:hover { background: #0b0c10; color: #fff; }
+        .btn-small-link { background: #1f2833; color: #66fcf1; border: 1px solid #45a29e; font-size: 14px; padding: 10px 15px; margin: 10px 0 20px 0; }
+        .btn-small-link:hover { background: #0b0c10; color: #fff; }
         
         .intro-card { background: #0b0c10; border: 1px solid #66fcf1; padding: 22px; border-radius: 8px; margin-bottom: 25px; line-height: 1.6; }
         .intro-card h2 { color: #66fcf1; font-size: 20px; margin-top: 0; text-align: center; border-bottom: 1px solid #45a29e; padding-bottom: 10px; }
@@ -45,7 +47,7 @@
         
         input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 10px; margin: 10px 0; background: #1f2833; border: 1px solid #45a29e; color: #fff; border-radius: 4px; box-sizing: border-box; }
         
-        .instruction-box { background: #0b0c10; border: 2px solid #ffb703; padding: 20px; border-radius: 6px; margin: 25px 0; font-size: 15px; color: #e0e0e0; line-height: 1.6; }
+        .instruction-box { background: #0b0c10; border: 2px solid #ffb703; padding: 20px; border-radius: 6px; margin: 25px 0; font-size: 15px; color: #e0e0e0; line-height: 1.6; display: none; }
         .instruction-box ol { margin: 12px 0 0 20px; padding: 0; }
         .instruction-box li { margin-bottom: 10px; }
         
@@ -68,12 +70,12 @@
 
     <!-- Full-Size Landing Banner (Visible on Home Page & Operations Menu) -->
     <div id="landing-header" class="header-banner">
-        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
+        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">[cite: 1]
     </div>
 
-    <!-- Interior Module Banner (Using exact filename: spooky_banner.png) -->
+    <!-- Interior Module Banner (Switches based on authentication state) -->
     <div id="module-banner" class="module-banner" style="display:none;">
-        <img src="spooky_banner.png" alt="Spooky Operations Banner">
+        <img id="module-banner-img" src="spooky_banner.png" alt="Spooky Operations Banner">[cite: 1]
     </div>
 
     <div class="container">
@@ -83,6 +85,9 @@
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
+            <!-- Small button for new users to inspect how it works -->
+            <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
+
             <div class="telemetry-box">
                 <div>Detected Terminal: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff5555;">No Active Key Bound in Session</span></div>
@@ -103,8 +108,8 @@
                 <button onclick="verifyLocalNode()" class="btn btn-restore">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
 
-            <!-- Prominent Setup & Security Notice -->
-            <div id="desktop-instructions" class="instruction-box" style="display:none;">
+            <!-- Prominent Setup & Security Notice (Revealed after clicking download) -->
+            <div id="desktop-instructions" class="instruction-box">
                 <strong style="color: #ffb703; font-size: 17px; display: block; margin-bottom: 5px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
             </div>
@@ -123,7 +128,7 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Operations Menu Buttons (4th Button is How Spooky Works) -->
+                <!-- Operations Menu Buttons -->
                 <div style="margin-top: 25px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
@@ -145,7 +150,7 @@
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
-                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
+                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)[cite: 1]</li>
                     </ul>
                 </div>
             </div>
@@ -206,7 +211,7 @@
                         No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
                     </p>
                 </div>
-                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:20px;">Back to Spooky Operations Menu</button>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:20px;">Back to Spooky Menu / Gateway</button>
             </div>
         </div>
 
@@ -246,10 +251,9 @@
         const activationBtnContainer = document.getElementById('activation-btn-container');
 
         if (detectedOS === 'windows') {
-            actionBtn.innerText = "Download Windows Client (.exe)";
+            actionBtn.innerText = "Download Windows Client";
             actionBtn.href = "SpookyInitializer.exe";
             actionBtn.setAttribute("download", "SpookyInitializer.exe");
-            instructionsBox.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
                 <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
@@ -257,20 +261,18 @@
                 <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Spooky Gateway"</strong> button.</li>
             `;
         } else if (detectedOS === 'mac') {
-            actionBtn.innerText = "Download macOS Client (.command)";
+            actionBtn.innerText = "Download macOS Client";
             actionBtn.href = "SpookyInitializer.command";
             actionBtn.setAttribute("download", "SpookyInitializer.command");
-            instructionsBox.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
                 <li>Right-click the file in Finder and select <strong>Open</strong> to bypass Gatekeeper.</li>
                 <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Spooky Gateway"</strong>.</li>
             `;
         } else if (detectedOS === 'linux') {
-            actionBtn.innerText = "Download Linux Client (.sh)";
+            actionBtn.innerText = "Download Linux Client";
             actionBtn.href = "SpookyInitializer.sh";
             actionBtn.setAttribute("download", "SpookyInitializer.sh");
-            instructionsBox.style.display = 'block';
             instructionSteps.innerHTML = `
                 <li>Open your terminal and run: <code>sudo bash SpookyInitializer.sh</code></li>
                 <li>Return here and click <strong>"Activate Node & Enter Spooky Gateway"</strong>.</li>
@@ -279,11 +281,12 @@
             actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
             actionBtn.href = "#";
             actionBtn.onclick = function(e) { e.preventDefault(); provisionMobileDirect(); };
-            instructionsBox.style.display = 'none';
         }
 
         function handleClientDownload() {
             if (detectedOS !== 'ios' && detectedOS !== 'android') {
+                // Reveal instructions box upon clicking download
+                instructionsBox.style.display = 'block';
                 sessionStorage.setItem('client_downloaded', 'true');
                 setTimeout(() => {
                     singleActionContainer.style.display = 'none';
@@ -293,6 +296,7 @@
         }
 
         if (sessionStorage.getItem('client_downloaded') === 'true') {
+            instructionsBox.style.display = 'block';
             singleActionContainer.style.display = 'none';
             activationBtnContainer.style.display = 'block';
         }
@@ -356,6 +360,15 @@
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
             const targetModule = document.getElementById('mod-' + moduleName);
             targetModule.style.display = 'block';
+            
+            // Dynamic banner switching: Use clean new-user banner if unauthenticated and viewing "how-it-works", else use active banner
+            const bannerImg = document.getElementById('module-banner-img');
+            if (moduleName === 'how-it-works' && !getPersistentSovereignKey()) {
+                bannerImg.src = "spooky_banner_new_user.png";
+            } else {
+                bannerImg.src = "spooky_banner.png";
+            }
+
             document.getElementById('landing-header').style.display = 'none';
             document.getElementById('module-banner').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -363,7 +376,15 @@
 
         function closeModules() {
             document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-            document.getElementById('operations-menu-wrapper').style.display = 'block';
+            
+            let storedKey = getPersistentSovereignKey();
+            if (storedKey) {
+                document.getElementById('operations-menu-wrapper').style.display = 'block';
+            } else {
+                // If unauthenticated user returns from "how it works", bounce back to onboarding view instead of menu
+                document.getElementById('view-onboarding').style.display = 'block';
+            }
+
             document.getElementById('module-banner').style.display = 'none';
             document.getElementById('landing-header').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
