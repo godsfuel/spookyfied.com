@@ -399,26 +399,42 @@
             }
         }
 
-        function verifyLocalNode() {
-            const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
-            const permanentKey = "KEY-SPKY-" + machineHash + "-WIN";
-            
-            localStorage.setItem('spooky_node_installed', 'true');
-            localStorage.setItem('spooky_sovereign_node_id', permanentKey);
-            sessionStorage.removeItem('client_downloaded');
-            
+        async function verifyLocalNode() {
             const fb = document.getElementById('onboarding-feedback');
             fb.style.display = 'block';
-            fb.className = 'feedback-panel feedback-success';
-            fb.innerHTML = "Local Hardware Anchor Authenticated: <strong>" + permanentKey + "</strong>. Loading Operations Menu...";
-            
-            setTimeout(() => { 
-                document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-                document.getElementById('mod-how-it-works').style.display = 'none';
-                document.getElementById('module-banner').style.display = 'none';
-                document.getElementById('landing-header').style.display = 'block';
-                checkSovereignState(); 
-            }, 900);
+            fb.className = 'feedback-panel';
+            fb.innerHTML = "Querying local Spooky engine at 127.0.0.1:5000...";
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/verify-node', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'verify' })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('spooky_node_installed', 'true');
+                    localStorage.setItem('spooky_sovereign_node_id', data.node_id);
+                    sessionStorage.removeItem('client_downloaded');
+                    
+                    fb.className = 'feedback-panel feedback-success';
+                    fb.innerHTML = "Local Hardware Anchor Authenticated: <strong>" + data.node_id + "</strong>. Loading Operations Menu...";
+                    
+                    setTimeout(() => { 
+                        document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
+                        document.getElementById('mod-how-it-works').style.display = 'none';
+                        document.getElementById('module-banner').style.display = 'none';
+                        document.getElementById('landing-header').style.display = 'block';
+                        checkSovereignState(); 
+                    }, 900);
+                } else {
+                    throw new Error(data.message || "Node verification failed.");
+                }
+            } catch (err) {
+                fb.className = 'feedback-panel feedback-warning';
+                fb.innerHTML = "<strong>Local Engine Offline:</strong> Could not reach <code>127.0.0.1:5000</code>. Ensure <code>spooky_engine.py</code> is running.";
+            }
         }
 
         function switchModule(moduleName) {
@@ -458,11 +474,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function executeFileTransfer() {
+        async function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
             const feedback = document.getElementById('transfer-feedback');
             feedback.style.display = 'block';
+            
             if (!email || !email.includes('@')) {
                 feedback.className = 'feedback-panel feedback-warning';
                 feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
@@ -474,8 +491,28 @@
                 return;
             }
             const fileName = fileInput.files[0].name;
-            feedback.className = 'feedback-panel feedback-success';
-            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted tunnel established. File packaged as <strong>'" + fileName + ".spooky'</strong> and transmitted successfully. The recipient can double-click the file to unpack it instantly.";
+            feedback.className = 'feedback-panel';
+            feedback.innerHTML = "Interrogating local SQLite database via <code>127.0.0.1:5000</code> for [" + email + "]...";
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/interrogate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ recipient: email })
+                });
+                const data = await response.json();
+
+                if (data.node_verified) {
+                    feedback.className = 'feedback-panel feedback-success';
+                    feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted tunnel established. File packaged as <strong>'" + fileName + ".spooky'</strong> and transmitted successfully.";
+                } else {
+                    feedback.className = 'feedback-panel feedback-warning';
+                    feedback.innerHTML = "<strong>No Active Node Found:</strong> Recipient [" + email + "] has no registered hardware anchor.";
+                }
+            } catch (err) {
+                feedback.className = 'feedback-panel feedback-warning';
+                feedback.innerHTML = "<strong>Connection Error:</strong> Local backend engine is not running on port 5000.";
+            }
         }
 
         function executeCall1on1() {
