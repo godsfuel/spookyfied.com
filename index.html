@@ -74,9 +74,9 @@
 </head>
 <body>
 
-    <!-- Full-Size Landing Banner (Visible on Home Page & Operations Menu) -->
+    <!-- Dynamic Landing Header (Switches logo based on key state) -->
     <div id="landing-header" class="header-banner">
-        <img src="SPOOKY_Logo.png" alt="Spooky Service Logo">
+        <img id="landing-logo-img" src="spooky_logo_new_user.png" alt="Spooky Service Logo">
     </div>
 
     <!-- Interior Module Banner (Switches based on authentication state) -->
@@ -119,7 +119,7 @@
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback (Styled consistently as a main button) -->
+            <!-- Always-available fallback -->
             <div id="restore-session-container">
                 <button onclick="verifyLocalNode()" class="btn" style="margin-top: 25px;">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
@@ -383,15 +383,19 @@
 
         function checkSovereignState() {
             let storedKey = getPersistentSovereignKey();
+            const logoImg = document.getElementById('landing-logo-img');
+            
             if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('operations-menu-wrapper').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'block';
                 document.getElementById('mod-how-it-works').style.display = 'none';
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
+                logoImg.src = "spooky_logo.png";
             } else {
                 document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
+                logoImg.src = "spooky_logo_new_user.png";
             }
         }
 
