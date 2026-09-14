@@ -544,3 +544,140 @@
     </script>
 </body>
 </html>
+
+<script>
+// Configuration & State
+const BACKEND_URL = "http://localhost:5000";
+let pc = null;
+let dataChannel = null;
+
+// --- SENDER SIDE: Slice and Stream File ---
+async function startSenderStream(file, assetId) {
+    pc = new RTCPeerConnection({
+        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] // Public STUN server to discover local/public IPs
+    });
+
+    // Create the P2P Data Channel for file chunks
+    dataChannel = pc.createDataChannel("spooky-file-transfer");
+    dataChannel.binaryType = "arraybuffer";
+
+    dataChannel.onopen = () => {
+        console.log("[SPOOKY] P2P Tunnel Open. Streaming file chunks...");
+        sendFileInChunks(file);
+    };
+
+    // Create WebRTC Offer
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    // Send the offer to your Flask backend signaling switchboard
+    await fetch(`${BACKEND_URL}/api/signal/offer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ asset_id: assetId, offer: offer })
+    });
+
+    console.log("[SPOOKY] Signaling offer posted. Waiting for receiver answer...");
+    pollForAnswer(assetId);
+}
+
+function sendFileInChunks(file) {
+    const CHUNK_SIZE = 64 * 1024; // 64KB chunks (optimized for browser data channels)
+    let offset = 0;
+    
+    const reader = new FileReader();
+    
+    reader.onload = (e) => {
+        dataChannel.send(e.target.result);
+        offset += e.target.result.byteLength;
+        
+        // Show progress update
+        let progress = Math.round((offset / file.size) * 100);
+        console.log(`[SPOOKY] Transmission Progress: ${progress}%`);
+
+        if (offset < file.size) {
+            readNextChunk();
+        } else {
+            console.log("[SPOOKY] File transmission complete!");
+            dataChannel.send(JSON.stringify({ type: "EOF", fileName: file.name }));
+        }
+    };
+
+    function readNextChunk() {
+        const slice = file.slice(offset, offset + CHUNK_SIZE);
+        reader.readAsArrayBuffer(slice);
+    }
+
+    readNextChunk();
+}
+
+// Poll backend to check when the receiver has posted their answer
+async function pollForAnswer(assetId) {
+    const interval = setInterval(async () => {
+        const res = await fetch(`${BACKEND_URL}/api/signal/offer/${assetId}`);
+        const data = await res.json();
+        
+        if (data.answer && !pc.currentRemoteDescription) {
+            clearInterval(interval);
+            await pc.setRemoteDescription(new RTCSessionDescription(data.answer));
+            console.log("[SPOOKY] Peer connection established with receiver!");
+        }
+    }, 2000);
+}
+
+
+// --- RECEIVER SIDE: Accept and Reassemble File ---
+async function joinAsReceiver(assetId) {
+    pc = new RTCPeerConnection({
+        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+    });
+
+    let receivedBuffers = [];
+    let incomingFileName = "spooky-recovered-file";
+
+    pc.ondatachannel = (event) => {
+        const receiveChannel = event.channel;
+        receiveChannel.binaryType = "arraybuffer";
+
+        receiveChannel.onmessage = (e) => {
+            if (typeof e.data === 'string') {
+                // Check for End-Of-File metadata message
+                const msg = JSON.parse(e.data);
+                if (msg.type === "EOF") {
+                    console.log("[SPOOKY] Reassembly complete. Generating download...");
+                    const completeBlob = new Blob(receivedBuffers);
+                    const downloadUrl = URL.createObjectURL(completeBlob);
+                    
+                    // Trigger automatic browser download prompt
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    a.download = msg.fileName || incomingFileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+            } else {
+                // Collect binary chunks into RAM buffer array
+                receivedBuffers.push(e.data);
+            }
+        };
+    };
+
+    // Fetch offer from Flask backend
+    const res = await fetch(`${BACKEND_URL}/api/signal/offer/${assetId}`);
+    const data = await res.json();
+
+    await pc.setRemoteDescription(new RTCSessionDescription(data.offer));
+    const answer = await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+
+    // Post answer back to Flask backend
+    await fetch(`${BACKEND_URL}/api/signal/answer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ asset_id: assetId, answer: answer })
+    });
+
+    console.log("[SPOOKY] Answer sent to switchboard. Waiting for direct P2P stream...");
+}
+</script>
