@@ -20,6 +20,11 @@
         .instruction-box { background: #0b0c10; border: 1px solid #45a29e; padding: 20px; border-radius: 6px; margin: 20px 0; font-size: 14px; }
         .instruction-box ol { margin: 10px 0 0 20px; color: #c5c6c7; padding: 0; }
         .instruction-box li { margin-bottom: 10px; line-height: 1.5; }
+
+        .transmission-box { background: #0b0c10; border: 1px solid #66fcf1; padding: 20px; border-radius: 6px; margin: 25px 0; }
+        .transmission-box input { width: 100%; padding: 10px; margin: 8px 0 15px 0; background: #1f2833; border: 1px solid #45a29e; color: #c5c6c7; border-radius: 4px; box-sizing: border-box; }
+        #status-display { margin-top: 15px; padding: 10px; background: #1f2833; border: 1px solid #45a29e; border-radius: 4px; font-size: 14px; color: #66fcf1; }
+
         .footer-links { margin-top: 40px; font-size: 14px; text-align: center; padding-bottom: 30px; }
         .footer-links a { color: #8892b0; margin: 0 15px; text-decoration: none; }
         .footer-links a:hover { color: #66fcf1; }
@@ -38,6 +43,19 @@
         <div style="text-align: center; margin: 30px 0;">
             <a href="SpookyInitializer.exe" class="btn" download>Download Recommended Client (Windows)</a>
             <a href="index.html" class="btn btn-secondary">Return to Gateway Portal</a>
+        </div>
+
+        <!-- Live Transmission Engine Integration -->
+        <div class="transmission-box">
+            <strong style="color: #66fcf1;">Secure AWS SES Transmission Test:</strong>
+            <label for="recipient-email" style="display:block; margin-top:10px; color:#c5c6c7;">Recipient Email:</label>
+            <input type="email" id="recipient-email" placeholder="user@domain.com">
+            
+            <label for="package-data" style="display:block; color:#c5c6c7;">Package Data / Identifier:</label>
+            <input type="text" id="package-data" placeholder="Enter secure package payload...">
+            
+            <button class="btn" onclick="triggerTransmission()" style="margin: 5px 0 0 0; width: 100%;">Initiate Secure Transmission</button>
+            <div id="status-display">System Status: Ready.</div>
         </div>
 
         <h3>Operating System Deployment Instructions</h3>
@@ -83,5 +101,40 @@
         <a href="privacy.html">Privacy Policy</a>
     </div>
 
+    <script>
+        async function triggerTransmission() {
+            const email = document.getElementById('recipient-email').value.trim();
+            const packageData = document.getElementById('package-data').value.trim();
+            const statusDiv = document.getElementById('status-display');
+
+            if (!email) {
+                statusDiv.innerText = "Error: Please provide a valid recipient email address.";
+                return;
+            }
+
+            statusDiv.innerText = "Transmitting package via AWS SES backend...";
+
+            try {
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email, payload: packageData })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || "Transmission failed.");
+                }
+
+                statusDiv.innerText = "Success: " + result.message;
+            } catch (error) {
+                console.error("Transmission Error:", error);
+                statusDiv.innerText = "Connection Error: Could not reach backend transmission engine.";
+            }
+        }
+    </script>
 </body>
 </html>
