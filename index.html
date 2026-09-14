@@ -467,11 +467,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function executeFileTransfer() {
+        async function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
             const feedback = document.getElementById('transfer-feedback');
+            
             feedback.style.display = 'block';
+            
             if (!email || !email.includes('@')) {
                 feedback.className = 'feedback-panel feedback-warning';
                 feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
@@ -482,9 +484,34 @@
                 feedback.innerHTML = "<strong>Error:</strong> Please select a file to transfer.";
                 return;
             }
-            const fileName = fileInput.files[0].name;
-            feedback.className = 'feedback-panel feedback-success';
-            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted tunnel established. File packaged as <strong>'" + fileName + ".spooky'</strong> and transmitted successfully. The recipient can double-click the file to unpack it instantly.";
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('file', file);
+
+            feedback.className = 'feedback-panel feedback-warning';
+            feedback.innerHTML = "<strong>Interrogating Node & Packaging Payload...</strong> Please wait.";
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/transfer', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    feedback.className = 'feedback-panel feedback-success';
+                    feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> Active Spooky Key verified for [${email}]. Encrypted tunnel established. File packaged as <strong>'${file.name}.spooky'</strong> and transmitted via AWS SES.`;
+                } else {
+                    feedback.className = 'feedback-panel feedback-warning';
+                    feedback.innerHTML = `<strong>Transmission Error:</strong> ${result.error || 'Server rejected payload.'}`;
+                }
+            } catch (error) {
+                feedback.className = 'feedback-panel feedback-warning';
+                feedback.innerHTML = `<strong>Network Error:</strong> Could not connect to local Spooky engine on port 5000. Ensure <code>ouija.py</code> is running.`;
+            }
         }
 
         function executeCall1on1() {
