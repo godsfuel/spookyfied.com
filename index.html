@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spookifyed.com | Secure Spooky Gateway</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #07080a; color: #d1d5db; margin: 0; padding: 0; text-align: center; font-size: 18px; }
+        body { font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; background-color: #07080a; color: #d1d5db; margin: 0; padding: 0; text-align: center; font-size: 18px; }
         
         .header-banner { background-color: #121316; padding: 0; border-bottom: 2px solid #9d4edd; width: 100%; box-sizing: border-box; overflow: hidden; }
         .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
@@ -16,12 +16,12 @@
         .container { max-width: 840px; margin: 40px auto; padding: 40px; background: #470F47; border-radius: 14px; border: 1px solid #3b4252; box-shadow: 0 15px 40px rgba(0,0,0,0.9); box-sizing: border-box; text-align: center; }
         
         /* Edge-to-edge scaled heading rule */
-        h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; white-space: nowrap; }
-        h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 24px; width: 100%; text-align: center; letter-spacing: 0.5px; }
-        p { color: #94a3b8; line-height: 1.6; font-size: 18px; }
+        h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; white-space: nowrap; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
+        h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 24px; width: 100%; text-align: center; letter-spacing: 0.5px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
+        p { color: #94a3b8; line-height: 1.6; font-size: 18px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
 
         /* Glowing Dark Button Styling */
-        .btn { display: inline-block; width: auto; min-width: 310px; max-width: 100%; background: #1a1e29; color: #e0aaff; padding: 16px 30px; margin: 12px auto; text-decoration: none; font-weight: 700; border-radius: 8px; text-align: center; transition: all 0.25s ease; cursor: pointer; border: 1px solid #7b2cbf; box-sizing: border-box; font-size: 18px; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25); }
+        .btn { display: inline-block; width: auto; min-width: 310px; max-width: 100%; background: #1a1e29; color: #e0aaff; padding: 16px 30px; margin: 12px auto; text-decoration: none; font-weight: 700; border-radius: 8px; text-align: center; transition: all 0.25s ease; cursor: pointer; border: 1px solid #7b2cbf; box-sizing: border-box; font-size: 18px; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25); font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .btn:hover { background: #252b3b; color: #ffffff; border-color: #9d4edd; transform: translateY(-2px); box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
         
         .btn-secondary { background: #1a1e29; color: #c77dff; border: 1px solid #7b2cbf; }
@@ -37,37 +37,37 @@
         .btn-small-link:hover { background: #252b3b; color: #ffffff; border-color: #9d4edd; box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
         
         .intro-card { background: #1a1e29; border: 1px solid #3b4252; padding: 30px; border-radius: 10px; margin-bottom: 30px; line-height: 1.7; text-align: left; }
-        .intro-card h2 { color: #e0aaff; font-size: 26px; margin-top: 0; text-align: center; border-bottom: 1px solid #3b4252; padding-bottom: 12px; }
+        .intro-card h2 { color: #e0aaff; font-size: 26px; margin-top: 0; text-align: center; border-bottom: 1px solid #3b4252; padding-bottom: 12px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .intro-card ol { margin: 15px 0 0 25px; padding: 0; }
-        .intro-card li { margin-bottom: 14px; color: #e2e8f0; font-size: 17px; }
+        .intro-card li { margin-bottom: 14px; color: #e2e8f0; font-size: 17px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .intro-card strong { color: #ffb703; }
 
         /* Boosted Telemetry Box Container */
-        .telemetry-box { background: #1a1e29; border: 1px solid #4a5568; padding: 24px 28px; border-radius: 10px; margin: 25px auto; font-family: monospace; font-size: 20px; color: #e0aaff; text-align: left; max-width: 650px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
+        .telemetry-box { background: #1a1e29; border: 1px solid #4a5568; padding: 24px 28px; border-radius: 10px; margin: 25px auto; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; font-size: 20px; color: #e0aaff; text-align: left; max-width: 650px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
         .telemetry-box div { margin: 10px 0; }
         
         .portal-view { display: none; }
         .operations-menu-container { display: block; }
         .active-module { display: none; background: #1a1e29; border: 1px solid #7b2cbf; padding: 30px; border-radius: 10px; margin-top: 20px; text-align: left; }
         
-        input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 15px; margin: 12px 0 20px 0; background: #07080a; border: 1px solid #4a5568; color: #fff; border-radius: 8px; box-sizing: border-box; font-size: 17px; }
+        input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 15px; margin: 12px 0 20px 0; background: #07080a; border: 1px solid #4a5568; color: #fff; border-radius: 8px; box-sizing: border-box; font-size: 17px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         input[type="email"]:focus, input[type="text"]:focus { border-color: #9d4edd; outline: none; box-shadow: 0 0 10px rgba(157, 78, 221, 0.4); }
         
-        .instruction-box { background: #1a1e29; border: 2px solid #ffb703; padding: 25px; border-radius: 10px; margin: 30px auto; font-size: 17px; color: #e2e8f0; line-height: 1.7; display: none; text-align: left; max-width: 650px; }
+        .instruction-box { background: #1a1e29; border: 2px solid #ffb703; padding: 25px; border-radius: 10px; margin: 30px auto; font-size: 17px; color: #e2e8f0; line-height: 1.7; display: none; text-align: left; max-width: 650px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .instruction-box ol { margin: 15px 0 0 25px; padding: 0; }
         .instruction-box li { margin-bottom: 12px; }
         
-        .feedback-panel { display: none; margin-top: 20px; padding: 18px; border-radius: 8px; font-size: 17px; line-height: 1.6; text-align: left; }
+        .feedback-panel { display: none; margin-top: 20px; padding: 18px; border-radius: 8px; font-size: 17px; line-height: 1.6; text-align: left; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .feedback-success { background: rgba(123, 44, 191, 0.2); border: 1px solid #9d4edd; color: #e0aaff; }
         .feedback-warning { background: rgba(255, 183, 3, 0.2); border: 1px solid #ffb703; color: #ffb703; }
         
-        .vendor-list { background: #1a1e29; border: 1px solid #3b4252; padding: 22px; border-radius: 10px; margin-top: 30px; font-size: 17px; color: #e0aaff; text-align: left; }
+        .vendor-list { background: #1a1e29; border: 1px solid #3b4252; padding: 22px; border-radius: 10px; margin-top: 30px; font-size: 17px; color: #e0aaff; text-align: left; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .vendor-list ul { margin: 12px 0 0 25px; padding: 0; color: #94a3b8; }
         .vendor-list li { margin-bottom: 10px; }
         .vendor-list a { color: #c77dff; text-decoration: underline; font-weight: bold; }
         .vendor-list a:hover { color: #ffffff; }
         
-        .footer-links { margin-top: 50px; font-size: 17px; text-align: center; padding-bottom: 40px; }
+        .footer-links { margin-top: 50px; font-size: 17px; text-align: center; padding-bottom: 40px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .footer-links a { color: #c77dff; margin: 0 20px; text-decoration: none; font-weight: 600; transition: color 0.2s; }
         .footer-links a:hover { color: #e0aaff; text-shadow: 0 0 8px rgba(157, 78, 221, 0.5); }
     </style>
@@ -130,7 +130,7 @@
         <!-- VIEW 2: OPERATIONS MENU -->
         <div id="view-menu" class="portal-view">
             <div id="operations-menu-wrapper" class="operations-menu-container">
-                <h1 style="font-size: 38px; letter-spacing: 2px; width: 100%;">Spooky Operations Menu</h1>
+                <h1 style="font-size: 48px; letter-spacing: 2px; width: 100%;">Spooky Operations Menu</h1>
                 <p style="text-align: center;">Hardware Anchor Authenticated. Spooky Gateway Active.</p>
                 
                 <!-- How Spooky Works Button placed under title -->
@@ -537,7 +537,7 @@
             feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
                 "Room Tag: <code>" + room + "</code><br>" +
                 (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
-                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#07080a; color:#e0aaff; border:1px solid #7b2cbf; padding:8px; width:100%; margin-top:8px; font-size:16px;' onclick='this.select()'>";
+                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#07080a; color:#e0aaff; border:1px solid #7b2cbf; padding:8px; width:100%; margin-top:8px; font-size:16px; font-family: \"Comic Sans MS\", \"Comic Sans\", cursive, sans-serif;' onclick='this.select()'>";
         }
 
         checkSovereignState();
