@@ -480,6 +480,22 @@
                 const pc = new RTCPeerConnection({'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]});
                 const dataChannel = pc.createDataChannel("file-transfer");
                 
+                dataChannel.onopen = async () => {
+                    feedback.className = 'feedback-panel feedback-success';
+                    feedback.innerHTML = `<strong>P2P Tunnel Open!</strong> Streaming file payload across encrypted channel...`;
+                    const reader = file.stream().getReader();
+                    
+                    while (true) {
+                        const { value, done } = await reader.read();
+                        if (done) {
+                            dataChannel.send('EOF:' + assetId);
+                            feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> File '${assetId}' fully transmitted via direct P2P tunnel!`;
+                            break;
+                        }
+                        dataChannel.send(value);
+                    }
+                };
+
                 const offer = await pc.createOffer();
                 await pc.setLocalDescription(offer);
                 const cleanOffer = { type: offer.type, sdp: offer.sdp };
@@ -490,23 +506,42 @@
                 formData.append('offer', JSON.stringify(cleanOffer));
 
                 feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
-                const response = await fetch('http://127.0.0.1:5000/transfer', {
+                const response = await fetch('http://192.168.0.155:5000/transfer', {
                     method: 'POST',
                     body: formData
                 });
 
                 const result = await response.json();
-
-                if (response.ok) {
-                    feedback.className = 'feedback-panel feedback-success';
-                    feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> Active Spooky Key verified for [${email}]. Encrypted tunnel established. File packaged as <strong>'${assetId}'</strong> and transmitted via AWS SES.`;
-                } else {
-                    feedback.className = 'feedback-panel feedback-warning';
-                    feedback.innerHTML = `<strong>Transmission Error:</strong> ${result.message || result.error || 'Server rejected payload.'}`;
+                if (!response.ok) {
+                    throw new Error(result.message || result.error || 'Server rejected payload.');
                 }
+
+                feedback.className = 'feedback-panel feedback-success';
+                feedback.innerHTML = `<strong>Transmission Initialized!</strong> Active Spooky Key verified for [${email}].<br><span style="color: #ffb703; font-weight: bold;">CRITICAL NOTICE: Keep this browser tab open</span> while the recipient retrieves the file. Polling switchboard for peer connection...`;
+
+                // Poll the switchboard for the receiver's answer
+                let answerFound = false;
+                for (let i = 0; i < 60; i++) {
+                    await new Promise(r => setTimeout(r, 2000));
+                    const checkRes = await fetch('http://192.168.0.155:5000/api/signal/offer/' + encodeURIComponent(assetId));
+                    if (checkRes.ok) {
+                        const checkData = await checkRes.json();
+                        if (checkData.answer) {
+                            await pc.setRemoteDescription(new RTCSessionDescription(checkData.answer));
+                            answerFound = true;
+                            feedback.innerHTML = `<strong>Peer Connected!</strong> Receiver answer acquired. Flushing file payload across direct P2P tunnel...`;
+                            break;
+                        }
+                    }
+                }
+
+                if (!answerFound) {
+                    throw new Error("Receiver connection timed out. Ensure the recipient clicked the email link while this tab remained open.");
+                }
+
             } catch (error) {
                 feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = `<strong>Network Error:</strong> Could not connect to local Spooky engine on port 5000. Ensure <code>app.py</code> is running.`;
+                feedback.innerHTML = `<strong>Transmission Error:</strong> ${error.message}`;
             }
         }
 
