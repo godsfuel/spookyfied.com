@@ -478,11 +478,12 @@
 
             try {
                 const pc = new RTCPeerConnection({'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]});
-                const dataChannel = pc.createDataChannel("file-transfer");
+                const dataChannel = pc.createDataChannel("file-transfer", { ordered: true });
                 
                 dataChannel.onopen = async () => {
                     feedback.className = 'feedback-panel feedback-success';
                     feedback.innerHTML = `<strong>P2P Tunnel Open!</strong> Streaming file payload across encrypted channel...`;
+                    
                     const reader = file.stream().getReader();
                     
                     while (true) {
@@ -491,6 +492,10 @@
                             dataChannel.send('EOF:' + assetId);
                             feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> File '${assetId}' fully transmitted via direct P2P tunnel!`;
                             break;
+                        }
+                        
+                        while (dataChannel.bufferedAmount > 65536) {
+                            await new Promise(resolve => setTimeout(resolve, 50));
                         }
                         dataChannel.send(value);
                     }
@@ -506,7 +511,7 @@
                 formData.append('offer', JSON.stringify(cleanOffer));
 
                 feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
-                const response = await fetch('http://192.168.0.155:5000/transfer', {
+                const response = await fetch('/transfer', {
                     method: 'POST',
                     body: formData
                 });
@@ -519,11 +524,11 @@
                 feedback.className = 'feedback-panel feedback-success';
                 feedback.innerHTML = `<strong>Transmission Initialized!</strong> Active Spooky Key verified for [${email}].<br><span style="color: #ffb703; font-weight: bold;">CRITICAL NOTICE: Keep this browser tab open</span> while the recipient retrieves the file. Polling switchboard for peer connection...`;
 
-                // Poll the switchboard for the receiver's answer
+                // Poll the switchboard for the receiver's answer using relative endpoint path
                 let answerFound = false;
-                for (let i = 0; i < 60; i++) {
+                for (let i = 0; i < 90; i++) {
                     await new Promise(r => setTimeout(r, 2000));
-                    const checkRes = await fetch('http://192.168.0.155:5000/api/signal/offer/' + encodeURIComponent(assetId));
+                    const checkRes = await fetch('/api/signal/offer/' + encodeURIComponent(assetId));
                     if (checkRes.ok) {
                         const checkData = await checkRes.json();
                         if (checkData.answer) {
