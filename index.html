@@ -152,7 +152,7 @@
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
-                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)[cite: 1]</li>
+                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
                     </ul>
                 </div>
             </div>
@@ -512,8 +512,8 @@
 
                 feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
                 
-                // SECURE HTTPS ENDPOINT: Matches your Porkbun SSL local server configuration
-                const serverEndpoint = 'https://YOUR_PUBLIC_IP:5000/transfer';
+                // CLOUDFLARE TUNNEL LIVE ENDPOINT
+                const serverEndpoint = 'https://buzz-prisoner-homepage-grant.trycloudflare.com/transfer';
 
                 const response = await fetch(serverEndpoint, {
                     method: 'POST',
@@ -535,11 +535,11 @@
                 feedback.className = 'feedback-panel feedback-success';
                 feedback.innerHTML = `<strong>Transmission Initialized!</strong> Active Spooky Key verified for [${email}].<br><span style="color: #ffb703; font-weight: bold;">CRITICAL NOTICE: Keep this browser tab open</span> while the recipient retrieves the file. Polling switchboard for peer connection...`;
 
-                // Poll the switchboard for the receiver's answer using the secure HTTPS endpoint path
+                // Poll the switchboard for the receiver's answer using the Cloudflare tunnel URL
                 let answerFound = false;
                 for (let i = 0; i < 90; i++) {
                     await new Promise(r => setTimeout(r, 2000));
-                    const checkRes = await fetch('https://YOUR_PUBLIC_IP:5000/api/signal/offer/' + encodeURIComponent(assetId));
+                    const checkRes = await fetch('https://buzz-prisoner-homepage-grant.trycloudflare.com/api/signal/offer/' + encodeURIComponent(assetId));
                     if (checkRes.ok) {
                         const checkData = await checkRes.json();
                         if (checkData.answer) {
