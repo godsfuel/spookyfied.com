@@ -152,7 +152,7 @@
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
-                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
+                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)[cite: 1]</li>
                     </ul>
                 </div>
             </div>
@@ -511,7 +511,11 @@
                 formData.append('offer', JSON.stringify(cleanOffer));
 
                 feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
-                const response = await fetch('/transfer', {
+                
+                // FIXED: Pointing explicitly to your public server endpoint (or http://127.0.0.1:5000/transfer for local testing)
+                const serverEndpoint = 'http://YOUR_PUBLIC_IP:5000/transfer';
+
+                const response = await fetch(serverEndpoint, {
                     method: 'POST',
                     body: formData
                 });
@@ -521,7 +525,7 @@
                 try {
                     result = JSON.parse(responseText);
                 } catch (e) {
-                    throw new Error(`Server returned non-JSON response: ${responseText.substring(0, 100)}...`);
+                    throw new Error(`Server returned non-JSON response (${response.status}): ${responseText.substring(0, 100)}...`);
                 }
 
                 if (!response.ok) {
@@ -531,11 +535,11 @@
                 feedback.className = 'feedback-panel feedback-success';
                 feedback.innerHTML = `<strong>Transmission Initialized!</strong> Active Spooky Key verified for [${email}].<br><span style="color: #ffb703; font-weight: bold;">CRITICAL NOTICE: Keep this browser tab open</span> while the recipient retrieves the file. Polling switchboard for peer connection...`;
 
-                // Poll the switchboard for the receiver's answer using relative endpoint path
+                // Poll the switchboard for the receiver's answer using the absolute endpoint path
                 let answerFound = false;
                 for (let i = 0; i < 90; i++) {
                     await new Promise(r => setTimeout(r, 2000));
-                    const checkRes = await fetch('/api/signal/offer/' + encodeURIComponent(assetId));
+                    const checkRes = await fetch('http://YOUR_PUBLIC_IP:5000/api/signal/offer/' + encodeURIComponent(assetId));
                     if (checkRes.ok) {
                         const checkData = await checkRes.json();
                         if (checkData.answer) {
