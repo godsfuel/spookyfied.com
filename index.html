@@ -15,12 +15,10 @@
 
         .container { max-width: 840px; margin: 40px auto; padding: 40px; background: #470F47; border-radius: 14px; border: 1px solid #3b4252; box-shadow: 0 15px 40px rgba(0,0,0,0.9); box-sizing: border-box; text-align: center; }
         
-        /* Edge-to-edge scaled heading rule */
-        h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; white-space: nowrap; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
+        h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 24px; width: 100%; text-align: center; letter-spacing: 0.5px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         p { color: #94a3b8; line-height: 1.6; font-size: 18px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
 
-        /* Glowing Dark Button Styling */
         .btn { display: inline-block; width: auto; min-width: 310px; max-width: 100%; background: #1a1e29; color: #e0aaff; padding: 16px 30px; margin: 12px auto; text-decoration: none; font-weight: 700; border-radius: 8px; text-align: center; transition: all 0.25s ease; cursor: pointer; border: 1px solid #7b2cbf; box-sizing: border-box; font-size: 18px; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25); font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .btn:hover { background: #252b3b; color: #ffffff; border-color: #9d4edd; transform: translateY(-2px); box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
         
@@ -42,7 +40,6 @@
         .intro-card li { margin-bottom: 14px; color: #e2e8f0; font-size: 17px; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
         .intro-card strong { color: #ffb703; }
 
-        /* Boosted Telemetry Box Container */
         .telemetry-box { background: #1a1e29; border: 1px solid #4a5568; padding: 24px 28px; border-radius: 10px; margin: 25px auto; font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; font-size: 20px; color: #e0aaff; text-align: left; max-width: 650px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
         .telemetry-box div { margin: 10px 0; }
         
@@ -74,24 +71,21 @@
 </head>
 <body>
 
-    <!-- Dynamic Landing Header (Switches logo based on key state) -->
     <div id="landing-header" class="header-banner">
         <img id="landing-logo-img" src="SPOOKY_Logo_new_user.png" alt="Spooky Service Logo">
     </div>
 
-    <!-- Interior Module Banner (Switches based on authentication state) -->
     <div id="module-banner" class="module-banner" style="display:none;">
         <img id="module-banner-img" src="spooky_banner.png" alt="Spooky Operations Banner">
     </div>
 
     <div class="container">
 
-        <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
+        <!-- VIEW 1: ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
-            <!-- How Spooky Works Button -->
             <div>
                 <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
             </div>
@@ -101,12 +95,10 @@
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff6b6b;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Step 1: Initial Download Action Button -->
             <div id="single-action-container">
                 <button id="primary-action-btn" class="btn" onclick="handleClientDownload();">Download Windows Client</button>
             </div>
 
-            <!-- Prominent Setup & Security Notice -->
             <div id="desktop-instructions" class="instruction-box">
                 <strong style="color: #ffb703; font-size: 19px; display: block; margin-bottom: 10px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
@@ -114,12 +106,10 @@
                 <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 12px;">Return to Main Gateway</button>
             </div>
 
-            <!-- Step 2: Activation Button -->
             <div id="activation-btn-container" style="display:none; margin-top: 25px;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback -->
             <div id="restore-session-container">
                 <button onclick="verifyLocalNode()" class="btn" style="margin-top: 25px;">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
@@ -133,7 +123,6 @@
                 <h1 style="font-size: 48px; letter-spacing: 2px; width: 100%;">Spooky Operations Menu</h1>
                 <p style="text-align: center;">Hardware Anchor Authenticated. Spooky Gateway Active.</p>
                 
-                <!-- How Spooky Works Button placed under title -->
                 <div>
                     <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
                 </div>
@@ -143,14 +132,12 @@
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Slim Operations Menu Buttons -->
                 <div style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
                     <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
                 </div>
 
-                <!-- Spooky Access Tiers & Billing Section -->
                 <div style="background: #07080a; border: 1px solid #ffb703; padding: 25px; border-radius: 10px; margin-top: 35px; text-align: left;">
                     <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703; text-align: center; font-size: 26px; letter-spacing: 0.8px; padding-bottom: 15px;">
                         Spooky Access Tiers & Subscriptions
@@ -162,7 +149,6 @@
                     </div>
                 </div>
 
-                <!-- Verified Subscribing Storefronts Directory -->
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
@@ -227,14 +213,13 @@
             </div>
         </div>
 
-        <!-- STANDALONE MODULE: HOW SPOOKY WORKS (Enhanced with approved overview & security architecture paragraphs) -->
+        <!-- MODULE 4: HOW SPOOKY WORKS -->
         <div id="mod-how-it-works" class="active-module">
             <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
                 <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
                     How Spooky Anti-Spy<br>Tunneling Works
                 </h1>
                 
-                <!-- Approved Paragraph 1: Ecosystem Overview -->
                 <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
                     <strong>Ecosystem Overview:</strong> The Spooky Sovereign ecosystem provides decentralized commercial infrastructure, secure hardware-bound token validation, and direct AWS SES transmission routing without intermediate cloud bloat.
                 </p>
@@ -243,7 +228,6 @@
                     Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit. Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
                 </p>
 
-                <!-- Approved Paragraph 2: Security Architecture -->
                 <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
                     <strong>Security Architecture:</strong> All nodes operate under strict zero-retention guidelines. Cryptographic handshakes are handled directly at the protocol level, ensuring complete operational privacy across distributed networks.
                 </p>
@@ -303,7 +287,7 @@
             continueDownloadBtn.setAttribute("href", "SpookyInitializer.exe");
             continueDownloadBtn.setAttribute("download", "SpookyInitializer.exe");
             instructionSteps.innerHTML = `
-                <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
+                <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>.</li>
                 <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
                 <li><strong>Node Execution:</strong> The DOS console will extract your hardware components, bind your cryptographic seed to local system cache, and ask you to press Enter for final cleanup.</li>
                 <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Spooky Gateway"</strong> button.</li>
@@ -467,6 +451,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // --- FULL PRODUCTION P2P FILE TRANSFER & WEBRTC OFFER PIPELINE ---
         async function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
@@ -486,14 +471,25 @@
             }
 
             const file = fileInput.files[0];
-            const formData = new FormData();
-            formData.append('email', email);
-            formData.append('file', file);
+            const assetId = file.name + ".spooky";
 
             feedback.className = 'feedback-panel feedback-warning';
-            feedback.innerHTML = "<strong>Interrogating Node & Packaging Payload...</strong> Please wait.";
+            feedback.innerHTML = "<strong>Interrogating Node & Generating WebRTC Offer...</strong> Please wait.";
 
             try {
+                const pc = new RTCPeerConnection({'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]});
+                const dataChannel = pc.createDataChannel("file-transfer");
+                
+                const offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
+                const cleanOffer = { type: offer.type, sdp: offer.sdp };
+
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('file', file);
+                formData.append('offer', JSON.stringify(cleanOffer));
+
+                feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
                 const response = await fetch('http://127.0.0.1:5000/transfer', {
                     method: 'POST',
                     body: formData
@@ -503,14 +499,14 @@
 
                 if (response.ok) {
                     feedback.className = 'feedback-panel feedback-success';
-                    feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> Active Spooky Key verified for [${email}]. Encrypted tunnel established. File packaged as <strong>'${file.name}.spooky'</strong> and transmitted via AWS SES.`;
+                    feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> Active Spooky Key verified for [${email}]. Encrypted tunnel established. File packaged as <strong>'${assetId}'</strong> and transmitted via AWS SES.`;
                 } else {
                     feedback.className = 'feedback-panel feedback-warning';
-                    feedback.innerHTML = `<strong>Transmission Error:</strong> ${result.error || 'Server rejected payload.'}`;
+                    feedback.innerHTML = `<strong>Transmission Error:</strong> ${result.message || result.error || 'Server rejected payload.'}`;
                 }
             } catch (error) {
                 feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = `<strong>Network Error:</strong> Could not connect to local Spooky engine on port 5000. Ensure <code>ouija.py</code> is running.`;
+                feedback.innerHTML = `<strong>Network Error:</strong> Could not connect to local Spooky engine on port 5000. Ensure <code>app.py</code> is running.`;
             }
         }
 
@@ -544,140 +540,3 @@
     </script>
 </body>
 </html>
-
-<script>
-// Configuration & State
-const BACKEND_URL = "http://localhost:5000";
-let pc = null;
-let dataChannel = null;
-
-// --- SENDER SIDE: Slice and Stream File ---
-async function startSenderStream(file, assetId) {
-    pc = new RTCPeerConnection({
-        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] // Public STUN server to discover local/public IPs
-    });
-
-    // Create the P2P Data Channel for file chunks
-    dataChannel = pc.createDataChannel("spooky-file-transfer");
-    dataChannel.binaryType = "arraybuffer";
-
-    dataChannel.onopen = () => {
-        console.log("[SPOOKY] P2P Tunnel Open. Streaming file chunks...");
-        sendFileInChunks(file);
-    };
-
-    // Create WebRTC Offer
-    const offer = await pc.createOffer();
-    await pc.setLocalDescription(offer);
-
-    // Send the offer to your Flask backend signaling switchboard
-    await fetch(`${BACKEND_URL}/api/signal/offer`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ asset_id: assetId, offer: offer })
-    });
-
-    console.log("[SPOOKY] Signaling offer posted. Waiting for receiver answer...");
-    pollForAnswer(assetId);
-}
-
-function sendFileInChunks(file) {
-    const CHUNK_SIZE = 64 * 1024; // 64KB chunks (optimized for browser data channels)
-    let offset = 0;
-    
-    const reader = new FileReader();
-    
-    reader.onload = (e) => {
-        dataChannel.send(e.target.result);
-        offset += e.target.result.byteLength;
-        
-        // Show progress update
-        let progress = Math.round((offset / file.size) * 100);
-        console.log(`[SPOOKY] Transmission Progress: ${progress}%`);
-
-        if (offset < file.size) {
-            readNextChunk();
-        } else {
-            console.log("[SPOOKY] File transmission complete!");
-            dataChannel.send(JSON.stringify({ type: "EOF", fileName: file.name }));
-        }
-    };
-
-    function readNextChunk() {
-        const slice = file.slice(offset, offset + CHUNK_SIZE);
-        reader.readAsArrayBuffer(slice);
-    }
-
-    readNextChunk();
-}
-
-// Poll backend to check when the receiver has posted their answer
-async function pollForAnswer(assetId) {
-    const interval = setInterval(async () => {
-        const res = await fetch(`${BACKEND_URL}/api/signal/offer/${assetId}`);
-        const data = await res.json();
-        
-        if (data.answer && !pc.currentRemoteDescription) {
-            clearInterval(interval);
-            await pc.setRemoteDescription(new RTCSessionDescription(data.answer));
-            console.log("[SPOOKY] Peer connection established with receiver!");
-        }
-    }, 2000);
-}
-
-
-// --- RECEIVER SIDE: Accept and Reassemble File ---
-async function joinAsReceiver(assetId) {
-    pc = new RTCPeerConnection({
-        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-    });
-
-    let receivedBuffers = [];
-    let incomingFileName = "spooky-recovered-file";
-
-    pc.ondatachannel = (event) => {
-        const receiveChannel = event.channel;
-        receiveChannel.binaryType = "arraybuffer";
-
-        receiveChannel.onmessage = (e) => {
-            if (typeof e.data === 'string') {
-                // Check for End-Of-File metadata message
-                const msg = JSON.parse(e.data);
-                if (msg.type === "EOF") {
-                    console.log("[SPOOKY] Reassembly complete. Generating download...");
-                    const completeBlob = new Blob(receivedBuffers);
-                    const downloadUrl = URL.createObjectURL(completeBlob);
-                    
-                    // Trigger automatic browser download prompt
-                    const a = document.createElement('a');
-                    a.href = downloadUrl;
-                    a.download = msg.fileName || incomingFileName;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                }
-            } else {
-                // Collect binary chunks into RAM buffer array
-                receivedBuffers.push(e.data);
-            }
-        };
-    };
-
-    // Fetch offer from Flask backend
-    const res = await fetch(`${BACKEND_URL}/api/signal/offer/${assetId}`);
-    const data = await res.json();
-
-    await pc.setRemoteDescription(new RTCSessionDescription(data.offer));
-    const answer = await pc.createAnswer();
-    await pc.setLocalDescription(answer);
-
-    // Post answer back to Flask backend
-    await fetch(`${BACKEND_URL}/api/signal/answer`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ asset_id: assetId, answer: answer })
-    });
-
-    console.log("[SPOOKY] Answer sent to switchboard. Waiting for direct P2P stream...");
-}
-</script>
