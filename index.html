@@ -451,7 +451,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- FULL PRODUCTION P2P FILE TRANSFER & WEBRTC OFFER PIPELINE ---
+        // --- FULL PRODUCTION P2P FILE TRANSFER & JSON SIGNALING PIPELINE ---
         async function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
@@ -505,19 +505,21 @@
                 await pc.setLocalDescription(offer);
                 const cleanOffer = { type: offer.type, sdp: offer.sdp };
 
-                const formData = new FormData();
-                formData.append('email', email);
-                formData.append('file', file);
-                formData.append('offer', JSON.stringify(cleanOffer));
+                // Send lightweight JSON payload instead of heavy FormData binary stream
+                const payload = {
+                    email: email,
+                    filename: file.name,
+                    offer: cleanOffer
+                };
 
                 feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
                 
-                // CORRECTED TUNNEL ENDPOINT (spookyfied.com instead of spookifyed.com)
-                const serverEndpoint = 'https://tunnel.spookyfied.com/transfer';
+                const serverEndpoint = 'https://spookyfied.com/transfer';
 
                 const response = await fetch(serverEndpoint, {
                     method: 'POST',
-                    body: formData
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
                 });
 
                 const responseText = await response.text();
@@ -535,11 +537,10 @@
                 feedback.className = 'feedback-panel feedback-success';
                 feedback.innerHTML = `<strong>Transmission Initialized!</strong> Active Spooky Key verified for [${email}].<br><span style="color: #ffb703; font-weight: bold;">CRITICAL NOTICE: Keep this browser tab open</span> while the recipient retrieves the file. Polling switchboard for peer connection...`;
 
-                // Poll the switchboard for the receiver's answer using the corrected tunnel URL
                 let answerFound = false;
                 for (let i = 0; i < 90; i++) {
                     await new Promise(r => setTimeout(r, 2000));
-                    const checkRes = await fetch('https://tunnel.spookyfied.com/api/signal/offer/' + encodeURIComponent(assetId));
+                    const checkRes = await fetch('https://spookyfied.com/api/signal/offer/' + encodeURIComponent(assetId));
                     if (checkRes.ok) {
                         const checkData = await checkRes.json();
                         if (checkData.answer) {
