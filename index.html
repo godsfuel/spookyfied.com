@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spookifyed.com | Secure Spooky Gateway</title>
+    <title>Spookyfied.com | Secure Spooky Gateway</title>
     <style>
         body { font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; background-color: #07080a; color: #d1d5db; margin: 0; padding: 0; text-align: center; font-size: 18px; }
         
@@ -512,8 +512,8 @@
 
                 feedback.innerHTML = "<strong>Dispatching SES Secure Key Notification & Registering Switchboard...</strong>";
                 
-                // PERMANENT CLOUDFLARE TUNNEL ENDPOINT
-                const serverEndpoint = 'https://tunnel.spookifyed.com/transfer';
+                // CORRECTED TUNNEL ENDPOINT (spookyfied.com instead of spookifyed.com)
+                const serverEndpoint = 'https://tunnel.spookyfied.com/transfer';
 
                 const response = await fetch(serverEndpoint, {
                     method: 'POST',
@@ -535,11 +535,11 @@
                 feedback.className = 'feedback-panel feedback-success';
                 feedback.innerHTML = `<strong>Transmission Initialized!</strong> Active Spooky Key verified for [${email}].<br><span style="color: #ffb703; font-weight: bold;">CRITICAL NOTICE: Keep this browser tab open</span> while the recipient retrieves the file. Polling switchboard for peer connection...`;
 
-                // Poll the switchboard for the receiver's answer using the permanent Cloudflare tunnel URL
+                // Poll the switchboard for the receiver's answer using the corrected tunnel URL
                 let answerFound = false;
                 for (let i = 0; i < 90; i++) {
                     await new Promise(r => setTimeout(r, 2000));
-                    const checkRes = await fetch('https://tunnel.spookifyed.com/api/signal/offer/' + encodeURIComponent(assetId));
+                    const checkRes = await fetch('https://tunnel.spookyfied.com/api/signal/offer/' + encodeURIComponent(assetId));
                     if (checkRes.ok) {
                         const checkData = await checkRes.json();
                         if (checkData.answer) {
@@ -578,7 +578,7 @@
             const room = document.getElementById('groupRoomName').value.trim() || "Spooky-Conference-Room";
             const emails = document.getElementById('groupEmails').value.trim();
             const feedback = document.getElementById('group-feedback');
-            const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
+            const inviteUrl = "https://spookyfied.com/?call_invite=" + encodeURIComponent(room);
             feedback.style.display = 'block';
             feedback.className = 'feedback-panel feedback-success';
             feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
