@@ -505,7 +505,7 @@
                 await pc.setLocalDescription(offer);
                 const cleanOffer = { type: offer.type, sdp: offer.sdp };
 
-                // Send lightweight JSON payload instead of heavy FormData binary stream
+                // Send lightweight JSON payload matching app.py
                 const payload = {
                     email: email,
                     filename: file.name,
