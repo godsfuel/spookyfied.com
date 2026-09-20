@@ -3,110 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spookyfied.com | Secure Spooky Gateway</title>
+    <title>Spookifyed.com | Secure Spooky Gateway</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #07080a; color: #d1d5db; margin: 0; padding: 0; text-align: center; font-size: 18px; }
-        
-        .header-banner { background-color: #121316; padding: 0; border-bottom: 2px solid #9d4edd; width: 100%; box-sizing: border-box; overflow: hidden; }
-        .header-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
-
-        .module-banner { background-color: #121316; padding: 0; border-bottom: 3px solid #9d4edd; width: 100%; box-sizing: border-box; overflow: hidden; box-shadow: 0 4px 25px rgba(157, 78, 221, 0.3); }
-        .module-banner img { width: 100%; height: auto; display: block; margin: 0; object-fit: cover; }
-
-        .container { max-width: 840px; margin: 40px auto; padding: 40px; background: #12141c; border-radius: 14px; border: 1px solid #3b4252; box-shadow: 0 15px 40px rgba(0,0,0,0.9); box-sizing: border-box; text-align: center; }
-        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #07080a;
+            color: #d1d5db;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-size: 18px;
+        }
+        .header-banner {
+            background-color: #121316;
+            padding: 0;
+            border-bottom: 2px solid #9d4edd;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .header-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+            object-fit: cover;
+        }
+        .module-banner {
+            background-color: #121316;
+            padding: 0;
+            border-bottom: 3px solid #9d4edd;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(157, 78, 221, 0.3);
+        }
+        .module-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+            object-fit: cover;
+        }
+        .container {
+            max-width: 840px;
+            margin: 40px auto;
+            padding: 40px;
+            background: #12141c;
+            border-radius: 14px;
+            border: 1px solid #3b4252;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+            box-sizing: border-box;
+            text-align: center;
+        }
         /* Edge-to-edge scaled heading rule */
-        h1 { color: #e0aaff; font-size: clamp(32px, 4.5vw, 48px); margin-top: 0; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5); width: 100%; text-align: center; line-height: 1.2; box-sizing: border-box; padding: 0 1rem; word-break: keep-all; white-space: nowrap; }
-        h3 { color: #e0aaff; border-bottom: 1px solid #3b4252; padding-bottom: 12px; margin-top: 30px; font-size: 24px; width: 100%; text-align: center; letter-spacing: 0.5px; }
-        p { color: #94a3b8; line-height: 1.6; font-size: 18px; }
-
+        h1 {
+            color: #e0aaff;
+            font-size: clamp(32px, 4.5vw, 48px);
+            margin-top: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5);
+            width: 100%;
+            text-align: center;
+            line-height: 1.2;
+            box-sizing: border-box;
+            padding: 0 1rem;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        h3 {
+            color: #e0aaff;
+            border-bottom: 1px solid #3b4252;
+            padding-bottom: 12px;
+            margin-top: 30px;
+            font-size: 24px;
+            width: 100%;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 18px;
+        }
         /* Glowing Dark Button Styling */
-        .btn { display: inline-block; width: auto; min-width: 310px; max-width: 100%; background: #1a1e29; color: #e0aaff; padding: 16px 30px; margin: 12px auto; text-decoration: none; font-weight: 700; border-radius: 8px; text-align: center; transition: all 0.25s ease; cursor: pointer; border: 1px solid #7b2cbf; box-sizing: border-box; font-size: 18px; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25); }
-        .btn:hover { background: #252b3b; color: #ffffff; border-color: #9d4edd; transform: translateY(-2px); box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
-        
-        .btn-secondary { background: #1a1e29; color: #c77dff; border: 1px solid #7b2cbf; }
-        .btn-secondary:hover { background: #252b3b; color: #ffffff; box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
-        
-        .btn-activate { background: #1a1e29; color: #4ea8de; border: 1px solid #3a86ff; box-shadow: 0 4px 15px rgba(58, 134, 255, 0.25); font-size: 19px; }
-        .btn-activate:hover { background: #252b3b; color: #ffffff; border-color: #4ea8de; box-shadow: 0 0 25px rgba(58, 134, 255, 0.8), inset 0 0 10px rgba(58, 134, 255, 0.4); }
-        
-        .btn-subscribe { background: #ffb703; color: #0b0c10; font-size: 19px; border: none; font-weight: 800; box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3); }
-        .btn-subscribe:hover { background: #f0a500; color: #0b0c10; transform: translateY(-2px); box-shadow: 0 0 25px rgba(255, 183, 3, 0.8); }
-        
-        .btn-small-link { background: #1a1e29; color: #e0aaff; border: 1px solid #7b2cbf; font-size: 19px; padding: 14px 28px; margin: 12px auto 25px auto; min-width: auto; box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25); }
-        .btn-small-link:hover { background: #252b3b; color: #ffffff; border-color: #9d4edd; box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4); }
-        
-        .intro-card { background: #1a1e29; border: 1px solid #3b4252; padding: 30px; border-radius: 10px; margin-bottom: 30px; line-height: 1.7; text-align: left; }
-        .intro-card h2 { color: #e0aaff; font-size: 26px; margin-top: 0; text-align: center; border-bottom: 1px solid #3b4252; padding-bottom: 12px; }
-        .intro-card ol { margin: 15px 0 0 25px; padding: 0; }
-        .intro-card li { margin-bottom: 14px; color: #e2e8f0; font-size: 17px; }
-        .intro-card strong { color: #ffb703; }
-
+        .btn {
+            display: inline-block;
+            width: auto;
+            min-width: 310px;
+            max-width: 100%;
+            background: #1a1e29;
+            color: #e0aaff;
+            padding: 16px 30px;
+            margin: 12px auto;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid #7b2cbf;
+            box-sizing: border-box;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25);
+        }
+        .btn:hover {
+            background: #252b3b;
+            color: #ffffff;
+            border-color: #9d4edd;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4);
+        }
+        .btn-secondary {
+            background: #1a1e29;
+            color: #c77dff;
+            border: 1px solid #7b2cbf;
+        }
+        .btn-secondary:hover {
+            background: #252b3b;
+            color: #ffffff;
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4);
+        }
+        .btn-activate {
+            background: #1a1e29;
+            color: #4ea8de;
+            border: 1px solid #3a86ff;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.25);
+            font-size: 19px;
+        }
+        .btn-activate:hover {
+            background: #252b3b;
+            color: #ffffff;
+            border-color: #4ea8de;
+            box-shadow: 0 0 25px rgba(58, 134, 255, 0.8), inset 0 0 10px rgba(58, 134, 255, 0.4);
+        }
+        .btn-subscribe {
+            background: #ffb703;
+            color: #0b0c10;
+            font-size: 19px;
+            border: none;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+        }
+        .btn-subscribe:hover {
+            background: #f0a500;
+            color: #0b0c10;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 183, 3, 0.8);
+        }
+        .btn-small-link {
+            background: #1a1e29;
+            color: #e0aaff;
+            border: 1px solid #7b2cbf;
+            font-size: 19px;
+            padding: 14px 28px;
+            margin: 12px auto 25px auto;
+            min-width: auto;
+            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25);
+        }
+        .btn-small-link:hover {
+            background: #252b3b;
+            color: #ffffff;
+            border-color: #9d4edd;
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4);
+        }
+        .intro-card {
+            background: #1a1e29;
+            border: 1px solid #3b4252;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: left;
+        }
+        .intro-card h2 {
+            color: #e0aaff;
+            font-size: 26px;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 1px solid #3b4252;
+            padding-bottom: 12px;
+        }
+        .intro-card ol {
+            margin: 15px 0 0 25px;
+            padding: 0;
+        }
+        .intro-card li {
+            margin-bottom: 14px;
+            color: #e2e8f0;
+            font-size: 17px;
+        }
+        .intro-card strong {
+            color: #ffb703;
+        }
         /* Boosted Telemetry Box Container */
-        .telemetry-box { background: #1a1e29; border: 1px solid #4a5568; padding: 24px 28px; border-radius: 10px; margin: 25px auto; font-family: monospace; font-size: 20px; color: #e0aaff; text-align: left; max-width: 650px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
-        .telemetry-box div { margin: 10px 0; }
-        
-        .portal-view { display: none; }
-        .operations-menu-container { display: block; }
-        .active-module { display: none; background: #1a1e29; border: 1px solid #7b2cbf; padding: 30px; border-radius: 10px; margin-top: 20px; text-align: left; }
-        
-        input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 15px; margin: 12px 0 20px 0; background: #07080a; border: 1px solid #4a5568; color: #fff; border-radius: 8px; box-sizing: border-box; font-size: 17px; }
-        input[type="email"]:focus, input[type="text"]:focus { border-color: #9d4edd; outline: none; box-shadow: 0 0 10px rgba(157, 78, 221, 0.4); }
-        
-        .instruction-box { background: #1a1e29; border: 2px solid #ffb703; padding: 25px; border-radius: 10px; margin: 30px auto; font-size: 17px; color: #e2e8f0; line-height: 1.7; display: none; text-align: left; max-width: 650px; }
-        .instruction-box ol { margin: 15px 0 0 25px; padding: 0; }
-        .instruction-box li { margin-bottom: 12px; }
-        
-        .feedback-panel { display: none; margin-top: 20px; padding: 18px; border-radius: 8px; font-size: 17px; line-height: 1.6; text-align: left; }
-        .feedback-success { background: rgba(123, 44, 191, 0.2); border: 1px solid #9d4edd; color: #e0aaff; }
-        .feedback-warning { background: rgba(255, 183, 3, 0.2); border: 1px solid #ffb703; color: #ffb703; }
-        
-        .vendor-list { background: #1a1e29; border: 1px solid #3b4252; padding: 22px; border-radius: 10px; margin-top: 30px; font-size: 17px; color: #e0aaff; text-align: left; }
-        .vendor-list ul { margin: 12px 0 0 25px; padding: 0; color: #94a3b8; }
-        .vendor-list li { margin-bottom: 10px; }
-        .vendor-list a { color: #c77dff; text-decoration: underline; font-weight: bold; }
-        .vendor-list a:hover { color: #ffffff; }
-        
-        .footer-links { margin-top: 50px; font-size: 17px; text-align: center; padding-bottom: 40px; }
-        .footer-links a { color: #c77dff; margin: 0 20px; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-        .footer-links a:hover { color: #e0aaff; text-shadow: 0 0 8px rgba(157, 78, 221, 0.5); }
+        .telemetry-box {
+            background: #1a1e29;
+            border: 1px solid #4a5568;
+            padding: 24px 28px;
+            border-radius: 10px;
+            margin: 25px auto;
+            font-family: monospace;
+            font-size: 20px;
+            color: #e0aaff;
+            text-align: left;
+            max-width: 650px;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+        }
+        .telemetry-box div {
+            margin: 10px 0;
+        }
+        .portal-view {
+            display: none;
+        }
+        .operations-menu-container {
+            display: block;
+        }
+        .active-module {
+            display: none;
+            background: #1a1e29;
+            border: 1px solid #7b2cbf;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        input[type="email"], input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0 20px 0;
+            background: #07080a;
+            border: 1px solid #4a5568;
+            color: #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 17px;
+        }
+        input[type="email"]:focus, input[type="text"]:focus {
+            border-color: #9d4edd;
+            outline: none;
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
+        }
+        .instruction-box {
+            background: #1a1e29;
+            border: 2px solid #ffb703;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px auto;
+            font-size: 17px;
+            color: #e2e8f0;
+            line-height: 1.7;
+            display: none;
+            text-align: left;
+            max-width: 650px;
+        }
+        .instruction-box ol {
+            margin: 15px 0 0 25px;
+            padding: 0;
+        }
+        .instruction-box li {
+            margin-bottom: 12px;
+        }
+        .feedback-panel {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 17px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .feedback-success {
+            background: rgba(123, 44, 191, 0.2);
+            border: 1px solid #9d4edd;
+            color: #e0aaff;
+        }
+        .feedback-warning {
+            background: rgba(255, 183, 3, 0.2);
+            border: 1px solid #ffb703;
+            color: #ffb703;
+        }
+        .vendor-list {
+            background: #1a1e29;
+            border: 1px solid #3b4252;
+            padding: 22px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 17px;
+            color: #e0aaff;
+            text-align: left;
+        }
+        .vendor-list ul {
+            margin: 12px 0 0 25px;
+            padding: 0;
+            color: #94a3b8;
+        }
+        .vendor-list li {
+            margin-bottom: 10px;
+        }
+        .vendor-list a {
+            color: #c77dff;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .vendor-list a:hover {
+            color: #ffffff;
+        }
+        .footer-links {
+            margin-top: 50px;
+            font-size: 17px;
+            text-align: center;
+            padding-bottom: 40px;
+        }
+        .footer-links a {
+            color: #c77dff;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #e0aaff;
+            text-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
+        }
     </style>
 </head>
 <body>
-
-    <!-- Dynamic Landing Header (Switches logo based on key state) -->
+    <!-- Dynamic Landing Header -->
     <div id="landing-header" class="header-banner">
         <img id="landing-logo-img" src="SPOOKY_Logo_new_user.png" alt="Spooky Service Logo">
     </div>
 
-    <!-- Interior Module Banner (Switches based on authentication state) -->
+    <!-- Interior Module Banner -->
     <div id="module-banner" class="module-banner" style="display:none;">
         <img id="module-banner-img" src="spooky_banner.png" alt="Spooky Operations Banner">
     </div>
 
     <div class="container">
-
         <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
         <div id="view-onboarding" class="portal-view">
             <h1>Spooky Node Provisioning</h1>
             <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
             
-            <!-- How Spooky Works Button -->
             <div>
                 <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
             </div>
-
+            
             <div class="telemetry-box">
                 <div>Detected Terminal: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
                 <div>Anchor Status: <span id="anchor-status-display" style="color: #ff6b6b;">No Active Key Bound in Session</span></div>
             </div>
 
-            <!-- Step 1: Initial Download Action Button -->
             <div id="single-action-container">
                 <button id="primary-action-btn" class="btn" onclick="handleClientDownload();">Download Windows Client</button>
             </div>
 
-            <!-- Prominent Setup & Security Notice -->
             <div id="desktop-instructions" class="instruction-box">
                 <strong style="color: #ffb703; font-size: 19px; display: block; margin-bottom: 10px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
                 <ol id="instruction-steps"></ol>
@@ -114,16 +365,14 @@
                 <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 12px;">Return to Main Gateway</button>
             </div>
 
-            <!-- Step 2: Activation Button -->
             <div id="activation-btn-container" style="display:none; margin-top: 25px;">
                 <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
             </div>
 
-            <!-- Always-available fallback -->
             <div id="restore-session-container">
                 <button onclick="verifyLocalNode()" class="btn" style="margin-top: 25px;">Already Have a Node Key Installed? Click Here to Restore Session</button>
             </div>
-
+            
             <div id="onboarding-feedback" class="feedback-panel"></div>
         </div>
 
@@ -133,24 +382,21 @@
                 <h1 style="font-size: 38px; letter-spacing: 2px; width: 100%;">Spooky Operations Menu</h1>
                 <p style="text-align: center;">Hardware Anchor Authenticated. Spooky Gateway Active.</p>
                 
-                <!-- How Spooky Works Button placed under title -->
                 <div>
                     <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
                 </div>
-
+                
                 <div class="telemetry-box">
                     <div>Terminal Architecture: <span id="os-active-display" style="color: #e0aaff;">Active Node</span></div>
                     <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
                 </div>
 
-                <!-- Slim Operations Menu Buttons -->
                 <div style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                     <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
                     <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
                     <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
                 </div>
 
-                <!-- Spooky Access Tiers & Billing Section -->
                 <div style="background: #07080a; border: 1px solid #ffb703; padding: 25px; border-radius: 10px; margin-top: 35px; text-align: left;">
                     <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703; text-align: center; font-size: 26px; letter-spacing: 0.8px; padding-bottom: 15px;">
                         Spooky Access Tiers & Subscriptions
@@ -162,7 +408,6 @@
                     </div>
                 </div>
 
-                <!-- Verified Subscribing Storefronts Directory -->
                 <div class="vendor-list">
                     <strong>Authorized Subscribing Storefront:</strong>
                     <ul>
@@ -227,17 +472,20 @@
             </div>
         </div>
 
-        <!-- STANDALONE MODULE: HOW SPOOKY WORKS -->
+        <!-- MODULE 4: HOW SPOOKY WORKS -->
         <div id="mod-how-it-works" class="active-module">
             <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
                 <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
                     How Spooky Anti-Spy<br>Tunneling Works
                 </h1>
-                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px; text-align: center;">
-                    Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit.
+                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
+                    <strong>Ecosystem Overview:</strong> The Spooky Sovereign ecosystem provides decentralized commercial infrastructure, secure hardware-bound token validation, and direct AWS SES transmission routing without intermediate cloud bloat.
                 </p>
                 <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
-                    Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
+                    Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit. Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
+                </p>
+                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
+                    <strong>Security Architecture:</strong> All nodes operate under strict zero-retention guidelines. Cryptographic handshakes are handled directly at the protocol level, ensuring complete operational privacy across distributed networks.
                 </p>
                 <ol style="text-align: left; margin: 18px 0 18px 25px;">
                     <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
@@ -249,10 +497,9 @@
                 </p>
             </div>
             <div style="text-align: center;">
-                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:25px;">Back to Spooky Menu / Gateway</button>
+                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:25px;">Back to Spooky Menu/Gateway</button>
             </div>
         </div>
-
     </div>
 
     <div class="footer-links">
@@ -264,7 +511,6 @@
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         let detectedOS = "windows";
         let osDisplayName = "Windows Terminal";
-
         if (/android/i.test(userAgent)) {
             detectedOS = "android";
             osDisplayName = "Android Mobile Device";
@@ -278,17 +524,17 @@
             detectedOS = "linux";
             osDisplayName = "Linux Machine";
         }
-
+        
         document.getElementById('os-name-display').innerText = osDisplayName;
         document.getElementById('os-active-display').innerText = osDisplayName;
-
+        
         const actionBtn = document.getElementById('primary-action-btn');
         const instructionsBox = document.getElementById('desktop-instructions');
         const instructionSteps = document.getElementById('instruction-steps');
         const continueDownloadBtn = document.getElementById('continue-download-btn');
         const restoreSessionContainer = document.getElementById('restore-session-container');
         const activationBtnContainer = document.getElementById('activation-btn-container');
-
+        
         if (detectedOS === 'windows') {
             actionBtn.innerText = "Download Windows Client";
             continueDownloadBtn.setAttribute("href", "SpookyInitializer.exe");
@@ -354,25 +600,25 @@
             fb.style.display = 'block';
             fb.className = 'feedback-panel feedback-success';
             fb.innerHTML = "Querying device hardware telemetry & generating 256-bit Spooky key...";
-
+            
             const entropy = navigator.userAgent + screen.width + "x" + screen.height + (navigator.hardwareConcurrency || 4) + (new Date().getTimezoneOffset());
             const encoder = new TextEncoder();
             const data = encoder.encode(entropy + "MOBILE_SPOOKY_SALT_2026");
             const hashBuffer = await crypto.subtle.digest('SHA-256', data);
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             const hexKey = "KEY-MOB-" + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16).toUpperCase();
-
+            
             localStorage.setItem('spooky_node_installed', 'true');
             localStorage.setItem('spooky_sovereign_node_id', hexKey);
-
+            
             setTimeout(() => {
                 fb.innerHTML = "Hardware Anchor Verified & Locked: <strong>" + hexKey + "</strong>. Opening Spooky Operations...";
-                setTimeout(() => { 
+                setTimeout(() => {
                     document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
                     document.getElementById('mod-how-it-works').style.display = 'none';
                     document.getElementById('module-banner').style.display = 'none';
                     document.getElementById('landing-header').style.display = 'block';
-                    checkSovereignState(); 
+                    checkSovereignState();
                 }, 900);
             }, 600);
         }
@@ -384,7 +630,6 @@
         function checkSovereignState() {
             let storedKey = getPersistentSovereignKey();
             const logoImg = document.getElementById('landing-logo-img');
-            
             if (storedKey) {
                 document.getElementById('view-onboarding').style.display = 'none';
                 document.getElementById('operations-menu-wrapper').style.display = 'block';
@@ -393,8 +638,8 @@
                 document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
                 logoImg.src = "SPOOKY_Logo.png";
             } else {
-                document.getElementById('view-onboarding').style.display = 'block';
                 document.getElementById('view-menu').style.display = 'none';
+                document.getElementById('view-onboarding').style.display = 'block';
                 logoImg.src = "SPOOKY_Logo_new_user.png";
             }
         }
@@ -412,12 +657,12 @@
             fb.className = 'feedback-panel feedback-success';
             fb.innerHTML = "Local Hardware Anchor Authenticated: <strong>" + permanentKey + "</strong>. Loading Operations Menu...";
             
-            setTimeout(() => { 
+            setTimeout(() => {
                 document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
                 document.getElementById('mod-how-it-works').style.display = 'none';
                 document.getElementById('module-banner').style.display = 'none';
                 document.getElementById('landing-header').style.display = 'block';
-                checkSovereignState(); 
+                checkSovereignState();
             }, 900);
         }
 
@@ -435,7 +680,7 @@
             } else {
                 bannerImg.src = "spooky_banner.png";
             }
-
+            
             document.getElementById('landing-header').style.display = 'none';
             document.getElementById('module-banner').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -452,17 +697,19 @@
             } else {
                 document.getElementById('view-onboarding').style.display = 'block';
             }
-
+            
             document.getElementById('module-banner').style.display = 'none';
             document.getElementById('landing-header').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function executeFileTransfer() {
+        async function executeFileTransfer() {
             const email = document.getElementById('transferEmail').value.trim();
             const fileInput = document.getElementById('transferFile');
             const feedback = document.getElementById('transfer-feedback');
+            
             feedback.style.display = 'block';
+            
             if (!email || !email.includes('@')) {
                 feedback.className = 'feedback-panel feedback-warning';
                 feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
@@ -473,9 +720,33 @@
                 feedback.innerHTML = "<strong>Error:</strong> Please select a file to transfer.";
                 return;
             }
-            const fileName = fileInput.files[0].name;
-            feedback.className = 'feedback-panel feedback-success';
-            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Active Spooky Key verified for [" + email + "]. Encrypted tunnel established. File packaged as <strong>'" + fileName + ".spooky'</strong> and transmitted successfully. The recipient can double-click the file to unpack it instantly.";
+            
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('file', file);
+            
+            feedback.className = 'feedback-panel feedback-warning';
+            feedback.innerHTML = "<strong>Interrogating Node & Packaging Payload...</strong> Please wait.";
+            
+            try {
+                const response = await fetch('http://127.0.0.1:5000/transfer', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                
+                if (response.ok) {
+                    feedback.className = 'feedback-panel feedback-success';
+                    feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> Active Spooky Key verified for [${email}]. Encrypted tunnel established. File packaged as <strong>'${file.name}.spooky'</strong> and transmitted via AWS SES.`;
+                } else {
+                    feedback.className = 'feedback-panel feedback-warning';
+                    feedback.innerHTML = `<strong>Transmission Error:</strong> ${result.error || 'Server rejected payload.'}`;
+                }
+            } catch (error) {
+                feedback.className = 'feedback-panel feedback-warning';
+                feedback.innerHTML = `<strong>Network Error:</strong> Could not connect to local Spooky engine on port 5000. Ensure <code>wsgi.py</code> is running.`;
+            }
         }
 
         function executeCall1on1() {
@@ -495,7 +766,8 @@
             const room = document.getElementById('groupRoomName').value.trim() || "Spooky-Conference-Room";
             const emails = document.getElementById('groupEmails').value.trim();
             const feedback = document.getElementById('group-feedback');
-            const inviteUrl = "https://spookyfied.com/?call_invite=" + encodeURIComponent(room);
+            const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
+            
             feedback.style.display = 'block';
             feedback.className = 'feedback-panel feedback-success';
             feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
