@@ -3,780 +3,775 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spookifyed.com | Secure Spooky Gateway</title>
+    <title>SimpleSourdough4U</title>
     <style>
+        :root {
+            --primary: #4A5D23;      /* Olive Leaf for Nav & Accents */
+            --secondary: #4A5D23;    /* Olive Leaf for Nav & Accents */
+            --background: #F4F6F0;   /* Warm Farmhouse Cream/Linen */
+            --text: #2C352D;         /* Deep Muted Charcoal/Green-Grey */
+            --card-bg: #FFFFFF;
+            --accent: #E2E8DC;       /* Light Sage Tint */
+        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #07080a;
-            color: #d1d5db;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
             margin: 0;
             padding: 0;
-            text-align: center;
-            font-size: 18px;
+            line-height: 1.6;
         }
-        .header-banner {
-            background-color: #121316;
-            padding: 0;
-            border-bottom: 2px solid #9d4edd;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            border-bottom: 4px solid var(--secondary);
         }
-        .header-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .logo-img {
+            max-height: 240px;
+            width: auto;
+            border-radius: 8px;
+        }
+        header h1 {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', 'Comic Sans MS', cursive, sans-serif;
+            font-size: 5em;
             margin: 0;
-            object-fit: cover;
-        }
-        .module-banner {
-            background-color: #121316;
-            padding: 0;
-            border-bottom: 3px solid #9d4edd;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
-            box-shadow: 0 4px 25px rgba(157, 78, 221, 0.3);
-        }
-        .module-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin: 0;
-            object-fit: cover;
-        }
-        .container {
-            max-width: 840px;
-            margin: 40px auto;
-            padding: 40px;
-            background: #12141c;
-            border-radius: 14px;
-            border: 1px solid #3b4252;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-            box-sizing: border-box;
-            text-align: center;
-        }
-        /* Edge-to-edge scaled heading rule */
-        h1 {
-            color: #e0aaff;
-            font-size: clamp(32px, 4.5vw, 48px);
-            margin-top: 0;
+            font-weight: normal;
             letter-spacing: 1px;
-            text-shadow: 0 2px 12px rgba(157, 78, 221, 0.5);
-            width: 100%;
-            text-align: center;
-            line-height: 1.2;
-            box-sizing: border-box;
-            padding: 0 1rem;
-            word-break: keep-all;
-            white-space: nowrap;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
         }
-        h3 {
-            color: #e0aaff;
-            border-bottom: 1px solid #3b4252;
-            padding-bottom: 12px;
-            margin-top: 30px;
-            font-size: 24px;
-            width: 100%;
-            text-align: center;
+        header p {
+            font-size: 1.3rem;
+            margin-top: 0.75rem;
+            color: #FDFBF7;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
-        p {
-            color: #94a3b8;
-            line-height: 1.6;
-            font-size: 18px;
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 0.5rem;
+            }
+            header {
+                padding: 1.5rem 0.5rem;
+            }
+            header h1 {
+                font-size: 2em;
+                white-space: nowrap;
+                letter-spacing: 0px;
+            }
+            .logo-img {
+                max-height: 160px; 
+            }
+            header p {
+                font-size: 1rem;
+            }
         }
-        /* Glowing Dark Button Styling */
-        .btn {
-            display: inline-block;
-            width: auto;
-            min-width: 310px;
-            max-width: 100%;
-            background: #1a1e29;
-            color: #e0aaff;
-            padding: 16px 30px;
-            margin: 12px auto;
+        nav {
+            background-color: var(--secondary);
+            display: flex;
+            justify-content: center;
+            padding: 0.75rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: white;
             text-decoration: none;
-            font-weight: 700;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.25s ease;
-            cursor: pointer;
-            border: 1px solid #7b2cbf;
-            box-sizing: border-box;
-            font-size: 18px;
-            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25);
+            margin: 0 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
-        .btn:hover {
-            background: #252b3b;
-            color: #ffffff;
-            border-color: #9d4edd;
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4);
-        }
-        .btn-secondary {
-            background: #1a1e29;
-            color: #c77dff;
-            border: 1px solid #7b2cbf;
-        }
-        .btn-secondary:hover {
-            background: #252b3b;
-            color: #ffffff;
-            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4);
-        }
-        .btn-activate {
-            background: #1a1e29;
-            color: #4ea8de;
-            border: 1px solid #3a86ff;
-            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.25);
-            font-size: 19px;
-        }
-        .btn-activate:hover {
-            background: #252b3b;
-            color: #ffffff;
-            border-color: #4ea8de;
-            box-shadow: 0 0 25px rgba(58, 134, 255, 0.8), inset 0 0 10px rgba(58, 134, 255, 0.4);
-        }
-        .btn-subscribe {
-            background: #ffb703;
-            color: #0b0c10;
-            font-size: 19px;
-            border: none;
-            font-weight: 800;
-            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
-        }
-        .btn-subscribe:hover {
-            background: #f0a500;
-            color: #0b0c10;
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 183, 3, 0.8);
-        }
-        .btn-small-link {
-            background: #1a1e29;
-            color: #e0aaff;
-            border: 1px solid #7b2cbf;
-            font-size: 19px;
-            padding: 14px 28px;
-            margin: 12px auto 25px auto;
-            min-width: auto;
-            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.25);
-        }
-        .btn-small-link:hover {
-            background: #252b3b;
-            color: #ffffff;
-            border-color: #9d4edd;
-            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 10px rgba(157, 78, 221, 0.4);
-        }
-        .intro-card {
-            background: #1a1e29;
-            border: 1px solid #3b4252;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            line-height: 1.7;
-            text-align: left;
-        }
-        .intro-card h2 {
-            color: #e0aaff;
-            font-size: 26px;
-            margin-top: 0;
-            text-align: center;
-            border-bottom: 1px solid #3b4252;
-            padding-bottom: 12px;
-        }
-        .intro-card ol {
-            margin: 15px 0 0 25px;
-            padding: 0;
-        }
-        .intro-card li {
-            margin-bottom: 14px;
-            color: #e2e8f0;
-            font-size: 17px;
-        }
-        .intro-card strong {
-            color: #ffb703;
-        }
-        /* Boosted Telemetry Box Container */
-        .telemetry-box {
-            background: #1a1e29;
-            border: 1px solid #4a5568;
-            padding: 24px 28px;
-            border-radius: 10px;
-            margin: 25px auto;
-            font-family: monospace;
-            font-size: 20px;
-            color: #e0aaff;
-            text-align: left;
-            max-width: 650px;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-        }
-        .telemetry-box div {
-            margin: 10px 0;
-        }
-        .portal-view {
-            display: none;
-        }
-        .operations-menu-container {
-            display: block;
-        }
-        .active-module {
-            display: none;
-            background: #1a1e29;
-            border: 1px solid #7b2cbf;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: left;
-        }
-        input[type="email"], input[type="text"], input[type="file"] {
-            width: 100%;
-            padding: 15px;
-            margin: 12px 0 20px 0;
-            background: #07080a;
-            border: 1px solid #4a5568;
-            color: #fff;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 17px;
-        }
-        input[type="email"]:focus, input[type="text"]:focus {
-            border-color: #9d4edd;
-            outline: none;
-            box-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
-        }
-        .instruction-box {
-            background: #1a1e29;
-            border: 2px solid #ffb703;
-            padding: 25px;
-            border-radius: 10px;
-            margin: 30px auto;
-            font-size: 17px;
-            color: #e2e8f0;
-            line-height: 1.7;
-            display: none;
-            text-align: left;
-            max-width: 650px;
-        }
-        .instruction-box ol {
-            margin: 15px 0 0 25px;
-            padding: 0;
-        }
-        .instruction-box li {
-            margin-bottom: 12px;
-        }
-        .feedback-panel {
-            display: none;
-            margin-top: 20px;
-            padding: 18px;
-            border-radius: 8px;
-            font-size: 17px;
-            line-height: 1.6;
-            text-align: left;
-        }
-        .feedback-success {
-            background: rgba(123, 44, 191, 0.2);
-            border: 1px solid #9d4edd;
-            color: #e0aaff;
-        }
-        .feedback-warning {
-            background: rgba(255, 183, 3, 0.2);
-            border: 1px solid #ffb703;
-            color: #ffb703;
-        }
-        .vendor-list {
-            background: #1a1e29;
-            border: 1px solid #3b4252;
-            padding: 22px;
-            border-radius: 10px;
-            margin-top: 30px;
-            font-size: 17px;
-            color: #e0aaff;
-            text-align: left;
-        }
-        .vendor-list ul {
-            margin: 12px 0 0 25px;
-            padding: 0;
-            color: #94a3b8;
-        }
-        .vendor-list li {
-            margin-bottom: 10px;
-        }
-        .vendor-list a {
-            color: #c77dff;
+        nav a:hover {
             text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+        .menu-category h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #d8e0d5;
+        }
+        .item-photo {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .item-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .item-details h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            color: var(--text);
+        }
+        .item-details p {
+            margin: 0 0 1.5rem 0;
+            color: #556056;
+            font-size: 0.95rem;
+        }
+        .item-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #edf2ec;
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+        .price {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.25rem;
+        }
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.55rem 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: var(--secondary);
+        }
+        .card-stepper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--accent);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        .card-stepper button {
+            background-color: var(--secondary);
+            padding: 0.3rem 0.6rem;
+            font-size: 0.85rem;
+        }
+        .card-stepper button:hover {
+            background-color: var(--primary);
+        }
+        .card-stepper span {
+            font-weight: bold;
+            color: var(--text);
+            font-size: 0.95rem;
+            min-width: 20px;
+            text-align: center;
+        }
+        .card-added-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-right: 4px;
+        }
+        #cart-section {
+            background: #fff;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .cart-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .empty-cart-btn {
+            background-color: #c0392b;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+        .empty-cart-btn:hover {
+            background-color: #962d22;
+        }
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #edf2ec;
+        }
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .qty-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.1rem 0.5rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9rem;
             font-weight: bold;
         }
-        .vendor-list a:hover {
-            color: #ffffff;
+        .qty-btn:hover {
+            background-color: var(--primary);
         }
-        .footer-links {
-            margin-top: 50px;
-            font-size: 17px;
+        .remove-btn {
+            background: #c0392b;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        .checkout-container {
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .payment-info-box {
+            background-color: var(--accent);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .payment-info-box ul {
+            margin: 0.5rem 0 0 1.2rem;
+            padding: 0;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background-color: #7BA05B;
+            color: white;
             text-align: center;
-            padding-bottom: 40px;
+            padding: 0.85rem;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
-        .footer-links a {
-            color: #c77dff;
-            margin: 0 20px;
+        .checkout-btn:hover {
+            background-color: var(--primary);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--secondary);
+            color: white;
+            margin-top: 4rem;
+        }
+        footer a {
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        .footer-links a:hover {
-            color: #e0aaff;
-            text-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
         }
     </style>
 </head>
 <body>
-    <!-- Dynamic Landing Header -->
-    <div id="landing-header" class="header-banner">
-        <img id="landing-logo-img" src="SPOOKY_Logo_new_user.png" alt="Spooky Service Logo">
-    </div>
 
-    <!-- Interior Module Banner -->
-    <div id="module-banner" class="module-banner" style="display:none;">
-        <img id="module-banner-img" src="spooky_banner.png" alt="Spooky Operations Banner">
-    </div>
+    <header>
+        <div class="header-content">
+            <img src="Jamies_Logo.png" alt="Simple Sourdough Logo" class="logo-img">
+            <div style="text-align: center;">
+                <h1>SimpleSourdough4U</h1>
+                <p>Artisan Breads, Treats & Goodness Made from Simple Ingredients</p>
+                <p>Micro Bakery - Items Must Be Picked Up In Goodyear, Az.</p>
+                <p>Follow Me On Instagram @simplesourdough4u</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#cart">Cart</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
     <div class="container">
-        <!-- VIEW 1: ONE-BUTTON STEP-BY-STEP DYNAMIC ONBOARDING -->
-        <div id="view-onboarding" class="portal-view">
-            <h1>Spooky Node Provisioning</h1>
-            <p style="text-align: center;">Secure Anti-Spy tunneling requires a verified local hardware anchor before access to peer networks.</p>
-            
-            <div>
-                <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
-            </div>
-            
-            <div class="telemetry-box">
-                <div>Detected Terminal: <span id="os-name-display" style="color: #ffb703;">Detecting...</span></div>
-                <div>Anchor Status: <span id="anchor-status-display" style="color: #ff6b6b;">No Active Key Bound in Session</span></div>
-            </div>
+        <h2 class="section-title" id="menu">Our Fresh Menu</h2>
 
-            <div id="single-action-container">
-                <button id="primary-action-btn" class="btn" onclick="handleClientDownload();">Download Windows Client</button>
-            </div>
-
-            <div id="desktop-instructions" class="instruction-box">
-                <strong style="color: #ffb703; font-size: 19px; display: block; margin-bottom: 10px;">IMPORTANT SETUP & SECURITY NOTICE:</strong>
-                <ol id="instruction-steps"></ol>
-                <a id="continue-download-btn" href="#" class="btn" download="SpookyInitializer.exe" onclick="handleContinueDownload();" style="margin-top: 18px; background: #1a1e29; color: #4ea8de; border: 1px solid #3a86ff;">Continue to Download</a>
-                <button onclick="resetDownloadFlow();" class="btn btn-secondary" style="margin-top: 12px;">Return to Main Gateway</button>
-            </div>
-
-            <div id="activation-btn-container" style="display:none; margin-top: 25px;">
-                <button onclick="verifyLocalNode()" class="btn btn-activate">Activate Node & Enter Spooky Gateway</button>
-            </div>
-
-            <div id="restore-session-container">
-                <button onclick="verifyLocalNode()" class="btn" style="margin-top: 25px;">Already Have a Node Key Installed? Click Here to Restore Session</button>
-            </div>
-            
-            <div id="onboarding-feedback" class="feedback-panel"></div>
-        </div>
-
-        <!-- VIEW 2: OPERATIONS MENU -->
-        <div id="view-menu" class="portal-view">
-            <div id="operations-menu-wrapper" class="operations-menu-container">
-                <h1 style="font-size: 38px; letter-spacing: 2px; width: 100%;">Spooky Operations Menu</h1>
-                <p style="text-align: center;">Hardware Anchor Authenticated. Spooky Gateway Active.</p>
-                
-                <div>
-                    <button onclick="switchModule('how-it-works')" class="btn btn-small-link">How Spooky Anti-Spy Tunneling Works</button>
-                </div>
-                
-                <div class="telemetry-box">
-                    <div>Terminal Architecture: <span id="os-active-display" style="color: #e0aaff;">Active Node</span></div>
-                    <div>Spooky Key Anchor: <span id="active-key-display" style="color: #ffb703;">Loading...</span></div>
-                </div>
-
-                <div style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
-                    <button onclick="switchModule('file-transfer')" class="btn">Spooky Secure Peer-to-Peer File Transfer</button>
-                    <button onclick="switchModule('video-1on1')" class="btn">Spooky One-on-One Peer Video Conference</button>
-                    <button onclick="switchModule('video-group')" class="btn">Spooky Multiparty Group Video Conference</button>
-                </div>
-
-                <div style="background: #07080a; border: 1px solid #ffb703; padding: 25px; border-radius: 10px; margin-top: 35px; text-align: left;">
-                    <h3 style="color: #ffb703; margin-top: 0; border-bottom: 1px solid #ffb703; text-align: center; font-size: 26px; letter-spacing: 0.8px; padding-bottom: 15px;">
-                        Spooky Access Tiers & Subscriptions
-                    </h3>
-                    <p style="font-size: 16px; color: #94a3b8; text-align: center;">Choose your billing schedule to maintain continuous unthrottled node transmission priority.</p>
-                    <div style="display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
-                        <a href="https://buy.stripe.com/your_monthly_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; min-width: 220px; margin:0; text-align:center;">Monthly Plan ($19/mo)</a>
-                        <a href="https://buy.stripe.com/your_annual_link_placeholder" target="_blank" class="btn btn-subscribe" style="flex: 1; min-width: 220px; margin:0; text-align:center;">Annual Plan ($190/yr - Save 16%)</a>
+        <!-- Loaves & Mix -->
+        <div class="menu-category">
+            <h3>Sourdough Artisanal Breads & Mixes</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="Bread_Sourdough_1A.jpg" alt="Original Sourdough Loaf" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Original Sourdough Loaf</h4>
+                            <p>Classic crispy crust with a soft, tangy open crumb.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$10.00</span>
+                            <div id="btn-container-Original Sourdough Loaf">
+                                <button onclick="addToCart('Original Sourdough Loaf', 10.00)">Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="vendor-list">
-                    <strong>Authorized Subscribing Storefront:</strong>
-                    <ul>
-                        <li><a href="https://bounceairbags.com/tester.html" target="_blank">Bounce Safety Systems LLC</a> (Hardware Safety & Smart Media Testing Portal)</li>
-                    </ul>
+                <div class="product-card">
+                    <img src="Jalapeño_Cheddar_Sourdough_Loaf.jpg" alt="Jalapeño Cheddar Sourdough Loaf" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Jalapeño Cheddar Sourdough Loaf</h4>
+                            <p>Packed with real cheddar cheese and fresh jalapeños.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$15.00</span>
+                            <div id="btn-container-Jalapeño Cheddar Sourdough Loaf">
+                                <button onclick="addToCart('Jalapeño Cheddar Sourdough Loaf', 15.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Pumpkin_Loaf_Display.jpg" alt="Holiday Pumpkin Loaf Display" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Holiday Pumpkin Loaf</h4>
+                            <p>Pumpkin Shape Holiday Sourdough Loaf</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$10.00</span>
+                            <div id="btn-container-Holiday Pumpkin Loaf">
+                                <button onclick="addToCart('Holiday Pumpkin Loaf', 10.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Pancake_Mix.jpg" alt="Sourdough Pancake Mix" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Pancake Mix</h4>
+                            <p>Makes about 9 fluffy, delicious pancakes.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$6.00</span>
+                            <div id="btn-container-Sourdough Pancake Mix">
+                                <button onclick="addToCart('Sourdough Pancake Mix', 6.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- MODULE 1: FILE TRANSFER -->
-        <div id="mod-file-transfer" class="active-module">
-            <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
-                Spooky Secure Peer-to-Peer<br>File Transfer Portal
-            </h1>
-            <p style="text-align:center;">Enter the recipient's email address. Spooky interrogates their node status instantly.</p>
-            <label>Recipient Email Address:</label>
-            <input type="email" id="transferEmail" placeholder="recipient@domain.com">
-            <label>Select File to Transfer:</label>
-            <input type="file" id="transferFile">
-            <div style="text-align: center;">
-                <button onclick="executeFileTransfer()" class="btn" style="margin-top:18px;">Interrogate Recipient & Send File</button>
-            </div>
-            <div id="transfer-feedback" class="feedback-panel"></div>
-            <div style="text-align: center; margin-top: 18px;">
-                <button onclick="closeModules()" class="btn btn-secondary">Back to Spooky Operations Menu</button>
-            </div>
-        </div>
-
-        <!-- MODULE 2: ONE-ON-ONE VIDEO -->
-        <div id="mod-video-1on1" class="active-module">
-            <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
-                Spooky One-on-One<br>Peer Video Conference
-            </h1>
-            <p style="text-align:center;">Enter your colleague's email address to establish a zero-retention encrypted video link.</p>
-            <label>Recipient Email Address:</label>
-            <input type="email" id="callEmail1on1" placeholder="recipient@domain.com">
-            <div style="text-align: center;">
-                <button onclick="executeCall1on1()" class="btn" style="margin-top:18px;">Interrogate Recipient & Start Video Stream</button>
-            </div>
-            <div id="call1on1-feedback" class="feedback-panel"></div>
-            <div style="text-align: center; margin-top: 18px;">
-                <button onclick="closeModules()" class="btn btn-secondary">Back to Spooky Operations Menu</button>
-            </div>
-        </div>
-
-        <!-- MODULE 3: GROUP VIDEO -->
-        <div id="mod-video-group" class="active-module">
-            <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
-                Spooky Multiparty<br>Group Video Conference
-            </h1>
-            <p style="text-align:center;">Host a multi-node secure conference room. Provide a room tag and invite participant emails below.</p>
-            <label>Conference Room Tag / Name:</label>
-            <input type="text" id="groupRoomName" value="Spooky-Conference-Room">
-            <label>Participant Email Addresses (comma separated):</label>
-            <input type="text" id="groupEmails" placeholder="colleague1@domain.com, colleague2@domain.com">
-            <div style="text-align: center;">
-                <button onclick="executeGroupCall()" class="btn" style="margin-top:18px;">Open Group Video Stream & Generate Invite Link</button>
-            </div>
-            <div id="group-feedback" class="feedback-panel"></div>
-            <div style="text-align: center; margin-top: 18px;">
-                <button onclick="closeModules()" class="btn btn-secondary">Back to Spooky Operations Menu</button>
+        <!-- Muffins & Cinnamon Rolls -->
+        <div class="menu-category">
+            <h3>Sourdough Muffins & Cinnamon Rolls</h3>
+            <div class="product-grid">                
+                <div class="product-card">
+                    <img src="Coffee_Cake_Muffins.jpg" alt="Sourdough Coffee Cake Muffins" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Coffee Cake Muffins (6-pack)</h4>
+                            <p>Sweet cinnamon crumb topping.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$10.00</span>
+                            <div id="btn-container-Coffee Cake Muffins (6-pack)">
+                                <button onclick="addToCart('Coffee Cake Muffins (6-pack)', 10.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Cinnamon_Rolls_2.jpg" alt="Sourdough Cinnamon Rolls" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Cinnamon Rolls (6-pack)</h4>
+                            <p>Giant, gooey, and completely tasty.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$20.00</span>
+                            <div id="btn-container-Sourdough Cinnamon Rolls (6-pack)">
+                                <button onclick="addToCart('Sourdough Cinnamon Rolls (6-pack)', 20.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Pumpkin_Rolls.jpg" alt="Sourdough Pumpkin Rolls" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Pumpkin Rolls (6-pack)</h4>
+                            <p>Seasonal spiced pumpkin flavor goodness.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$20.00</span>
+                            <div id="btn-container-Pumpkin Cinnamon Rolls (6-pack)">
+                                <button onclick="addToCart('Pumpkin Cinnamon Rolls (6-pack)', 20.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- MODULE 4: HOW SPOOKY WORKS -->
-        <div id="mod-how-it-works" class="active-module">
-            <div class="intro-card" style="display: block; border: none; padding: 0; background: transparent;">
-                <h1 style="font-size: 32px; letter-spacing: 1px; width: 100%; text-align: center; line-height: 1.3;">
-                    How Spooky Anti-Spy<br>Tunneling Works
-                </h1>
-                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
-                    <strong>Ecosystem Overview:</strong> The Spooky Sovereign ecosystem provides decentralized commercial infrastructure, secure hardware-bound token validation, and direct AWS SES transmission routing without intermediate cloud bloat.
-                </p>
-                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
-                    Traditional internet security relies on passwords and digital certificates that can be stolen, intercepted, or decrypted in transit. Project Spooky changes the rules at the physics and data layer. We chose the name <strong>"Spooky"</strong> because Albert Einstein described quantum entanglement as <em>"spooky action at a distance."</em> The Spooky process is the most secure method for file transfer or live streaming audio and video ever engineered.
-                </p>
-                <p style="font-size: 17px; color: #94a3b8; margin-bottom: 15px;">
-                    <strong>Security Architecture:</strong> All nodes operate under strict zero-retention guidelines. Cryptographic handshakes are handled directly at the protocol level, ensuring complete operational privacy across distributed networks.
-                </p>
-                <ol style="text-align: left; margin: 18px 0 18px 25px;">
-                    <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Hardware-Rooted Handshake:</strong> When you initialize your node, our client analyzes your device's unique physical properties to generate a 100% unique cryptographic anchor. This identity stays locked on your device and is never stored on our servers—leveraging a stateless, zero-knowledge architecture.</li>
-                    <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Carrier Deconstruction in Transit:</strong> Files and media sent through our network are mathematically fragmented across a high-frequency stream. If intercepted in mid-transfer, the payload is completely dead, unreadable, and missing the structural data required to assemble it.</li>
-                    <li style="margin-bottom: 12px; color: #e2e8f0;"><strong>Seamless Zero-Footprint Restructuring:</strong> When a secure <strong>.spooky</strong> container reaches the target terminal, your local hardware anchor seamlessly reassembles and reconstructs the data in real time. Simply double-click any incoming <code>filename.spooky</code> file, and your system automatically executes zero-footprint decryption using your bound hardware key.</li>
-                </ol>
-                <p style="font-size: 16px; color: #e0aaff; text-align: center; margin-top: 25px; font-weight: bold; letter-spacing: 0.5px;">
-                    No centralized user accounts &bull; No server-side logs &bull; Zero interception risk
-                </p>
+        <!-- Cookies & Treats -->
+        <div class="menu-category">
+            <h3>Sourdough Cookies & Treats</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="Oreos2.jpg" alt="Sourdough Oreo Cookies" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Oreo Cookies (6-pack)</h4>
+                            <p>Like the original-but BIGGER & BETTER</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$15.00</span>
+                            <div id="btn-container-Sourdough Oreo Cookies (6-pack)">
+                                <button onclick="addToCart('Sourdough Oreo Cookies (6-pack)', 15.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Peanut_Butter_Oreos.jpg" alt="Sourdough Peanut Butter Oreo Cookies" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Peanut Butter Oreo Cookies (6-pack)</h4>
+                            <p>Like the original-but PEANUT BUTTER & BIGGER & BETTER</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$15.00</span>
+                            <div id="btn-container-Sourdough Peanut Butter Oreo Cookies (6-pack)">
+                                <button onclick="addToCart('Sourdough Peanut Butter Oreo Cookies (6-pack)', 15.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Chocolate_Chip_Cookies.jpg" alt="Sourdough Chocolate Chip Cookies" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Chocolate Chip Cookies (12-pack)</h4>
+                            <p>Rich, chewy chocolate chip perfection.</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$15.00</span>
+                            <div id="btn-container-Sourdough Chocolate Chip Cookies (12-pack)">
+                                <button onclick="addToCart('Sourdough Chocolate Chip Cookies (12-pack)', 15.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="product-card">
+                    <img src="Sourdough_Reese's_Pieces_Cookies.jpg" alt="Sourdough Reese's Pieces Cookies" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Reese's Pieces Cookies (12-pack)</h4>
+                            <p>BIGGER & BETTER Sourdough Reese's Pieces Cookies</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$15.00</span>
+                            <div id="btn-container-Sourdough Reese's Pieces Cookies (12-pack)">
+                                <button onclick="addToCart('Sourdough Reese\'s Pieces Cookies (12-pack)', 15.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Sourdough_Starter.jpg" alt="Sourdough Starter" class="item-photo">
+                    <div class="item-content">
+                        <div class="item-details">
+                            <h4>Sourdough Starter</h4>
+                            <p>Sourdough Starter - Make Your Own Sourdough Bread</p>
+                        </div>
+                        <div class="item-footer">
+                            <span class="price">$5.00</span>
+                            <div id="btn-container-Sourdough Starter">
+                                <button onclick="addToCart('Sourdough Starter', 5.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
             </div>
-            <div style="text-align: center;">
-                <button onclick="closeModules()" class="btn btn-secondary" style="margin-top:25px;">Back to Spooky Menu/Gateway</button>
+        </div>
+
+        <!-- Cart Section with Formspree Web Form -->
+        <div id="cart-section">
+            <div class="cart-header-row">
+                <h3 style="margin:0; color:var(--secondary);" id="cart">Your Order Cart (<span id="cart-count">0</span> items)</h3>
+                <button class="empty-cart-btn" onclick="emptyCart()">Empty Cart</button>
+            </div>
+            <ul id="cart-items">
+                <li>Your cart is currently empty.</li>
+            </ul>
+            <div class="cart-total" id="cart-total">Total: $0.00</div>
+            
+            <!-- Formspree Checkout Form (Integrated with xgavakdr) -->
+            <div id="checkout-container" class="checkout-container">
+                <form action="https://formspree.io/f/xgavakdr" method="POST">
+                    
+                    <!-- Hidden fields that pass the full structured cart details -->
+                    <input type="hidden" name="order_details" id="form-order-details">
+                    <input type="hidden" name="order_total" id="form-order-total">
+
+                    <div class="payment-info-box">
+                        <strong>Accepted Payment Methods (Prepay Required):</strong>
+                        <ul>
+                            <li><strong>Zelle:</strong> 623-455-1135 (Jamie Blades)</li>
+                            <li><strong>Cash App:</strong> $JamieBlades</li>
+                            <li><strong>Venmo:</strong> @Jamie-Blades-1</li>
+                            <li><strong>PayPal:</strong> 623-455-1135 (Jamie Blades)</li>
+                            <li><strong>Apple Cash:</strong> 623-455-1135</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-name">Your Full Name:</label>
+                        <input type="text" id="customer-name" name="name" required placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-phone">Your Phone Number:</label>
+                        <input type="tel" id="customer-phone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="payment-method">I Paid Via:</label>
+                        <select id="payment-method" name="payment_method" required>
+                            <option value="">-- Select Payment Method --</option>
+                            <option value="Cash App">Cash App</option>
+                            <option value="Venmo">Venmo</option>
+                            <option value="Zelle">Zelle</option>
+                            <option value="PayPal">PayPal</option>
+                            <option value="Apple Cash">Apple Cash</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="payment-reference">Payment Handle & Confirmation / Receipt #:</label>
+                        <input type="text" id="payment-reference" name="payment_reference" required placeholder="e.g., $YourHandle / Confirmation #12345">
+                    </div>
+
+                    <button type="submit" class="checkout-btn">Submit Order to Jamie</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <div class="footer-links">
-        <a href="privacy.html">Zero-Retention Privacy Policy</a>
-        <a href="support.html">Technical Support</a>
-    </div>
+    <footer id="contact">
+        <p><strong>SimpleSourdough4U</strong></p>
+        <p>Questions or custom orders? Email us at: <a href="mailto:simplesourdough4u@yahoo.com">simplesourdough4u@yahoo.com</a></p>
+    </footer>
 
     <script>
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        let detectedOS = "windows";
-        let osDisplayName = "Windows Terminal";
-        if (/android/i.test(userAgent)) {
-            detectedOS = "android";
-            osDisplayName = "Android Mobile Device";
-        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            detectedOS = "ios";
-            osDisplayName = "iOS Mobile Device";
-        } else if (/mac/i.test(userAgent)) {
-            detectedOS = "mac";
-            osDisplayName = "macOS Workstation";
-        } else if (/linux/i.test(userAgent)) {
-            detectedOS = "linux";
-            osDisplayName = "Linux Machine";
-        }
-        
-        document.getElementById('os-name-display').innerText = osDisplayName;
-        document.getElementById('os-active-display').innerText = osDisplayName;
-        
-        const actionBtn = document.getElementById('primary-action-btn');
-        const instructionsBox = document.getElementById('desktop-instructions');
-        const instructionSteps = document.getElementById('instruction-steps');
-        const continueDownloadBtn = document.getElementById('continue-download-btn');
-        const restoreSessionContainer = document.getElementById('restore-session-container');
-        const activationBtnContainer = document.getElementById('activation-btn-container');
-        
-        if (detectedOS === 'windows') {
-            actionBtn.innerText = "Download Windows Client";
-            continueDownloadBtn.setAttribute("href", "SpookyInitializer.exe");
-            continueDownloadBtn.setAttribute("download", "SpookyInitializer.exe");
-            instructionSteps.innerHTML = `
-                <li><strong>Browser Warning:</strong> If your browser warns the file is dangerous or suspicious, click the menu/arrow next to the download and select <strong>"Download suspicious file"</strong> or <strong>"Keep anyway"</strong>. (Sovereign skunkworks software does not use commercial publisher tags).</li>
-                <li><strong>Windows SmartScreen:</strong> When you run the file, Windows will display a blue shield. Click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>.</li>
-                <li><strong>Node Execution:</strong> The DOS console will extract your hardware components, bind your cryptographic seed to local system cache, and ask you to press Enter for final cleanup.</li>
-                <li><strong>Gateway Activation:</strong> Return here and click the green <strong>"Activate Node & Enter Spooky Gateway"</strong> button.</li>
-            `;
-        } else if (detectedOS === 'mac') {
-            actionBtn.innerText = "Download macOS Client";
-            continueDownloadBtn.setAttribute("href", "SpookyInitializer.command");
-            continueDownloadBtn.setAttribute("download", "SpookyInitializer.command");
-            instructionSteps.innerHTML = `
-                <li>Open Terminal and run: <code>chmod +x SpookyInitializer.command</code></li>
-                <li>Right-click the file in Finder and select <strong>Open</strong> to bypass Gatekeeper.</li>
-                <li>Press Enter in terminal, return here, and click <strong>"Activate Node & Enter Spooky Gateway"</strong>.</li>
-            `;
-        } else if (detectedOS === 'linux') {
-            actionBtn.innerText = "Download Linux Client";
-            continueDownloadBtn.setAttribute("href", "SpookyInitializer.sh");
-            continueDownloadBtn.setAttribute("download", "SpookyInitializer.sh");
-            instructionSteps.innerHTML = `
-                <li>Open your terminal and run: <code>sudo bash SpookyInitializer.sh</code></li>
-                <li>Return here and click <strong>"Activate Node & Enter Spooky Gateway"</strong>.</li>
-            `;
-        } else if (detectedOS === 'ios' || detectedOS === 'android') {
-            actionBtn.innerText = "Initialize " + (detectedOS === 'ios' ? 'iOS' : 'Android') + " Secure Anchor";
-            continueDownloadBtn.style.display = 'none';
-            continueDownloadBtn.onclick = function(e) { e.preventDefault(); provisionMobileDirect(); };
-        }
+        let cart = [];
 
-        function handleClientDownload() {
-            if (detectedOS !== 'ios' && detectedOS !== 'android') {
-                instructionsBox.style.display = 'block';
-                actionBtn.style.display = 'none';
-                restoreSessionContainer.style.display = 'none';
-            }
-        }
+        const products = [
+            { name: 'Original Sourdough Loaf', price: 10.00 },
+            { name: 'Jalapeño Cheddar Sourdough Loaf', price: 15.00 },
+            { name: 'Sourdough Pancake Mix', price: 6.00 },
+            { name: 'Holiday Pumpkin Loaf', price: 10.00 },
+            { name: 'Coffee Cake Muffins (6-pack)', price: 10.00 },
+            { name: 'Sourdough Cinnamon Rolls (6-pack)', price: 20.00 },
+            { name: 'Pumpkin Cinnamon Rolls (6-pack)', price: 20.00 }, 
+            { name: 'Sourdough Oreo Cookies (6-pack)', price: 15.00 },
+            { name: 'Sourdough Peanut Butter Oreo Cookies (6-pack)', price: 15.00 },  
+            { name: 'Sourdough Chocolate Chip Cookies (12-pack)', price: 15.00 },
+            { name: 'Sourdough Starter', price: 5.00 },
+            { name: "Sourdough Reese's Pieces Cookies (12-pack)", price: 15.00 }
+        ];
 
-        function resetDownloadFlow() {
-            instructionsBox.style.display = 'none';
-            actionBtn.style.display = 'block';
-            restoreSessionContainer.style.display = 'block';
-            activationBtnContainer.style.display = 'none';
-        }
-
-        function handleContinueDownload() {
-            sessionStorage.setItem('client_downloaded', 'true');
-            activationBtnContainer.style.display = 'block';
-        }
-
-        if (sessionStorage.getItem('client_downloaded') === 'true') {
-            instructionsBox.style.display = 'block';
-            actionBtn.style.display = 'none';
-            restoreSessionContainer.style.display = 'none';
-            activationBtnContainer.style.display = 'block';
-        }
-
-        async function provisionMobileDirect() {
-            const fb = document.getElementById('onboarding-feedback');
-            fb.style.display = 'block';
-            fb.className = 'feedback-panel feedback-success';
-            fb.innerHTML = "Querying device hardware telemetry & generating 256-bit Spooky key...";
-            
-            const entropy = navigator.userAgent + screen.width + "x" + screen.height + (navigator.hardwareConcurrency || 4) + (new Date().getTimezoneOffset());
-            const encoder = new TextEncoder();
-            const data = encoder.encode(entropy + "MOBILE_SPOOKY_SALT_2026");
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hexKey = "KEY-MOB-" + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16).toUpperCase();
-            
-            localStorage.setItem('spooky_node_installed', 'true');
-            localStorage.setItem('spooky_sovereign_node_id', hexKey);
-            
-            setTimeout(() => {
-                fb.innerHTML = "Hardware Anchor Verified & Locked: <strong>" + hexKey + "</strong>. Opening Spooky Operations...";
-                setTimeout(() => {
-                    document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-                    document.getElementById('mod-how-it-works').style.display = 'none';
-                    document.getElementById('module-banner').style.display = 'none';
-                    document.getElementById('landing-header').style.display = 'block';
-                    checkSovereignState();
-                }, 900);
-            }, 600);
-        }
-
-        function getPersistentSovereignKey() {
-            return localStorage.getItem('spooky_sovereign_node_id') || sessionStorage.getItem('spooky_sovereign_node_id');
-        }
-
-        function checkSovereignState() {
-            let storedKey = getPersistentSovereignKey();
-            const logoImg = document.getElementById('landing-logo-img');
-            if (storedKey) {
-                document.getElementById('view-onboarding').style.display = 'none';
-                document.getElementById('operations-menu-wrapper').style.display = 'block';
-                document.getElementById('view-menu').style.display = 'block';
-                document.getElementById('mod-how-it-works').style.display = 'none';
-                document.getElementById('active-key-display').innerText = storedKey + " (Active & Bound)";
-                logoImg.src = "SPOOKY_Logo.png";
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
             } else {
-                document.getElementById('view-menu').style.display = 'none';
-                document.getElementById('view-onboarding').style.display = 'block';
-                logoImg.src = "SPOOKY_Logo_new_user.png";
+                cart.push({ name, price, quantity: 1 });
             }
+            updateUI();
         }
 
-        function verifyLocalNode() {
-            const machineHash = Math.abs((navigator.hardwareConcurrency || 4) * 31 + (screen.width || 1920)).toString(36).toUpperCase();
-            const permanentKey = "KEY-SPKY-" + machineHash + "-WIN";
-            
-            localStorage.setItem('spooky_node_installed', 'true');
-            localStorage.setItem('spooky_sovereign_node_id', permanentKey);
-            sessionStorage.removeItem('client_downloaded');
-            
-            const fb = document.getElementById('onboarding-feedback');
-            fb.style.display = 'block';
-            fb.className = 'feedback-panel feedback-success';
-            fb.innerHTML = "Local Hardware Anchor Authenticated: <strong>" + permanentKey + "</strong>. Loading Operations Menu...";
-            
-            setTimeout(() => {
-                document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-                document.getElementById('mod-how-it-works').style.display = 'none';
-                document.getElementById('module-banner').style.display = 'none';
-                document.getElementById('landing-header').style.display = 'block';
-                checkSovereignState();
-            }, 900);
-        }
-
-        function switchModule(moduleName) {
-            document.getElementById('view-onboarding').style.display = 'none';
-            document.getElementById('operations-menu-wrapper').style.display = 'none';
-            document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-            
-            const targetModule = document.getElementById('mod-' + moduleName);
-            targetModule.style.display = 'block';
-            
-            const bannerImg = document.getElementById('module-banner-img');
-            if (moduleName === 'how-it-works' && !getPersistentSovereignKey()) {
-                bannerImg.src = "spooky_banner_new_user.png";
-            } else {
-                bannerImg.src = "spooky_banner.png";
-            }
-            
-            document.getElementById('landing-header').style.display = 'none';
-            document.getElementById('module-banner').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function closeModules() {
-            document.querySelectorAll('.active-module').forEach(m => m.style.display = 'none');
-            document.getElementById('mod-how-it-works').style.display = 'none';
-            
-            let storedKey = getPersistentSovereignKey();
-            if (storedKey) {
-                document.getElementById('operations-menu-wrapper').style.display = 'block';
-                document.getElementById('view-menu').style.display = 'block';
-            } else {
-                document.getElementById('view-onboarding').style.display = 'block';
-            }
-            
-            document.getElementById('module-banner').style.display = 'none';
-            document.getElementById('landing-header').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        async function executeFileTransfer() {
-            const email = document.getElementById('transferEmail').value.trim();
-            const fileInput = document.getElementById('transferFile');
-            const feedback = document.getElementById('transfer-feedback');
-            
-            feedback.style.display = 'block';
-            
-            if (!email || !email.includes('@')) {
-                feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
-                return;
-            }
-            if (fileInput.files.length === 0) {
-                feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = "<strong>Error:</strong> Please select a file to transfer.";
-                return;
-            }
-            
-            const file = fileInput.files[0];
-            const formData = new FormData();
-            formData.append('email', email);
-            formData.append('file', file);
-            
-            feedback.className = 'feedback-panel feedback-warning';
-            feedback.innerHTML = "<strong>Interrogating Node & Packaging Payload...</strong> Please wait.";
-            
-            try {
-                const response = await fetch('http://127.0.0.1:5000/transfer', {
-                    method: 'POST',
-                    body: formData
-                });
-                const result = await response.json();
-                
-                if (response.ok) {
-                    feedback.className = 'feedback-panel feedback-success';
-                    feedback.innerHTML = `<strong>Spooky Transmission Successful:</strong> Active Spooky Key verified for [${email}]. Encrypted tunnel established. File packaged as <strong>'${file.name}.spooky'</strong> and transmitted via AWS SES.`;
-                } else {
-                    feedback.className = 'feedback-panel feedback-warning';
-                    feedback.innerHTML = `<strong>Transmission Error:</strong> ${result.error || 'Server rejected payload.'}`;
+        function changeQuantityByName(name, amount) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.quantity += amount;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.name !== name);
                 }
-            } catch (error) {
-                feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = `<strong>Network Error:</strong> Could not connect to local Spooky engine on port 5000. Ensure <code>wsgi.py</code> is running.`;
             }
+            updateUI();
         }
 
-        function executeCall1on1() {
-            const email = document.getElementById('callEmail1on1').value.trim();
-            const feedback = document.getElementById('call1on1-feedback');
-            feedback.style.display = 'block';
-            if (!email || !email.includes('@')) {
-                feedback.className = 'feedback-panel feedback-warning';
-                feedback.innerHTML = "<strong>Error:</strong> Please enter a valid recipient email address.";
+        function changeQuantityByIndex(index, amount) {
+            cart[index].quantity += amount;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateUI();
+        }
+
+        function emptyCart() {
+            cart = [];
+            updateUI();
+        }
+
+        function updateUI() {
+            updateCartUI();
+            updateProductCardsUI();
+        }
+
+        function updateCartUI() {
+            const cartList = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            const checkoutContainer = document.getElementById('checkout-container');
+            const formOrderDetails = document.getElementById('form-order-details');
+            const formOrderTotal = document.getElementById('form-order-total');
+
+            cartList.innerHTML = '';
+
+            let totalItems = 0;
+            cart.forEach(item => totalItems += item.quantity);
+            cartCount.innerText = totalItems;
+
+            if (cart.length === 0) {
+                cartList.innerHTML = '<li>Your cart is currently empty.</li>';
+                cartTotal.innerText = 'Total: $0.00';
+                checkoutContainer.style.display = 'none';
                 return;
             }
-            feedback.className = 'feedback-panel feedback-warning';
-            feedback.innerHTML = "<strong>Spooky Interrogation Complete:</strong> Recipient [" + email + "] verified.<br><strong>Stream Status:</strong> Pending Recipient Acceptance. An instant secure video invitation link has been dispatched to " + email + ".";
-        }
 
-        function executeGroupCall() {
-            const room = document.getElementById('groupRoomName').value.trim() || "Spooky-Conference-Room";
-            const emails = document.getElementById('groupEmails').value.trim();
-            const feedback = document.getElementById('group-feedback');
-            const inviteUrl = "https://spookifyed.com/?call_invite=" + encodeURIComponent(room);
+            checkoutContainer.style.display = 'block';
+
+            let total = 0;
+            let summaryText = "";
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                summaryText += `${item.name} (Qty: ${item.quantity}) - $${itemTotal.toFixed(2)} | `;
+                
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.name} ($${item.price.toFixed(2)} each)</span>
+                    <div class="cart-item-controls">
+                        <button class="qty-btn" onclick="changeQuantityByIndex(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="changeQuantityByIndex(${index}, 1)">+</button>
+                        <span style="min-width: 65px; text-align: right;">$${itemTotal.toFixed(2)}</span>
+                        <button class="qty-btn remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+                cartList.appendChild(li);
+            });
             
-            feedback.style.display = 'block';
-            feedback.className = 'feedback-panel feedback-success';
-            feedback.innerHTML = "<strong>Multiparty Group Conference Initialized:</strong><br>" +
-                "Room Tag: <code>" + room + "</code><br>" +
-                (emails ? "Invitations dispatched to: " + emails + "<br>" : "") +
-                "<br>Invite Link:<br><input type='text' value='" + inviteUrl + "' readonly style='background:#07080a; color:#e0aaff; border:1px solid #7b2cbf; padding:8px; width:100%; margin-top:8px; font-size:16px;' onclick='this.select()'>";
+            cartTotal.innerText = `Total: $${total.toFixed(2)}`;
+
+            // Populate hidden inputs so Formspree emails everything clearly to Jamie
+            formOrderDetails.value = summaryText;
+            formOrderTotal.value = `$${total.toFixed(2)}`;
         }
 
-        checkSovereignState();
+        function updateProductCardsUI() {
+            products.forEach(prod => {
+                const container = document.getElementById(`btn-container-${prod.name}`);
+                if (!container) return;
+
+                const cartItem = cart.find(i => i.name === prod.name);
+
+                if (!cartItem) {
+                    container.innerHTML = `<button onclick="addToCart('${prod.name.replace(/'/g, "\\'")}', ${prod.price})">Add to Cart</button>`;
+                } else {
+                    container.innerHTML = `
+                        <div class="card-stepper">
+                            <span class="card-added-label">Added</span>
+                            <button onclick="changeQuantityByName('${prod.name.replace(/'/g, "\\'")}', -1)">-</button>
+                            <span>${cartItem.quantity}</span>
+                            <button onclick="changeQuantityByName('${prod.name.replace(/'/g, "\\'")}', 1)">+</button>
+                        </div>
+                    `;
+                }
+            });
+        }
     </script>
 </body>
 </html>
